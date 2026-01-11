@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goodness and Mercy | YouTube Player</title>
+    <title>SAINTHOOD FILM PRODUCTION | Professional Video Studio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -13,164 +13,346 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        body {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #f0f0f0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
+        :root {
+            --primary-color: #ff3b30;
+            --secondary-color: #1a1a1a;
+            --accent-color: #007bff;
+            --light-color: #f9f9f9;
+            --dark-color: #121212;
+            --gray-color: #888;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --gradient: linear-gradient(135deg, #121212 0%, #2a2a2a 100%);
         }
         
-        .container {
-            max-width: 1200px;
+        body {
+            background-color: #0f0f0f;
+            color: #f0f0f0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
             width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
             margin: 0 auto;
         }
         
-        header {
-            text-align: center;
-            padding: 30px 20px;
-            margin-bottom: 20px;
-            width: 100%;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: #fff;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            color: #aaa;
-            margin-bottom: 30px;
-        }
-        
-        .player-container {
-            background-color: #0d1117;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            margin-bottom: 30px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-            overflow: hidden;
-            border-radius: 10px;
-            background-color: #000;
-        }
-        
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        .video-placeholder {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(45deg, #1a1a2e, #16213e);
-            color: white;
-            z-index: 10;
-        }
-        
-        .video-placeholder.hidden {
-            display: none;
-        }
-        
-        .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 5px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            border-top-color: #ff0000;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
-        
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
-        }
-        
-        .controls {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 25px;
-            padding-top: 25px;
-            border-top: 1px solid #333;
-        }
-        
-        .btn {
-            background-color: #ff0000;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
+        .logo {
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+        
+        .logo i {
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+            font-size: 1rem;
+        }
+        
+        nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        nav a.active {
+            color: var(--primary-color);
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+            bottom: -5px;
+            left: 0;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4;
+        }
+        
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+        
+        .hero-text {
+            max-width: 800px;
+        }
+        
+        .hero-subtitle {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #fff 30%, var(--primary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-description {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #ccc;
+            max-width: 600px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+            font-size: 1rem;
         }
         
-        .btn:hover {
-            background-color: #cc0000;
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #e0352b;
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(255, 0, 0, 0.4);
-        }
-        
-        .btn:active {
-            transform: translateY(0);
+            box-shadow: 0 10px 20px rgba(255, 59, 48, 0.2);
         }
         
         .btn-secondary {
-            background-color: #333;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
         }
         
         .btn-secondary:hover {
-            background-color: #444;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            background-color: white;
+            color: var(--dark-color);
+            transform: translateY(-3px);
         }
         
-        .btn i {
-            font-size: 1.2rem;
+        /* Stats Section */
+        .stats-section {
+            background-color: var(--dark-color);
+            padding: 5rem 2rem;
         }
         
-        .status-panel {
-            background-color: rgba(0, 0, 0, 0.3);
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
-            padding: 20px;
-            margin-top: 20px;
-            display: none;
+            transition: transform 0.3s;
         }
         
-        .status-panel.active {
+        .stat-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 59, 48, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            color: #ccc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 6rem 2rem;
+            background-color: #0f0f0f;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-subtitle {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #fff 30%, var(--primary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-description {
+            font-size: 1.2rem;
+            color: #ccc;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 59, 48, 0.1);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 30px rgba(255, 59, 48, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .service-card p {
+            color: #aaa;
+            line-height: 1.8;
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            min-height: 70vh;
+        }
+        
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .page.active {
             display: block;
-            animation: fadeIn 0.5s ease;
         }
         
         @keyframes fadeIn {
@@ -178,535 +360,1208 @@
             to { opacity: 1; }
         }
         
-        .status-title {
+        .page-header {
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .page-header h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-header p {
+            color: var(--gray-color);
+            font-size: 1.1rem;
+        }
+        
+        /* Video Grid */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .video-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 59, 48, 0.2);
+            border-color: var(--primary-color);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.1);
+        }
+        
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 59, 48, 0.9);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+        
+        .video-play-btn:hover {
+            background-color: var(--primary-color);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .video-info {
+            padding: 1.5rem;
+        }
+        
+        .video-info h3 {
             font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: #ff9900;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .video-info p {
+            color: #aaa;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray-color);
+            font-size: 0.85rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .video-meta i {
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+        
+        /* Video Player Modal */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .video-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        .modal-content {
+            width: 90%;
+            max-width: 1200px;
+            background-color: var(--dark-color);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid var(--primary-color);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 2001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .close-modal:hover {
+            background: var(--primary-color);
+            transform: rotate(90deg);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* About Page */
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+        
+        .about-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .about-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+            box-shadow: 0 10px 30px rgba(255, 59, 48, 0.3);
+        }
+        
+        .about-header-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .about-header-text p {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .about-content p {
+            color: #aaa;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: white;
+            font-size: 1.1rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            font-size: 1rem;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: rgba(255, 59, 48, 0.05);
+            box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .submit-btn:hover {
+            background-color: #e0352b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 59, 48, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            margin-top: 5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-col a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s;
             display: flex;
             align-items: center;
             gap: 10px;
         }
         
-        .status-list {
-            list-style-type: none;
+        .footer-col a:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
         }
         
-        .status-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        .social-links {
             display: flex;
-            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
         
-        .status-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .status-value {
-            font-weight: 600;
-            color: #4CAF50;
-        }
-        
-        .status-value.error {
-            color: #ff4444;
-        }
-        
-        .video-info {
-            background-color: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 30px;
-        }
-        
-        .video-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #ff9900;
-        }
-        
-        .video-info p {
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-        
-        .stats {
+        .social-links a {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 15px;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            transition: all 0.3s;
+            font-size: 1.2rem;
         }
         
-        .stat {
-            display: flex;
-            flex-direction: column;
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
         }
         
-        .stat-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #ff0000;
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            color: #aaa;
-        }
-        
-        footer {
-            margin-top: 40px;
+        .copyright {
             text-align: center;
-            color: #777;
-            font-size: 0.9rem;
-            padding: 20px;
-            width: 100%;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .video-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .about-header {
+                flex-direction: column;
+                text-align: center;
+            }
         }
         
         @media (max-width: 768px) {
-            h1 {
+            header {
+                padding: 1rem;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem 0;
+            }
+            
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 1.5rem;
+                right: 2rem;
+            }
+            
+            .mobile-nav {
+                display: none;
+                width: 100%;
+                margin-top: 1rem;
+            }
+            
+            .mobile-nav.active {
+                display: block;
+            }
+            
+            .mobile-nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .hero-section {
+                margin-top: 120px;
+                height: auto;
+                padding: 4rem 0;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-description {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            main {
+                padding: 0 1rem;
+            }
+            
+            .hero-content {
+                padding: 0 1rem;
+            }
+            
+            .hero-title {
                 font-size: 2rem;
             }
             
-            .player-container {
-                padding: 15px;
+            .video-grid {
+                grid-template-columns: 1fr;
             }
             
-            .controls {
-                flex-direction: column;
-                align-items: center;
+            .page-header h2 {
+                font-size: 2rem;
             }
             
-            .btn {
-                width: 100%;
-                justify-content: center;
+            .modal-content {
+                width: 95%;
+                padding: 0;
             }
-        }
-        
-        .notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            z-index: 1000;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.5s ease;
-        }
-        
-        .notification.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .notification.error {
-            background-color: #ff4444;
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-card {
+                padding: 2rem;
+            }
+            
+            .about-card,
+            .contact-form {
+                padding: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Goodness and Mercy</h1>
-            <div class="subtitle">Pastor Wilson Bugembe | KingsPorch Studios | YouTube Video Player</div>
-        </header>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-film"></i>
+                <h1>SAINTHOOD <span>FILM </span>PRODUCTION</h1>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="mobile-nav" id="mainNav">
+                <ul>
+                    <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#videos" class="nav-link" data-page="videos">Portfolio</a></li>
+                    <li><a href="#favorites" class="nav-link" data-page="favorites">Showreel</a></li>
+                    <li><a href="#about" class="nav-link" data-page="about">About</a></li>
+                    <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section id="home" class="page active">
+        <div class="hero-section">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-subtitle">PROFESSIONAL VIDEO PRODUCTION</div>
+                    <h1 class="hero-title">Crafting Visual Stories That Captivate</h1>
+                    <p class="hero-description">SAINTHOOD FILM PRODUCTION is an independent film production company based in Kasese, Uganda, dedicated to telling authentic African stories with purpose and impact. Founded with a vision to inspire change, the company focuses on producing films and documentaries that explore social realities, environmental sustainability, culture, faith, and human resilience.</p>
+                    <div class="hero-buttons">
+                        <a href="#videos" class="btn btn-primary nav-link" data-page="videos">
+                            <i class="fas fa-play-circle"></i> View Our Work
+                        </a>
+                        <a href="#contact" class="btn btn-secondary nav-link" data-page="contact">
+                            <i class="fas fa-envelope"></i> Get In Touch
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
         
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="1000">0</div>
+                    <div class="stat-label">Souls impacted</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="10">0</div>
+                    <div class="stat-label">Videos</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number" data-target="4">0</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Services Section -->
+        <div class="services-section">
+            <div class="section-header">
+                <div class="section-subtitle">OUR SERVICES</div>
+                <h2 class="section-title">What We Do Best</h2>
+                <p class="section-description">From concept to delivery, we provide comprehensive video production services tailored to your specific needs and goals.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3>Cinematic Storytelling</h3>
+                    <p>Narrative-driven films with emotional depth and visual artistry that resonates with audiences and leaves lasting impressions.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Corporate Videos</h3>
+                    <p>Professional corporate videos for presentations, training, testimonials, and company profiles that communicate your message effectively.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Music Videos</h3>
+                    <p>Creative and visually stunning music videos that amplify the artist's vision and connect with fans on a deeper level.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <h3>Post-Production</h3>
+                    <p>Expert editing, color grading, visual effects, sound design, and motion graphics to polish your content to perfection.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Featured Videos Section -->
+        <div class="services-section" style="padding-top: 0;">
+            <div class="section-header">
+                <div class="section-subtitle">FEATURED WORK</div>
+                <h2 class="section-title">Our Latest Projects</h2>
+                <p class="section-description">A selection of our most recent and noteworthy video productions that showcase our style and expertise.</p>
+            </div>
+            
+            <div class="video-grid">
+                <!-- Featured videos will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- All Videos Page -->
+    <section id="videos" class="page">
         <main>
-            <div class="player-container">
-                <div class="video-wrapper">
-                    <!-- Video placeholder that shows while loading -->
-                    <div class="video-placeholder" id="videoPlaceholder">
-                        <div class="loading-spinner"></div>
-                        <h2>Loading YouTube Player...</h2>
-                        <p>Preparing video playback for "Goodness and Mercy"</p>
+            <div class="page-header">
+                <h2>Our Portfolio</h2>
+                <p>Browse our complete collection of video productions across various genres and formats</p>
+            </div>
+            
+            <div class="video-grid">
+                <!-- All videos will be inserted here by JavaScript -->
+            </div>
+        </main>
+    </section>
+    
+    <!-- Favorites Page -->
+    <section id="favorites" class="page">
+        <main>
+            <div class="page-header">
+                <h2>Showreel Highlights</h2>
+                <p>Our best and most representative work that showcases the range and quality of our productions</p>
+            </div>
+            
+            <div class="video-grid">
+                <!-- Favorite videos will be inserted here by JavaScript -->
+            </div>
+        </main>
+    </section>
+    
+    <!-- About Page -->
+    <section id="about" class="page">
+        <main>
+            <div class="page-header">
+                <h2>About SAINTHOOD FILM PRODUCTION</h2>
+                <p>Get to know the creative minds behind our productions</p>
+            </div>
+            
+            <div class="about-container">
+                <div class="about-card">
+                    <div class="about-header">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Director Profile" class="profile-img">
+                        <div class="about-header-text">
+                            <h2>Sarah Johnson</h2>
+                            <p>Creative Director & Founder</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-imdb"></i></a>
+                            </div>
+                        </div>
                     </div>
                     
-                    <!-- YouTube iframe will be inserted here by JavaScript -->
-                    <div id="player"></div>
+                    <div class="about-content">
+                        <p>Founded in 2017, SAINTHOOD FILM PRODUCTION emerged from a simple yet powerful vision: to create visual content that not only tells stories but evokes emotions and inspires action. What started as a small team of passionate filmmakers has grown into a full-service production studio recognized for excellence in cinematic storytelling.</p>
+                        
+                        <p>Under the creative direction of Sarah Johnson, our studio brings together a diverse team of directors, cinematographers, editors, and visual artists who share a common commitment to quality, innovation, and client satisfaction. We believe that great video content is more than just moving images—it's a powerful tool for communication, connection, and conversion.</p>
+                        
+                        <p>Our approach combines technical expertise with artistic vision. We stay at the forefront of industry trends and technology while maintaining the timeless principles of good storytelling. Every project begins with understanding your unique needs, audience, and objectives, ensuring the final product not only meets but exceeds expectations.</p>
+                    </div>
                 </div>
                 
-                <div class="controls">
-                    <button class="btn" id="playBtn">
-                        <i class="fas fa-play"></i> Play Video
-                    </button>
-                    <button class="btn btn-secondary" id="pauseBtn">
-                        <i class="fas fa-pause"></i> Pause Video
-                    </button>
-                    <button class="btn btn-secondary" id="restartBtn">
-                        <i class="fas fa-redo"></i> Restart Video
-                    </button>
-                    <button class="btn btn-secondary" id="showStatusBtn">
-                        <i class="fas fa-info-circle"></i> Show Player Status
-                    </button>
-                </div>
-                
-                <div class="status-panel" id="statusPanel">
-                    <h3 class="status-title"><i class="fas fa-chart-bar"></i> Player Status & Diagnostics</h3>
-                    <ul class="status-list" id="statusList">
-                        <!-- Status items will be added here by JavaScript -->
+                <div class="about-card">
+                    <h3>Our Philosophy</h3>
+                    <p>At SAINTHOOD, we operate on three core principles:</p>
+                    <ul style="color: #aaa; line-height: 1.8; margin: 1.5rem 0; padding-left: 1.5rem;">
+                        <li><strong>Story First:</strong> Every great video begins with a compelling narrative that resonates with its audience.</li>
+                        <li><strong>Quality Without Compromise:</strong> From pre-production to final delivery, we maintain the highest standards.</li>
+                        <li><strong>Collaborative Partnership:</strong> We work closely with clients to ensure their vision is realized and enhanced.</li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 2rem;">Our Equipment & Technology</h3>
+                    <ul style="color: #aaa; line-height: 1.8; margin: 1.5rem 0; padding-left: 1.5rem;">
+                        <li><strong>Cameras:</strong> RED Komodo, Sony FX6, Blackmagic URSA Mini Pro</li>
+                        <li><strong>Lenses:</strong> Cooke, Zeiss, and Sigma Cine Lenses</li>
+                        <li><strong>Lighting:</strong> Aputure, Nanlite, and Arri Lighting Kits</li>
+                        <li><strong>Audio:</strong> Sound Devices Recorders, Sennheiser Wireless Systems</li>
+                        <li><strong>Post-Production:</strong> DaVinci Resolve Studio, Adobe Creative Suite, Avid Media Composer</li>
                     </ul>
                 </div>
             </div>
+        </main>
+    </section>
+    
+    <!-- Contact Page -->
+    <section id="contact" class="page">
+        <main>
+            <div class="page-header">
+                <h2>Get In Touch</h2>
+                <p>Ready to bring your vision to life? Let's discuss your next project!</p>
+            </div>
             
-            <div class="video-info">
-                <h3>About This Video</h3>
-                <p>This player is configured to play "Goodness and Mercy" by Pastor Wilson Bugembe from KingsPorch Studios. The video is loaded directly from YouTube using their official embed API with multiple fallback methods to ensure reliable playback.</p>
-                <p>If the video doesn't play automatically, use the Play Video button above. The player includes diagnostic tools to troubleshoot any playback issues.</p>
-                
-                <div class="stats">
-                    <div class="stat">
-                        <span class="stat-value" id="viewCount">32K</span>
-                        <span class="stat-label">Views</span>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" placeholder="Enter your name" required>
                     </div>
-                    <div class="stat">
-                        <span class="stat-value">1</span>
-                        <span class="stat-label">Month Ago</span>
+                    
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
                     </div>
-                    <div class="stat">
-                        <span class="stat-value">YouTube</span>
-                        <span class="stat-label">Source</span>
+                    
+                    <div class="form-group">
+                        <label for="company">Company/Organization</label>
+                        <input type="text" id="company" placeholder="Your company (optional)">
                     </div>
-                </div>
+                    
+                    <div class="form-group">
+                        <label for="project">Project Type</label>
+                        <select id="project" style="width:100%; padding:1rem 1.2rem; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); border-radius:8px; color:white; font-size:1rem;">
+                            <option value="">Select a project type</option>
+                            <option value="commercial">Commercial/Advertisement</option>
+                            <option value="corporate">Corporate Video</option>
+                            <option value="film">Short Film/Narrative</option>
+                            <option value="music">Music Video</option>
+                            <option value="event">Event Coverage</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Project Details</label>
+                        <textarea id="message" placeholder="Tell us about your project, timeline, budget, and any other relevant details..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
             </div>
         </main>
-        
-        <footer>
-            <p>YouTube Video Player &copy; 2026 | Designed for robust playback of "Goodness and Mercy"</p>
-            <p>Video by Pastor Wilson Bugembe | KingsPorch Studios</p>
-        </footer>
+    </section>
+    
+    <!-- Video Player Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div class="video-container">
+                <iframe id="youtubePlayer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
     </div>
     
-    <!-- Notification element -->
-    <div class="notification" id="notification">
-        <i class="fas fa-check-circle"></i>
-        <span id="notificationMessage">Video is playing successfully!</span>
-    </div>
-
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>SAINTHOOD FILM PRODUCTION</h3>
+                <p style="color: #aaa; line-height: 1.8; margin-bottom: 1.5rem;">A full-service video production studio creating cinematic stories that engage, inspire, and deliver results.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-vimeo-v"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home" class="footer-nav-link" data-page="home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#videos" class="footer-nav-link" data-page="videos"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                    <li><a href="#favorites" class="footer-nav-link" data-page="favorites"><i class="fas fa-chevron-right"></i> Showreel</a></li>
+                    <li><a href="#about" class="footer-nav-link" data-page="about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="#contact" class="footer-nav-link" data-page="contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Our Services</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Commercial Production</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Corporate Videos</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Cinematic Storytelling</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Music Videos</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Post-Production</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> 123 Film Studio Lane, Los Angeles, CA 90028</a></li>
+                    <li><a href="tel:+15551234567"><i class="fas fa-phone"></i> +1 (555) 123-4567</a></li>
+                    <li><a href="mailto:info@sainthoodfilms.com"><i class="fas fa-envelope"></i> info@sainthoodfilms.com</a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM PST</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 SAINTHOOD FILM PRODUCTION. All rights reserved. | Crafted with <i class="fas fa-heart" style="color: var(--primary-color);"></i> for visual storytelling</p>
+        </div>
+    </footer>
+    
     <script>
-        // Video configuration
-        const VIDEO_ID = 'qd6cxzri_UY';
-        const VIDEO_URL = `https://www.youtube.com/watch?v=${VIDEO_ID}`;
-        
-        // DOM elements
-        const videoPlaceholder = document.getElementById('videoPlaceholder');
-        const playBtn = document.getElementById('playBtn');
-        const pauseBtn = document.getElementById('pauseBtn');
-        const restartBtn = document.getElementById('restartBtn');
-        const showStatusBtn = document.getElementById('showStatusBtn');
-        const statusPanel = document.getElementById('statusPanel');
-        const statusList = document.getElementById('statusList');
-        const notification = document.getElementById('notification');
-        const notificationMessage = document.getElementById('notificationMessage');
-        
-        // Global player variable
-        let player;
-        let playerInitialized = false;
-        let fallbackAttempted = false;
-        
-        // Show notification function
-        function showNotification(message, isError = false) {
-            notificationMessage.textContent = message;
-            notification.className = 'notification';
-            
-            if (isError) {
-                notification.classList.add('error');
-                notification.querySelector('i').className = 'fas fa-exclamation-triangle';
-            } else {
-                notification.querySelector('i').className = 'fas fa-check-circle';
+        // Video data with YouTube embed links
+        const videoData = [
+            {
+                id: 1,
+                title: "TechCorp 2023 Brand Campaign",
+                description: "A cinematic brand commercial showcasing innovation and human connection in technology.",
+                category: "Commercial",
+                youtubeId: "QiXfHI73v6g",
+                duration: "01:45",
+                views: "125K",
+                date: "2023-08-10",
+                favorite: true,
+                thumbnail: "https://img.youtube.com/vi/QiXfHI73v6g/hqdefault.jpg"
+            },
+            {
+                id: 2,
+                title: "Urban Echoes - Short Film",
+                description: "Award-winning narrative short film exploring urban isolation and connection.",
+                category: "Cinematic",
+                youtubeId: "tgvXKUN0el0",
+                duration: "22:45",
+                views: "89K",
+                date: "2023-07-22",
+                favorite: true,
+                thumbnail: "https://img.youtube.com/vi/tgvXKUN0el0/hqdefault.jpg"
+            },
+            {
+                id: 3,
+                title: "Global Solutions Corporate Profile",
+                description: "Corporate video highlighting company culture, values, and global impact.",
+                category: "Corporate",
+                youtubeId: "7gdW04hQdI4",
+                duration: "05:33",
+                views: "45K",
+                date: "2023-06-15",
+                favorite: false,
+                thumbnail: "https://img.youtube.com/vi/7gdW04hQdI4/hqdefault.jpg"
+            },
+            {
+                id: 4,
+                title: "Midnight Drive - Music Video",
+                description: "Music video featuring atmospheric visuals and dynamic storytelling for indie band.",
+                category: "Music",
+                youtubeId: "6q681jq9xUs",
+                duration: "04:10",
+                views: "312K",
+                date: "2023-05-28",
+                favorite: true,
+                thumbnail: "https://img.youtube.com/vi/6q681jq9xUs/hqdefault.jpg"
+            },
+            {
+                id: 5,
+                title: "Nature's Balance Documentary",
+                description: "Environmental documentary exploring the delicate balance of ecosystems.",
+                category: "Documentary",
+                youtubeId: "6v2L2UGZJAM",
+                duration: "28:55",
+                views: "142K",
+                date: "2023-04-18",
+                favorite: false,
+                thumbnail: "https://img.youtube.com/vi/6v2L2UGZJAM/hqdefault.jpg"
+            },
+            {
+                id: 6,
+                title: "Fashion Forward 2023 Campaign",
+                description: "High-fashion commercial blending avant-garde styling with urban landscapes.",
+                category: "Commercial",
+                youtubeId: "PoRJizFvM7s",
+                duration: "02:15",
+                views: "89K",
+                date: "2023-03-05",
+                favorite: false,
+                thumbnail: "https://img.youtube.com/vi/PoRJizFvM7s/hqdefault.jpg"
+            },
+            {
+                id: 7,
+                title: "Innovate Conference 2023 Highlights",
+                description: "Event coverage and highlights from the annual tech innovation conference.",
+                category: "Event",
+                youtubeId: "FBr8r5ZQ6eU",
+                duration: "08:40",
+                views: "67K",
+                date: "2023-02-12",
+                favorite: true,
+                thumbnail: "https://img.youtube.com/vi/FBr8r5ZQ6eU/hqdefault.jpg"
+            },
+            {
+                id: 8,
+                title: "Sustainable Future - NGO Campaign",
+                description: "Non-profit campaign video promoting sustainable development goals.",
+                category: "Corporate",
+                youtubeId: "ad79nYk2keg",
+                duration: "06:30",
+                views: "124K",
+                date: "2023-01-08",
+                favorite: false,
+                thumbnail: "https://img.youtube.com/vi/ad79nYk2keg/hqdefault.jpg"
             }
+        ];
+        
+        // DOM Elements
+        const pages = document.querySelectorAll('.page');
+        const navLinks = document.querySelectorAll('.nav-link, .footer-nav-link');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        const videoModal = document.getElementById('videoModal');
+        const closeModal = document.getElementById('closeModal');
+        const youtubePlayer = document.getElementById('youtubePlayer');
+        const contactForm = document.getElementById('contactForm');
+        
+        // Initialize the website
+        function init() {
+            // Load videos on each page
+            loadHomeVideos();
+            loadAllVideos();
+            loadFavoriteVideos();
             
-            notification.classList.add('show');
+            // Set up event listeners
+            setupEventListeners();
             
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 4000);
+            // Show home page by default
+            showPage('home');
+            
+            // Initialize counter animation
+            initCounterAnimation();
         }
         
-        // Update status panel
-        function updateStatus() {
-            statusList.innerHTML = '';
+        // Set up event listeners
+        function setupEventListeners() {
+            // Navigation
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = link.getAttribute('data-page');
+                    showPage(pageId);
+                    
+                    // Update active nav link
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    link.classList.add('active');
+                    
+                    // Close mobile menu if open
+                    mainNav.classList.remove('active');
+                    
+                    // If clicking from hero buttons, scroll to content
+                    if (link.classList.contains('btn')) {
+                        setTimeout(() => {
+                            window.scrollTo({ 
+                                top: document.getElementById(pageId).offsetTop - 80, 
+                                behavior: 'smooth' 
+                            });
+                        }, 100);
+                    }
+                });
+            });
             
-            const statusItems = [
-                { label: 'Player API Loaded', value: window.YT ? 'Yes' : 'No' },
-                { label: 'Player Initialized', value: playerInitialized ? 'Yes' : 'No' },
-                { label: 'YouTube Iframe Ready', value: player ? 'Yes' : 'No' },
-                { label: 'Fallback Attempted', value: fallbackAttempted ? 'Yes' : 'No' },
-                { label: 'Current Time', value: player ? formatTime(player.getCurrentTime()) : 'N/A' },
-                { label: 'Video Duration', value: player ? formatTime(player.getDuration()) : 'N/A' },
-                { label: 'Video ID', value: VIDEO_ID },
-                { label: 'Browser Online', value: navigator.onLine ? 'Yes' : 'No' }
-            ];
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
             
-            statusItems.forEach(item => {
-                const li = document.createElement('li');
-                li.innerHTML = `<span>${item.label}:</span> <span class="status-value ${item.value === 'No' ? 'error' : ''}">${item.value}</span>`;
-                statusList.appendChild(li);
+            // Close video modal
+            closeModal.addEventListener('click', () => {
+                videoModal.classList.remove('active');
+                youtubePlayer.src = ''; // Stop video playback
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close modal when clicking outside
+            videoModal.addEventListener('click', (e) => {
+                if (e.target === videoModal) {
+                    videoModal.classList.remove('active');
+                    youtubePlayer.src = ''; // Stop video playback
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Contact form submission
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you within 24 hours.');
+                contactForm.reset();
+            });
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
         }
         
-        // Format time in seconds to MM:SS
-        function formatTime(seconds) {
-            if (!seconds || isNaN(seconds)) return '0:00';
+        // Show specific page
+        function showPage(pageId) {
+            // Hide all pages
+            pages.forEach(page => page.classList.remove('active'));
             
-            const mins = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Scroll to top for main pages (except home)
+            if (pageId !== 'home') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
         
-        // Initialize YouTube Player
-        function initYouTubePlayer() {
-            // Check if YouTube API is already loaded
-            if (!window.YT) {
-                loadYouTubeAPI();
-                return;
-            }
+        // Load home page videos (featured section)
+        function loadHomeVideos() {
+            const homeGrid = document.querySelector('#home .video-grid');
+            const featuredVideos = videoData.filter(video => video.favorite).slice(0, 4);
             
-            createPlayer();
+            homeGrid.innerHTML = '';
+            featuredVideos.forEach(video => {
+                homeGrid.appendChild(createVideoCard(video));
+            });
         }
         
-        // Load YouTube IFrame API
-        function loadYouTubeAPI() {
-            // Check if script is already being loaded
-            if (document.querySelector('script[src*="youtube.com/iframe_api"]')) {
-                // Script is already loading, wait for it
-                setTimeout(createPlayer, 1000);
-                return;
-            }
+        // Load all videos page
+        function loadAllVideos() {
+            const allVideosGrid = document.querySelector('#videos .video-grid');
             
-            const tag = document.createElement('script');
-            tag.src = 'https://www.youtube.com/iframe_api';
-            tag.async = true;
-            const firstScriptTag = document.getElementsByTagName('script')[0];
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-            
-            // Setup global callback for when API is ready
-            window.onYouTubeIframeAPIReady = function() {
-                console.log('YouTube IFrame API ready');
-                createPlayer();
-            };
-            
-            // Fallback in case API doesn't load
-            setTimeout(() => {
-                if (!window.YT) {
-                    console.warn('YouTube API failed to load, trying fallback');
-                    attemptFallback();
-                }
-            }, 5000);
+            allVideosGrid.innerHTML = '';
+            videoData.forEach(video => {
+                allVideosGrid.appendChild(createVideoCard(video));
+            });
         }
         
-        // Create the YouTube player
-        function createPlayer() {
-            // Check if player already exists
-            if (playerInitialized) {
-                console.log('Player already initialized');
-                return;
-            }
+        // Load favorite videos
+        function loadFavoriteVideos() {
+            const favoritesGrid = document.querySelector('#favorites .video-grid');
+            const favoriteVideos = videoData.filter(video => video.favorite);
             
-            // Check if YT object is available
-            if (!window.YT) {
-                console.error('YouTube API not available, attempting fallback');
-                attemptFallback();
-                return;
-            }
-            
-            try {
-                player = new YT.Player('player', {
-                    videoId: VIDEO_ID,
-                    playerVars: {
-                        'autoplay': 1,
-                        'controls': 1,
-                        'rel': 0,
-                        'modestbranding': 1,
-                        'playsinline': 1
-                    },
-                    events: {
-                        'onReady': onPlayerReady,
-                        'onStateChange': onPlayerStateChange,
-                        'onError': onPlayerError
-                    }
+            favoritesGrid.innerHTML = '';
+            if (favoriteVideos.length === 0) {
+                favoritesGrid.innerHTML = '<p style="grid-column:1/-1; text-align:center; padding:3rem; color:#aaa; font-size:1.1rem;">No featured videos yet. Mark some videos as favorites to see them here!</p>';
+            } else {
+                favoriteVideos.forEach(video => {
+                    favoritesGrid.appendChild(createVideoCard(video));
                 });
-                
-                playerInitialized = true;
-                console.log('YouTube player created successfully');
-            } catch (error) {
-                console.error('Error creating YouTube player:', error);
-                attemptFallback();
             }
         }
         
-        // Fallback method using direct iframe embed
-        function attemptFallback() {
-            if (fallbackAttempted) return;
+        // Create video card element
+        function createVideoCard(video) {
+            const card = document.createElement('div');
+            card.className = 'video-card';
+            card.dataset.id = video.id;
             
-            fallbackAttempted = true;
-            console.log('Attempting fallback player...');
+            // Format date
+            const dateObj = new Date(video.date);
+            const formattedDate = dateObj.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            });
             
-            // Hide the placeholder
-            videoPlaceholder.classList.add('hidden');
+            // Use reliable thumbnail URLs
+            const thumbnailUrl = video.thumbnail;
+            const fallbackThumbnail = 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
             
-            // Create a simple iframe as fallback
-            const playerDiv = document.getElementById('player');
-            playerDiv.innerHTML = `
-                <iframe 
-                    width="100%" 
-                    height="100%" 
-                    src="https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&controls=1&rel=0&modestbranding=1&playsinline=1" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                ></iframe>
+            card.innerHTML = `
+                <div class="video-thumbnail">
+                    <img src="${thumbnailUrl}" alt="${video.title}" onerror="this.onerror=null; this.src='${fallbackThumbnail}'">
+                    <button class="video-play-btn" data-id="${video.youtubeId}">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+                <div class="video-info">
+                    <span style="color: var(--primary-color); font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 0.5rem;">${video.category}</span>
+                    <h3>${video.title}</h3>
+                    <p>${video.description}</p>
+                    <div class="video-meta">
+                        <span><i class="far fa-clock"></i> ${video.duration}</span>
+                        <span><i class="far fa-eye"></i> ${video.views}</span>
+                        <span><i class="far fa-calendar"></i> ${formattedDate}</span>
+                    </div>
+                </div>
             `;
             
-            showNotification('Using fallback player - video should play now', false);
-            updateStatus();
+            // Add click event to play button
+            const playBtn = card.querySelector('.video-play-btn');
+            playBtn.addEventListener('click', () => playVideo(video.youtubeId));
+            
+            return card;
         }
         
-        // When player is ready
-        function onPlayerReady(event) {
-            console.log('YouTube player is ready');
-            videoPlaceholder.classList.add('hidden');
+        // Play video in modal
+        function playVideo(youtubeId) {
+            // Simplified URL without problematic permissions
+            youtubePlayer.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`;
             
-            // Try to play the video
-            setTimeout(() => {
-                try {
-                    event.target.playVideo();
-                    showNotification('Video is playing successfully!', false);
-                } catch (error) {
-                    console.warn('Autoplay blocked, waiting for user interaction:', error);
-                    showNotification('Click "Play Video" to start playback', true);
-                }
-            }, 1000);
-            
-            updateStatus();
+            videoModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
         
-        // When player state changes
-        function onPlayerStateChange(event) {
-            const states = {
-                '-1': 'unstarted',
-                '0': 'ended',
-                '1': 'playing',
-                '2': 'paused',
-                '3': 'buffering',
-                '5': 'video cued'
-            };
+        // Counter animation for stats
+        function initCounterAnimation() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const statsSection = document.querySelector('.stats-section');
             
-            console.log('Player state changed:', states[event.data] || event.data);
+            // Check if stats section is in view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Animate counters when stats section is in view
+                        statNumbers.forEach(statNumber => {
+                            const target = parseInt(statNumber.getAttribute('data-target'));
+                            animateCounter(statNumber, target);
+                        });
+                        // Stop observing after animation starts
+                        observer.unobserve(statsSection);
+                    }
+                });
+            }, { threshold: 0.5 });
             
-            // If video ended, restart it
-            if (event.data === YT.PlayerState.ENDED) {
-                setTimeout(() => {
-                    player.playVideo();
-                }, 2000);
+            // Start observing the stats section
+            if (statsSection) {
+                observer.observe(statsSection);
             }
-            
-            updateStatus();
         }
         
-        // When player error occurs
-        function onPlayerError(event) {
-            console.error('YouTube player error:', event.data);
-            showNotification('Player error occurred, trying fallback method', true);
-            
-            // Try fallback on error
-            if (!fallbackAttempted) {
-                setTimeout(attemptFallback, 2000);
-            }
-            
-            updateStatus();
-        }
-        
-        // Play video function
-        function playVideo() {
-            if (player && typeof player.playVideo === 'function') {
-                try {
-                    player.playVideo();
-                    showNotification('Video playing', false);
-                } catch (error) {
-                    console.error('Error playing video:', error);
-                    showNotification('Error playing video, trying fallback', true);
-                    attemptFallback();
+        // Animate counter from 0 to target value
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 50; // Adjust speed
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
                 }
+                
+                // Format number with plus sign if needed
+                if (target >= 1000) {
+                    // For numbers 1000+, show 1k, 1.5k, etc.
+                    if (current >= 1000) {
+                        element.textContent = (current / 1000).toFixed(1).replace('.0', '') + 'k+';
+                    } else {
+                        element.textContent = Math.floor(current) + '+';
+                    }
+                } else {
+                    element.textContent = Math.floor(current) + '+';
+                }
+            }, 30); // Adjust animation speed
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+        
+        // Add scroll effect to header
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(18, 18, 18, 0.98)';
+                header.style.backdropFilter = 'blur(10px)';
+                header.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
             } else {
-                console.warn('Player not ready, attempting fallback');
-                attemptFallback();
-            }
-            
-            updateStatus();
-        }
-        
-        // Pause video function
-        function pauseVideo() {
-            if (player && typeof player.pauseVideo === 'function') {
-                try {
-                    player.pauseVideo();
-                    showNotification('Video paused', false);
-                } catch (error) {
-                    console.error('Error pausing video:', error);
-                }
-            }
-            
-            updateStatus();
-        }
-        
-        // Restart video function
-        function restartVideo() {
-            if (player && typeof player.seekTo === 'function') {
-                try {
-                    player.seekTo(0);
-                    player.playVideo();
-                    showNotification('Video restarted', false);
-                } catch (error) {
-                    console.error('Error restarting video:', error);
-                }
-            } else {
-                // Fallback: reload the iframe
-                const playerDiv = document.getElementById('player');
-                playerDiv.innerHTML = '';
-                playerInitialized = false;
-                fallbackAttempted = false;
-                initYouTubePlayer();
-            }
-            
-            updateStatus();
-        }
-        
-        // Event listeners for buttons
-        playBtn.addEventListener('click', playVideo);
-        pauseBtn.addEventListener('click', pauseVideo);
-        restartBtn.addEventListener('click', restartVideo);
-        
-        showStatusBtn.addEventListener('click', function() {
-            updateStatus();
-            statusPanel.classList.toggle('active');
-            this.innerHTML = statusPanel.classList.contains('active') 
-                ? '<i class="fas fa-times-circle"></i> Hide Status' 
-                : '<i class="fas fa-info-circle"></i> Show Player Status';
-        });
-        
-        // Initialize player when page loads
-        document.addEventListener('DOMContentLoaded', initYouTubePlayer);
-        
-        // Also try to initialize if page becomes visible (for mobile/tab switching)
-        document.addEventListener('visibilitychange', function() {
-            if (!document.hidden && !playerInitialized && !fallbackAttempted) {
-                console.log('Page visible again, reinitializing player');
-                initYouTubePlayer();
+                header.style.backgroundColor = 'rgba(18, 18, 18, 0.95)';
+                header.style.backdropFilter = 'blur(5px)';
+                header.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
             }
         });
-        
-        // Update status periodically when panel is visible
-        setInterval(() => {
-            if (statusPanel.classList.contains('active')) {
-                updateStatus();
-            }
-        }, 2000);
+
     </script>
 </body>
 </html>
