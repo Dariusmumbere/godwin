@@ -338,6 +338,210 @@
             line-height: 1.8;
         }
         
+        /* SHORTS SECTION - NEW */
+        .shorts-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, #0f0f0f 0%, #181818 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shorts-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 59, 48, 0.05) 0%, transparent 50%);
+            z-index: 0;
+        }
+        
+        .shorts-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .shorts-header .section-title {
+            margin-bottom: 0;
+        }
+        
+        .shorts-controls {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .shorts-control-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .shorts-control-btn:hover {
+            background: var(--primary-color);
+            transform: scale(1.1);
+        }
+        
+        .shorts-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .short-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .short-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            background: rgba(255, 59, 48, 0.1);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(255, 59, 48, 0.15);
+        }
+        
+        .short-thumbnail {
+            position: relative;
+            height: 350px;
+            overflow: hidden;
+        }
+        
+        .short-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+        
+        .short-card:hover .short-thumbnail img {
+            transform: scale(1.1);
+        }
+        
+        .short-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .short-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 59, 48, 0.9);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            opacity: 0;
+            z-index: 2;
+        }
+        
+        .short-card:hover .short-play-btn {
+            opacity: 1;
+        }
+        
+        .short-play-btn:hover {
+            background: var(--primary-color);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .short-info {
+            padding: 1.5rem;
+        }
+        
+        .short-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: white;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .short-description {
+            color: #aaa;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .short-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--gray-color);
+            font-size: 0.85rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .short-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .short-meta i {
+            color: var(--primary-color);
+        }
+        
+        .short-views {
+            font-weight: 600;
+        }
+        
+        .shorts-view-all {
+            text-align: center;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+        
         /* Main Content */
         main {
             max-width: 1400px;
@@ -593,6 +797,107 @@
             font-size: 1.1rem;
         }
         
+        /* Values Section */
+        .values-section {
+            margin: 2rem 0;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .value-card {
+            background: rgba(255, 59, 48, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .value-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .value-card p {
+            color: #aaa;
+            font-size: 1rem;
+        }
+        
+        /* Mission Vision Section */
+        .mission-vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .mission-card, .vision-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border-top: 5px solid var(--primary-color);
+        }
+        
+        .mission-card h3, .vision-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Objectives List */
+        .objectives-list {
+            margin: 2rem 0;
+        }
+        
+        .objectives-list ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        
+        .objectives-list li {
+            color: #aaa;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.7;
+        }
+        
+        .objectives-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        /* Director's Statement */
+        .director-statement {
+            background: rgba(255, 59, 48, 0.08);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary-color);
+            margin: 2rem 0;
+        }
+        
+        .director-statement h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
         /* Contact Form */
         .contact-form {
             background: rgba(255, 255, 255, 0.05);
@@ -747,6 +1052,10 @@
             .section-title {
                 font-size: 2.5rem;
             }
+            
+            .shorts-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
         }
         
         @media (max-width: 992px) {
@@ -765,6 +1074,24 @@
             .about-header {
                 flex-direction: column;
                 text-align: center;
+            }
+            
+            .shorts-grid {
+                grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            }
+            
+            .shorts-header {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            
+            .shorts-controls {
+                justify-content: center;
+            }
+            
+            .mission-vision-grid {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -828,6 +1155,19 @@
             .section-title {
                 font-size: 2.2rem;
             }
+            
+            .shorts-section {
+                padding: 4rem 1rem;
+            }
+            
+            .shorts-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+            
+            .about-card, .mission-card, .vision-card, .director-statement {
+                padding: 2rem;
+            }
         }
         
         @media (max-width: 576px) {
@@ -868,6 +1208,18 @@
             .contact-form {
                 padding: 2rem;
             }
+            
+            .shorts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .short-thumbnail {
+                height: 280px;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -886,11 +1238,13 @@
             
             <nav class="mobile-nav" id="mainNav">
                 <ul>
-                    <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
-                    <li><a href="#videos" class="nav-link" data-page="videos">Portfolio</a></li>
-                    <li><a href="#favorites" class="nav-link" data-page="favorites">Showreel</a></li>
-                    <li><a href="#about" class="nav-link" data-page="about">About</a></li>
-                    <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+                    <li><a href="#home" class="nav-link active" data-page="home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#videos" class="nav-link" data-page="videos"><i class="fas fa-play-circle"></i> Portfolio</a></li>
+                    <li><a href="#favorites" class="nav-link" data-page="favorites"><i class="fas fa-star"></i> Favourites</a></li>
+                    <li><a href="#shorts" class="nav-link" data-page="shorts"><i class="fas fa-clapperboard"></i> Shorts</a></li>
+                    <li><a href="gallery.html" class="nav-link" target="_blank"><i class="fas fa-images"></i> Gallery</a></li>
+                    <li><a href="#about" class="nav-link" data-page="about"><i class="fas fa-user"></i> About</a></li>
+                    <li><a href="#contact" class="nav-link" data-page="contact"><i class="fas fa-envelope"></i> Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -979,6 +1333,31 @@
             </div>
         </div>
         
+        <!-- SHORTS SECTION - NEW -->
+        <div class="shorts-section">
+            <div class="shorts-header">
+                <div>
+                    <div class="section-subtitle">BITE-SIZED CONTENT</div>
+                    <h2 class="section-title">Trending Shorts</h2>
+                    <p class="section-description" style="text-align: left; margin: 1rem 0 0 0;">Quick, engaging, and visually stunning short-form content</p>
+                </div>
+                <div class="shorts-controls">
+                    <button class="shorts-control-btn prev-short"><i class="fas fa-chevron-left"></i></button>
+                    <button class="shorts-control-btn next-short"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <div class="shorts-grid" id="shortsGrid">
+                <!-- Shorts will be loaded by JavaScript -->
+            </div>
+            
+            <div class="shorts-view-all">
+                <a href="#shorts" class="btn btn-primary nav-link" data-page="shorts">
+                    <i class="fas fa-play-circle"></i> View All Shorts
+                </a>
+            </div>
+        </div>
+        
         <!-- Featured Videos Section -->
         <div class="services-section" style="padding-top: 0;">
             <div class="section-header">
@@ -1021,21 +1400,122 @@
         </main>
     </section>
     
-    <!-- About Page -->
+    <!-- SHORTS PAGE - NEW -->
+    <section id="shorts" class="page">
+        <main>
+            <div class="page-header">
+                <h2>Video Shorts</h2>
+                <p>Bite-sized content that delivers maximum impact in minimum time. Perfect for social media and digital platforms.</p>
+            </div>
+            
+            <div class="shorts-grid" id="allShortsGrid">
+                <!-- All shorts will be inserted here by JavaScript -->
+            </div>
+        </main>
+    </section>
+    
+    <!-- About Page - UPDATED -->
     <section id="about" class="page">
         <main>
             <div class="page-header">
                 <h2>About SAINTHOOD FILM PRODUCTION</h2>
-                <p>Get to know the creative minds behind our productions</p>
+                <p>Authentic African Stories with Purpose and Impact</p>
             </div>
             
             <div class="about-container">
+                <!-- Company Overview -->
+                <div class="about-card">
+                    <div class="about-content">
+                        <h3>Our Story</h3>
+                        <p>SAINTHOOD FILM PRODUCTION is an independent film production company based in Kasese, Uganda, dedicated to telling authentic African stories with purpose and impact. Founded with a vision to inspire change, the company focuses on producing films and documentaries that explore social realities, environmental sustainability, culture, faith, and human resilience.</p>
+                        
+                        <p>Rooted in community storytelling, SAINTHOOD FILM PRODUCTION works closely with local voices—especially children and youth—to highlight untold stories and lived experiences often overlooked. Our productions aim to educate, empower, and spark dialogue both locally and globally.</p>
+                        
+                        <p>Through creative excellence and social responsibility, SAINTHOOD FILM PRODUCTION continues to use film as a tool for awareness, transformation, and hope.</p>
+                    </div>
+                </div>
+                
+                <!-- Mission & Vision -->
+                <div class="mission-vision-grid">
+                    <div class="mission-card">
+                        <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                        <p>To create impactful films and documentaries that tell authentic stories rooted in community, faith, and social reality; using cinema as a powerful tool for education, awareness, and positive transformation both locally and globally.</p>
+                    </div>
+                    
+                    <div class="vision-card">
+                        <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                        <p>To become a leading African film production company recognized for purpose-driven storytelling that inspires social awareness, preserves authentic community narratives, and creates lasting impact on audiences worldwide.</p>
+                    </div>
+                </div>
+                
+                <!-- Director's Statement -->
+                <div class="director-statement">
+                    <h3><i class="fas fa-quote-left"></i> Director's Statement</h3>
+                    <p><strong>Kasoba Godwin</strong></p>
+                    <p>I believe film is a powerful tool for truth, reflection, and social change. My work is rooted in community, faith, and real-life experiences, focusing on stories that reveal human resilience, moral struggle, and hope.</p>
+                    <p>Through SAINTHOOD FILM PRODUCTION, I aim to create authentic films and documentaries that give voice to the unseen and inspire awareness beyond borders.</p>
+                </div>
+                
+                <!-- Core Values -->
+                <div class="about-card">
+                    <h3>Our Core Values</h3>
+                    <div class="values-section">
+                        <div class="values-grid">
+                            <div class="value-card">
+                                <h4><i class="fas fa-user-check"></i> Authenticity</h4>
+                                <p>We tell honest stories rooted in real experiences, cultures, and communities.</p>
+                            </div>
+                            
+                            <div class="value-card">
+                                <h4><i class="fas fa-compass"></i> Purpose-Driven Storytelling</h4>
+                                <p>Every film we create carries meaning, aiming to educate, inspire, and create positive change.</p>
+                            </div>
+                            
+                            <div class="value-card">
+                                <h4><i class="fas fa-shield-alt"></i> Integrity</h4>
+                                <p>We uphold ethical filmmaking practices, respecting people, stories, and the environments we work in.</p>
+                            </div>
+                            
+                            <div class="value-card">
+                                <h4><i class="fas fa-hands-helping"></i> Community Engagement</h4>
+                                <p>We believe in storytelling with communities, not just about them.</p>
+                            </div>
+                            
+                            <div class="value-card">
+                                <h4><i class="fas fa-palette"></i> Creativity & Excellence</h4>
+                                <p>We pursue artistic quality and innovation while maintaining high professional standards.</p>
+                            </div>
+                            
+                            <div class="value-card">
+                                <h4><i class="fas fa-pray"></i> Faith & Hope</h4>
+                                <p>Our work is guided by values that promote compassion, resilience, and moral reflection.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Our Objectives -->
+                <div class="about-card">
+                    <h3>Our Objectives</h3>
+                    <div class="objectives-list">
+                        <ul>
+                            <li>To produce high-quality films and documentaries that reflect authentic community stories and social realities.</li>
+                            <li>To use cinema as a tool for education, awareness, and positive social transformation.</li>
+                            <li>To amplify underrepresented voices, especially children and youth, through ethical storytelling.</li>
+                            <li>To promote environmental sustainability, cultural heritage, and moral values through film.</li>
+                            <li>To collaborate with local and international partners to expand the reach and impact of our productions.</li>
+                            <li>To nurture creative talent and strengthen film capacity within local communities.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Founder Information -->
                 <div class="about-card">
                     <div class="about-header">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Director Profile" class="profile-img">
+                        <img src="godwin.jpg" alt="Kasoba Godwin" class="profile-img">
                         <div class="about-header-text">
-                            <h2>Sarah Johnson</h2>
-                            <p>Creative Director & Founder</p>
+                            <h2>Kasoba Godwin</h2>
+                            <p>Founder & Creative Director</p>
                             <div class="social-links">
                                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
                                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1044,33 +1524,6 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="about-content">
-                        <p>Founded in 2017, SAINTHOOD FILM PRODUCTION emerged from a simple yet powerful vision: to create visual content that not only tells stories but evokes emotions and inspires action. What started as a small team of passionate filmmakers has grown into a full-service production studio recognized for excellence in cinematic storytelling.</p>
-                        
-                        <p>Under the creative direction of Sarah Johnson, our studio brings together a diverse team of directors, cinematographers, editors, and visual artists who share a common commitment to quality, innovation, and client satisfaction. We believe that great video content is more than just moving images—it's a powerful tool for communication, connection, and conversion.</p>
-                        
-                        <p>Our approach combines technical expertise with artistic vision. We stay at the forefront of industry trends and technology while maintaining the timeless principles of good storytelling. Every project begins with understanding your unique needs, audience, and objectives, ensuring the final product not only meets but exceeds expectations.</p>
-                    </div>
-                </div>
-                
-                <div class="about-card">
-                    <h3>Our Philosophy</h3>
-                    <p>At SAINTHOOD, we operate on three core principles:</p>
-                    <ul style="color: #aaa; line-height: 1.8; margin: 1.5rem 0; padding-left: 1.5rem;">
-                        <li><strong>Story First:</strong> Every great video begins with a compelling narrative that resonates with its audience.</li>
-                        <li><strong>Quality Without Compromise:</strong> From pre-production to final delivery, we maintain the highest standards.</li>
-                        <li><strong>Collaborative Partnership:</strong> We work closely with clients to ensure their vision is realized and enhanced.</li>
-                    </ul>
-                    
-                    <h3 style="margin-top: 2rem;">Our Equipment & Technology</h3>
-                    <ul style="color: #aaa; line-height: 1.8; margin: 1.5rem 0; padding-left: 1.5rem;">
-                        <li><strong>Cameras:</strong> RED Komodo, Sony FX6, Blackmagic URSA Mini Pro</li>
-                        <li><strong>Lenses:</strong> Cooke, Zeiss, and Sigma Cine Lenses</li>
-                        <li><strong>Lighting:</strong> Aputure, Nanlite, and Arri Lighting Kits</li>
-                        <li><strong>Audio:</strong> Sound Devices Recorders, Sennheiser Wireless Systems</li>
-                        <li><strong>Post-Production:</strong> DaVinci Resolve Studio, Adobe Creative Suite, Avid Media Composer</li>
-                    </ul>
                 </div>
             </div>
         </main>
@@ -1110,6 +1563,8 @@
                             <option value="film">Short Film/Narrative</option>
                             <option value="music">Music Video</option>
                             <option value="event">Event Coverage</option>
+                            <option value="short">Video Short</option>
+                            <option value="documentary">Documentary</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
@@ -1142,7 +1597,7 @@
         <div class="footer-container">
             <div class="footer-col">
                 <h3>SAINTHOOD FILM PRODUCTION</h3>
-                <p style="color: #aaa; line-height: 1.8; margin-bottom: 1.5rem;">A full-service video production studio creating cinematic stories that engage, inspire, and deliver results.</p>
+                <p style="color: #aaa; line-height: 1.8; margin-bottom: 1.5rem;">An independent film production company based in Kasese, Uganda, dedicated to telling authentic African stories with purpose and impact.</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-youtube"></i></a>
                     <a href="#"><i class="fab fa-vimeo-v"></i></a>
@@ -1157,29 +1612,31 @@
                     <li><a href="#home" class="footer-nav-link" data-page="home"><i class="fas fa-chevron-right"></i> Home</a></li>
                     <li><a href="#videos" class="footer-nav-link" data-page="videos"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
                     <li><a href="#favorites" class="footer-nav-link" data-page="favorites"><i class="fas fa-chevron-right"></i> Showreel</a></li>
+                    <li><a href="#shorts" class="footer-nav-link" data-page="shorts"><i class="fas fa-chevron-right"></i> Shorts</a></li>
                     <li><a href="#about" class="footer-nav-link" data-page="about"><i class="fas fa-chevron-right"></i> About Us</a></li>
                     <li><a href="#contact" class="footer-nav-link" data-page="contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
                 </ul>
             </div>
             
             <div class="footer-col">
-                <h3>Our Services</h3>
+                <h3>Our Focus Areas</h3>
                 <ul>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Commercial Production</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Corporate Videos</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Cinematic Storytelling</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Music Videos</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Post-Production</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Social Realities</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Environmental Sustainability</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Cultural Heritage</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Faith & Resilience</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Community Stories</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Youth Empowerment</a></li>
                 </ul>
             </div>
             
             <div class="footer-col">
                 <h3>Contact Info</h3>
                 <ul>
-                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> 123 Film Studio Lane, Los Angeles, CA 90028</a></li>
-                    <li><a href="tel:+15551234567"><i class="fas fa-phone"></i> +1 (555) 123-4567</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Kasese, Uganda</a></li>
+                    <li><a href="tel:+256772123456"><i class="fas fa-phone"></i> +256 772 123 456</a></li>
                     <li><a href="mailto:info@sainthoodfilms.com"><i class="fas fa-envelope"></i> info@sainthoodfilms.com</a></li>
-                    <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM PST</a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM EAT</a></li>
                 </ul>
             </div>
         </div>
@@ -1194,99 +1651,415 @@
         const videoData = [
             {
                 id: 1,
-                title: "TechCorp 2023 Brand Campaign",
-                description: "A cinematic brand commercial showcasing innovation and human connection in technology.",
-                category: "Commercial",
-                youtubeId: "QiXfHI73v6g",
-                duration: "01:45",
-                views: "125K",
-                date: "2023-08-10",
+                title: "SAINTHOOD FILM PRODUCTION - Official Showreel",
+                description: "A compilation of our best cinematic moments and storytelling highlights showcasing our production quality.",
+                category: "Showreel",
+                youtubeId: "89R6LLAnsNc",
+                duration: "03:45",
+                views: "10K",
+                date: "2023-11-15",
                 favorite: true,
-                thumbnail: "https://img.youtube.com/vi/QiXfHI73v6g/hqdefault.jpg"
+                thumbnail: "https://img.youtube.com/vi/89R6LLAnsNc/hqdefault.jpg"
             },
             {
                 id: 2,
-                title: "Urban Echoes - Short Film",
-                description: "Award-winning narrative short film exploring urban isolation and connection.",
-                category: "Cinematic",
-                youtubeId: "tgvXKUN0el0",
-                duration: "22:45",
-                views: "89K",
-                date: "2023-07-22",
+                title: "Kasese Cultural Heritage Documentary",
+                description: "Exploring the rich cultural heritage and traditions of the people in Kasese, Uganda.",
+                category: "Documentary",
+                youtubeId: "I5fSQpv3vFU",
+                duration: "28:30",
+                views: "25K",
+                date: "2023-10-22",
                 favorite: true,
-                thumbnail: "https://img.youtube.com/vi/tgvXKUN0el0/hqdefault.jpg"
+                thumbnail: "https://img.youtube.com/vi/I5fSQpv3vFU/hqdefault.jpg"
             },
             {
                 id: 3,
-                title: "Global Solutions Corporate Profile",
-                description: "Corporate video highlighting company culture, values, and global impact.",
-                category: "Corporate",
-                youtubeId: "7gdW04hQdI4",
-                duration: "05:33",
-                views: "45K",
-                date: "2023-06-15",
-                favorite: false,
-                thumbnail: "https://img.youtube.com/vi/7gdW04hQdI4/hqdefault.jpg"
+                title: "Rwenzori Mountains Expedition",
+                description: "A cinematic journey through the majestic Rwenzori Mountains of Uganda.",
+                category: "Cinematic",
+                youtubeId: "Xjyz2FFtEeQ",
+                duration: "15:20",
+                views: "18K",
+                date: "2023-09-15",
+                favorite: true,
+                thumbnail: "https://img.youtube.com/vi/Xjyz2FFtEeQ/hqdefault.jpg"
             },
             {
                 id: 4,
-                title: "Midnight Drive - Music Video",
-                description: "Music video featuring atmospheric visuals and dynamic storytelling for indie band.",
-                category: "Music",
-                youtubeId: "6q681jq9xUs",
-                duration: "04:10",
-                views: "312K",
-                date: "2023-05-28",
-                favorite: true,
-                thumbnail: "https://img.youtube.com/vi/6q681jq9xUs/hqdefault.jpg"
+                title: "Women Empowerment in Rural Uganda",
+                description: "Documentary highlighting women's empowerment initiatives in rural communities.",
+                category: "Documentary",
+                youtubeId: "z1Db65HgqCk",
+                duration: "22:45",
+                views: "15K",
+                date: "2023-08-28",
+                favorite: false,
+                thumbnail: "https://img.youtube.com/vi/z1Db65HgqCk/hqdefault.jpg"
             },
             {
                 id: 5,
-                title: "Nature's Balance Documentary",
-                description: "Environmental documentary exploring the delicate balance of ecosystems.",
-                category: "Documentary",
-                youtubeId: "6v2L2UGZJAM",
-                duration: "28:55",
-                views: "142K",
-                date: "2023-04-18",
+                title: "Urban Stories: Kampala Life",
+                description: "A visual narrative capturing the vibrant life and stories of Kampala city.",
+                category: "Cinematic",
+                youtubeId: "GP83BSP2GVA",
+                duration: "18:10",
+                views: "12K",
+                date: "2023-07-18",
                 favorite: false,
-                thumbnail: "https://img.youtube.com/vi/6v2L2UGZJAM/hqdefault.jpg"
+                thumbnail: "https://img.youtube.com/vi/GP83BSP2GVA/hqdefault.jpg"
             },
             {
                 id: 6,
-                title: "Fashion Forward 2023 Campaign",
-                description: "High-fashion commercial blending avant-garde styling with urban landscapes.",
-                category: "Commercial",
-                youtubeId: "PoRJizFvM7s",
-                duration: "02:15",
-                views: "89K",
-                date: "2023-03-05",
+                title: "Environmental Conservation Campaign",
+                description: "Awareness campaign video for environmental conservation in Uganda.",
+                category: "Campaign",
+                youtubeId: "6dIEY292NMw",
+                duration: "08:45",
+                views: "9K",
+                date: "2023-06-05",
                 favorite: false,
-                thumbnail: "https://img.youtube.com/vi/PoRJizFvM7s/hqdefault.jpg"
+                thumbnail: "https://img.youtube.com/vi/6dIEY292NMw/hqdefault.jpg"
             },
             {
                 id: 7,
-                title: "Innovate Conference 2023 Highlights",
-                description: "Event coverage and highlights from the annual tech innovation conference.",
-                category: "Event",
-                youtubeId: "FBr8r5ZQ6eU",
-                duration: "08:40",
-                views: "67K",
-                date: "2023-02-12",
+                title: "Faith and Community Documentary",
+                description: "Exploring the role of faith in building resilient communities in Uganda.",
+                category: "Documentary",
+                youtubeId: "iHQcik7AJ44",
+                duration: "32:15",
+                views: "20K",
+                date: "2023-05-12",
                 favorite: true,
-                thumbnail: "https://img.youtube.com/vi/FBr8r5ZQ6eU/hqdefault.jpg"
+                thumbnail: "https://img.youtube.com/vi/iHQcik7AJ44/hqdefault.jpg"
             },
             {
                 id: 8,
-                title: "Sustainable Future - NGO Campaign",
-                description: "Non-profit campaign video promoting sustainable development goals.",
-                category: "Corporate",
-                youtubeId: "ad79nYk2keg",
-                duration: "06:30",
-                views: "124K",
-                date: "2023-01-08",
+                title: "Traditional Music and Dance Preservation",
+                description: "Documentary on preserving traditional Ugandan music and dance forms.",
+                category: "Documentary",
+                youtubeId: "QvsuYX7dj2o",
+                duration: "26:40",
+                views: "14K",
+                date: "2023-04-08",
                 favorite: false,
-                thumbnail: "https://img.youtube.com/vi/ad79nYk2keg/hqdefault.jpg"
+                thumbnail: "https://img.youtube.com/vi/QvsuYX7dj2o/hqdefault.jpg"
+            },
+            {
+                id: 9,
+                title: "Youth Entrepreneurship in Africa",
+                description: "Inspiring stories of young entrepreneurs making a difference in Uganda.",
+                category: "Documentary",
+                youtubeId: "CNmOgNpU_Mw",
+                duration: "24:25",
+                views: "16K",
+                date: "2023-03-20",
+                favorite: true,
+                thumbnail: "https://img.youtube.com/vi/CNmOgNpU_Mw/hqdefault.jpg"
+            },
+            {
+                id: 10,
+                title: "African Wildlife Conservation",
+                description: "Documentary on wildlife conservation efforts in Uganda's national parks.",
+                category: "Documentary",
+                youtubeId: "cW7nc3ZhJQE",
+                duration: "29:50",
+                views: "22K",
+                date: "2023-02-14",
+                favorite: false,
+                thumbnail: "https://img.youtube.com/vi/cW7nc3ZhJQE/hqdefault.jpg"
+            },
+            {
+                id: 11,
+                title: "Sustainable Farming Practices",
+                description: "Educational video on sustainable agricultural practices in East Africa.",
+                category: "Educational",
+                youtubeId: "QiXfHI73v6g",
+                duration: "19:35",
+                views: "11K",
+                date: "2023-01-30",
+                favorite: false,
+                thumbnail: "https://img.youtube.com/vi/QiXfHI73v6g/hqdefault.jpg"
+            },
+            {
+                id: 12,
+                title: "Community Storytelling Process",
+                description: "A glimpse into how we work with communities to tell their authentic stories.",
+                category: "Behind the Scenes",
+                youtubeId: "ZazyUWsVGPw",
+                duration: "14:20",
+                views: "8K",
+                date: "2022-12-18",
+                favorite: true,
+                thumbnail: "https://img.youtube.com/vi/ZazyUWsVGPw/hqdefault.jpg"
+            },
+            {
+                id: 13,
+                title: "Community Development Projects",
+                description: "Documenting community-led development projects in Western Uganda.",
+                category: "Documentary",
+                youtubeId: "HFRi8U4FRjY",
+                duration: "27:15",
+                views: "13K",
+                date: "2022-11-05",
+                favorite: false,
+                thumbnail: "https://img.youtube.com/vi/HFRi8U4FRjY/hqdefault.jpg"
+            },
+            {
+                id: 14,
+                title: "African Storytelling Traditions",
+                description: "Exploring the rich oral storytelling traditions across different Ugandan cultures.",
+                category: "Documentary",
+                youtubeId: "JNViMDEgAfw",
+                duration: "31:40",
+                views: "17K",
+                date: "2022-10-22",
+                favorite: true,
+                thumbnail: "https://img.youtube.com/vi/JNViMDEgAfw/hqdefault.jpg"
+            }
+        ];
+
+        // Shorts data
+        const shortsData = [
+            {
+                id: 101,
+                title: "Breathtaking Rwenzori Sunrise",
+                description: "Time-lapse of sunrise over the Rwenzori Mountains - Nature's masterpiece.",
+                category: "Cinematic",
+                youtubeId: "aOwC_M3XZGI",
+                duration: "00:45",
+                views: "42K",
+                date: "2023-11-10",
+                favorite: true,
+                thumbnail: "https://img.youtube.com/vi/aOwC_M3XZGI/hqdefault.jpg"
+            },
+            {
+                id: 102,
+                title: "Traditional Dance Moves",
+                description: "Quick showcase of traditional Ugandan dance steps and rhythms.",
+                category: "Cultural",
+                youtubeId: "DvsxLnmf3G0",
+                duration: "00:52",
+                views: "38K",
+                date: "2023-11-05",
+                favorite: true,
+                thumbnail: "https://img.youtube.com/vi/DvsxLnmf3G0/hqdefault.jpg"
+            },
+            {
+                id: 103,
+                title: "Cinematic Drone Shot",
+                description: "Stunning aerial view of Kasese town from above.",
+                category: "Cinematic",
+                youtubeId: "p7myaGww7GA",
+                duration: "00:48",
+                views: "55K",
+                date: "2023-10-28",
+                favorite: false,
+                thumbnail: "https://img.youtube.com/vi/p7myaGww7GA/hqdefault.jpg"
+            },
+            {
+                id: 104,
+                title: "Wildlife Close-up",
+                description: "Close encounter with Uganda's beautiful wildlife.",
+                category: "Nature",
+                youtubeId: "w928A5yCyjw",
+                duration: "00:51",
+                views: "67K",
+                date: "2023-10-20",
+                favorite: true,
+                thumbnail: "https://img.youtube.com/vi/w928A5yCyjw/hqdefault.jpg"
+            },
+            {
+                id: 105,
+                title: "Artisan Craftsmanship",
+                description: "Local artisan creating traditional Ugandan crafts.",
+                category: "Cultural",
+                youtubeId: "HxrUnRkQuTE",
+                duration: "00:44",
+                views: "29K",
+                date: "2023-10-15",
+                favorite: false,
+                thumbnail: "https://img.youtube.com/vi/HxrUnRkQuTE/hqdefault.jpg"
+            },
+            {
+                id: 106,
+                title: "Rainy Season Beauty",
+                description: "The beauty of Uganda during rainy season captured cinematically.",
+                category: "Cinematic",
+                youtubeId: "miW4c1JZ35g",
+                duration: "00:56",
+                views: "41K",
+                date: "2023-10-10",
+                favorite: true,
+                thumbnail: "https://img.youtube.com/vi/miW4c1JZ35g/hqdefault.jpg"
+            },
+            {
+                id: 107,
+                title: "Market Day Energy",
+                description: "Vibrant energy of local market day in Western Uganda.",
+                category: "Documentary",
+                youtubeId: "PNFNfnm0kZM",
+                duration: "00:49",
+                views: "33K",
+                date: "2023-10-05",
+                favorite: false,
+                thumbnail: "https://img.youtube.com/vi/PNFNfnm0kZM/hqdefault.jpg"
+            },
+            {
+                id: 108,
+                title: "Fishing on Lake George",
+                description: "Traditional fishing methods on one of Uganda's beautiful lakes.",
+                category: "Documentary",
+                youtubeId: "vtzHcYmrN88",
+                duration: "00:53",
+                views: "27K",
+                date: "2023-09-28",
+                favorite: false,
+                thumbnail: "https://img.youtube.com/vi/vtzHcYmrN88/hqdefault.jpg"
+            },
+            {
+                id: 109,
+                title: "Children's Laughter",
+                description: "Pure joy and laughter from children in a rural Ugandan village.",
+                category: "Documentary",
+                youtubeId: "bRipBDG1d8U",
+                duration: "00:47",
+                views: "45K",
+                date: "2023-09-20",
+                favorite: true,
+                thumbnail: "https://img.youtube.com/vi/bRipBDG1d8U/hqdefault.jpg"
+            },
+            {
+                id: 110,
+                title: "Sunset over Kasese",
+                description: "Golden hour time-lapse with stunning colors over the landscape.",
+                category: "Cinematic",
+                youtubeId: "tsHyKEtD6nk",
+                duration: "00:50",
+                views: "52K",
+                date: "2023-09-15",
+                favorite: true,
+                thumbnail: "https://img.youtube.com/vi/tsHyKEtD6nk/hqdefault.jpg"
+            },
+            {
+                id: 111,
+                title: "Traditional Cooking",
+                description: "Quick look at traditional Ugandan cooking methods.",
+                category: "Cultural",
+                youtubeId: "aAuRERQRSQo",
+                duration: "00:46",
+                views: "31K",
+                date: "2023-09-10",
+                favorite: false,
+                thumbnail: "https://img.youtube.com/vi/aAuRERQRSQo/hqdefault.jpg"
+            },
+            {
+                id: 112,
+                title: "Farming Life",
+                description: "A day in the life of a Ugandan farmer.",
+                category: "Documentary",
+                youtubeId: "Q3CFe7pbgJ0",
+                duration: "00:54",
+                views: "28K",
+                date: "2023-09-05",
+                favorite: false,
+                thumbnail: "https://img.youtube.com/vi/Q3CFe7pbgJ0/hqdefault.jpg"
+            },
+            {
+                id: 113,
+                title: "Waterfall Magic",
+                description: "Beautiful waterfall in Western Uganda captured in slow motion.",
+                category: "Cinematic",
+                youtubeId: "D-AfHYHTTwk",
+                duration: "00:48",
+                views: "63K",
+                date: "2023-08-28",
+                favorite: true,
+                thumbnail: "https://img.youtube.com/vi/D-AfHYHTTwk/hqdefault.jpg"
+            },
+            {
+                id: 114,
+                title: "Community Gathering",
+                description: "Traditional community meeting and decision-making process.",
+                category: "Cultural",
+                youtubeId: "v5c1YtT5EYQ",
+                duration: "00:52",
+                views: "25K",
+                date: "2023-08-20",
+                favorite: false,
+                thumbnail: "https://img.youtube.com/vi/v5c1YtT5EYQ/hqdefault.jpg"
+            },
+            {
+                id: 115,
+                title: "Bird's Eye View",
+                description: "Stunning drone footage of Uganda's diverse landscapes.",
+                category: "Cinematic",
+                youtubeId: "t4TyaPFZ_4I",
+                duration: "00:47",
+                views: "58K",
+                date: "2023-08-15",
+                favorite: true,
+                thumbnail: "https://img.youtube.com/vi/t4TyaPFZ_4I/hqdefault.jpg"
+            },
+            {
+                id: 116,
+                title: "Traditional Music",
+                description: "Quick performance on traditional Ugandan instruments.",
+                category: "Cultural",
+                youtubeId: "uA5lc4Y9NF0",
+                duration: "00:51",
+                views: "36K",
+                date: "2023-08-10",
+                favorite: false,
+                thumbnail: "https://img.youtube.com/vi/uA5lc4Y9NF0/hqdefault.jpg"
+            },
+            {
+                id: 117,
+                title: "Morning in the Village",
+                description: "The peaceful start of a day in a rural Ugandan village.",
+                category: "Documentary",
+                youtubeId: "7W8GmJxll-A",
+                duration: "00:49",
+                views: "34K",
+                date: "2023-08-05",
+                favorite: false,
+                thumbnail: "https://img.youtube.com/vi/7W8GmJxll-A/hqdefault.jpg"
+            },
+            {
+                id: 118,
+                title: "River Life",
+                description: "Daily activities along the rivers of Western Uganda.",
+                category: "Documentary",
+                youtubeId: "6mxDd8O-9no",
+                duration: "00:53",
+                views: "30K",
+                date: "2023-07-28",
+                favorite: false,
+                thumbnail: "https://img.youtube.com/vi/6mxDd8O-9no/hqdefault.jpg"
+            },
+            {
+                id: 119,
+                title: "Cultural Festival Highlights",
+                description: "Best moments from a traditional cultural festival.",
+                category: "Cultural",
+                youtubeId: "-872UygWpUs",
+                duration: "00:55",
+                views: "47K",
+                date: "2023-07-20",
+                favorite: true,
+                thumbnail: "https://img.youtube.com/vi/-872UygWpUs/hqdefault.jpg"
+            },
+            {
+                id: 120,
+                title: "Wildflowers Bloom",
+                description: "Time-lapse of wildflowers blooming in the Ugandan countryside.",
+                category: "Nature",
+                youtubeId: "4AoCIHpVZPk",
+                duration: "00:46",
+                views: "39K",
+                date: "2023-07-15",
+                favorite: false,
+                thumbnail: "https://img.youtube.com/vi/4AoCIHpVZPk/hqdefault.jpg"
             }
         ];
         
@@ -1299,6 +2072,10 @@
         const closeModal = document.getElementById('closeModal');
         const youtubePlayer = document.getElementById('youtubePlayer');
         const contactForm = document.getElementById('contactForm');
+        const shortsGrid = document.getElementById('shortsGrid');
+        const allShortsGrid = document.getElementById('allShortsGrid');
+        const prevShortBtn = document.querySelector('.prev-short');
+        const nextShortBtn = document.querySelector('.next-short');
         
         // Initialize the website
         function init() {
@@ -1306,6 +2083,8 @@
             loadHomeVideos();
             loadAllVideos();
             loadFavoriteVideos();
+            loadShorts();
+            loadAllShorts();
             
             // Set up event listeners
             setupEventListeners();
@@ -1315,6 +2094,9 @@
             
             // Initialize counter animation
             initCounterAnimation();
+            
+            // Initialize shorts carousel
+            initShortsCarousel();
         }
         
         // Set up event listeners
@@ -1408,7 +2190,8 @@
         // Load home page videos (featured section)
         function loadHomeVideos() {
             const homeGrid = document.querySelector('#home .video-grid');
-            const featuredVideos = videoData.filter(video => video.favorite).slice(0, 4);
+            // Show first 4 videos as featured
+            const featuredVideos = videoData.slice(0, 4);
             
             homeGrid.innerHTML = '';
             featuredVideos.forEach(video => {
@@ -1441,6 +2224,24 @@
             }
         }
         
+        // Load shorts on home page
+        function loadShorts() {
+            shortsGrid.innerHTML = '';
+            // Display only 8 shorts on home page
+            const homeShorts = shortsData.slice(0, 8);
+            homeShorts.forEach(short => {
+                shortsGrid.appendChild(createShortCard(short));
+            });
+        }
+        
+        // Load all shorts on shorts page
+        function loadAllShorts() {
+            allShortsGrid.innerHTML = '';
+            shortsData.forEach(short => {
+                allShortsGrid.appendChild(createShortCard(short));
+            });
+        }
+        
         // Create video card element
         function createVideoCard(video) {
             const card = document.createElement('div');
@@ -1455,7 +2256,7 @@
                 day: 'numeric' 
             });
             
-            // Use reliable thumbnail URLs
+            // Use YouTube thumbnail
             const thumbnailUrl = video.thumbnail;
             const fallbackThumbnail = 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
             
@@ -1485,13 +2286,114 @@
             return card;
         }
         
+        // Create short card element
+        function createShortCard(short) {
+            const card = document.createElement('div');
+            card.className = 'short-card';
+            card.dataset.id = short.id;
+            
+            // Format date
+            const dateObj = new Date(short.date);
+            const formattedDate = dateObj.toLocaleDateString('en-US', { 
+                month: 'short', 
+                day: 'numeric' 
+            });
+            
+            // Use YouTube thumbnail
+            const thumbnailUrl = short.thumbnail;
+            const fallbackThumbnail = 'https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+            
+            card.innerHTML = `
+                <div class="short-thumbnail">
+                    <img src="${thumbnailUrl}" alt="${short.title}" onerror="this.onerror=null; this.src='${fallbackThumbnail}'">
+                    <div class="short-badge">
+                        <i class="fas fa-bolt"></i> SHORT
+                    </div>
+                    <button class="short-play-btn" data-id="${short.youtubeId}">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+                <div class="short-info">
+                    <h3 class="short-title">${short.title}</h3>
+                    <p class="short-description">${short.description}</p>
+                    <div class="short-meta">
+                        <span><i class="far fa-clock"></i> ${short.duration}</span>
+                        <span class="short-views"><i class="far fa-eye"></i> ${short.views}</span>
+                        <span><i class="far fa-calendar"></i> ${formattedDate}</span>
+                    </div>
+                </div>
+            `;
+            
+            // Add click event to play button
+            const playBtn = card.querySelector('.short-play-btn');
+            playBtn.addEventListener('click', () => playVideo(short.youtubeId));
+            
+            // Add click event to entire card
+            card.addEventListener('click', (e) => {
+                if (!e.target.closest('.short-play-btn')) {
+                    playVideo(short.youtubeId);
+                }
+            });
+            
+            return card;
+        }
+        
         // Play video in modal
         function playVideo(youtubeId) {
-            // Simplified URL without problematic permissions
+            // Use the correct embed URL
             youtubePlayer.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`;
             
             videoModal.classList.add('active');
             document.body.style.overflow = 'hidden';
+        }
+        
+        // Initialize shorts carousel
+        function initShortsCarousel() {
+            if (!shortsGrid) return;
+            
+            let currentPosition = 0;
+            const shorts = Array.from(shortsGrid.children);
+            const totalShorts = shorts.length;
+            
+            // Set up next button
+            if (nextShortBtn) {
+                nextShortBtn.addEventListener('click', () => {
+                    if (currentPosition < totalShorts - 4) {
+                        currentPosition++;
+                        updateShortsCarousel();
+                    }
+                });
+            }
+            
+            // Set up previous button
+            if (prevShortBtn) {
+                prevShortBtn.addEventListener('click', () => {
+                    if (currentPosition > 0) {
+                        currentPosition--;
+                        updateShortsCarousel();
+                    }
+                });
+            }
+            
+            function updateShortsCarousel() {
+                const offset = -currentPosition * (280 + 24); // card width + gap
+                shortsGrid.style.transform = `translateX(${offset}px)`;
+                shortsGrid.style.transition = 'transform 0.5s ease';
+                
+                // Update button states
+                if (prevShortBtn) {
+                    prevShortBtn.disabled = currentPosition === 0;
+                    prevShortBtn.style.opacity = currentPosition === 0 ? '0.5' : '1';
+                }
+                
+                if (nextShortBtn) {
+                    nextShortBtn.disabled = currentPosition >= totalShorts - 4;
+                    nextShortBtn.style.opacity = currentPosition >= totalShorts - 4 ? '0.5' : '1';
+                }
+            }
+            
+            // Initialize button states
+            updateShortsCarousel();
         }
         
         // Counter animation for stats
