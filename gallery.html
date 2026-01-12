@@ -154,41 +154,11 @@
         /* Gallery Controls */
         .gallery-controls {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
             margin-bottom: 2.5rem;
             flex-wrap: wrap;
             gap: 1.5rem;
-        }
-        
-        .filter-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        
-        .filter-btn {
-            padding: 0.7rem 1.5rem;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #ccc;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            font-size: 0.95rem;
-        }
-        
-        .filter-btn:hover {
-            background: rgba(255, 59, 48, 0.2);
-            border-color: var(--primary-color);
-            color: white;
-        }
-        
-        .filter-btn.active {
-            background: var(--primary-color);
-            border-color: var(--primary-color);
-            color: white;
         }
         
         .view-options {
@@ -289,20 +259,6 @@
         
         .gallery-item:hover .gallery-overlay {
             transform: translateY(0);
-        }
-        
-        .gallery-category {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--primary-color);
-            color: white;
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
         
         .gallery-title {
@@ -618,12 +574,7 @@
             }
             
             .gallery-controls {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .view-options {
-                align-self: flex-end;
+                justify-content: center;
             }
         }
         
@@ -713,12 +664,7 @@
                 height: 250px;
             }
             
-            .filter-buttons {
-                justify-content: center;
-            }
-            
             .view-options {
-                align-self: center;
                 width: 100%;
                 justify-content: center;
             }
@@ -760,15 +706,6 @@
         
         <!-- Gallery Controls -->
         <div class="gallery-controls">
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">All Images</button>
-                <button class="filter-btn" data-filter="behind-scenes">Behind the Scenes</button>
-                <button class="filter-btn" data-filter="production-stills">Production Stills</button>
-                <button class="filter-btn" data-filter="equipment">Equipment</button>
-                <button class="filter-btn" data-filter="team">Team</button>
-                <button class="filter-btn" data-filter="locations">Locations</button>
-            </div>
-            
             <div class="view-options">
                 <button class="view-btn active" data-view="grid">
                     <i class="fas fa-th"></i>
@@ -793,7 +730,7 @@
             <button class="pagination-btn">2</button>
             <button class="pagination-btn">3</button>
             <span style="color: #aaa; padding: 0 0.5rem;">...</span>
-            <button class="pagination-btn">8</button>
+            <button class="pagination-btn">5</button>
             <button class="pagination-btn" id="nextPage">
                 <i class="fas fa-chevron-right"></i>
             </button>
@@ -819,7 +756,7 @@
                 <h3 id="lightboxTitle"></h3>
                 <p id="lightboxDescription"></p>
                 <div class="lightbox-meta">
-                    <span><i class="fas fa-camera"></i> <span id="lightboxCategory"></span></span>
+                    <span><i class="fas fa-camera"></i> Production Gallery</span>
                     <span><i class="far fa-calendar"></i> <span id="lightboxDate"></span></span>
                 </div>
             </div>
@@ -880,155 +817,210 @@
     </footer>
     
     <script>
-        // Gallery image data
+        // Gallery image data with your Sainthood images
         const galleryData = [
             {
                 id: 1,
-                title: "TechCorp Commercial Shoot",
-                description: "Director setting up a complex shot for our latest tech commercial.",
-                category: "behind-scenes",
-                imageUrl: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+                title: "Cinematic Production Setup",
+                description: "Professional camera and lighting setup for a commercial shoot.",
+                imageUrl: "sainthood1.jpg",
                 date: "2023-08-15",
-                location: "Studio 5, Los Angeles"
+                location: "Studio 1"
             },
             {
                 id: 2,
-                title: "Camera Equipment Setup",
-                description: "Our RED Komodo cinema camera rigged for handheld operation.",
-                category: "equipment",
-                imageUrl: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=1154&q=80",
-                date: "2023-07-22",
-                location: "Main Studio"
+                title: "Directing on Location",
+                description: "Director working with talent during an outdoor scene.",
+                imageUrl: "sainthood2.jpg",
+                date: "2023-08-10",
+                location: "Outdoor Location"
             },
             {
                 id: 3,
-                title: "Urban Echoes Production Team",
-                description: "Our crew discussing the next scene on location in downtown LA.",
-                category: "team",
-                imageUrl: "https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1176&q=80",
-                date: "2023-07-10",
-                location: "Downtown Los Angeles"
+                title: "Professional Camera Rig",
+                description: "High-end cinema camera setup for stable shots.",
+                imageUrl: "sainthood3.jpg",
+                date: "2023-08-05",
+                location: "Main Studio"
             },
             {
                 id: 4,
-                title: "Cinematic Lighting Setup",
-                description: "Creating moody atmospheric lighting for a dramatic scene.",
-                category: "behind-scenes",
-                imageUrl: "https://images.unsplash.com/photo-1489599809516-9827b6d1cf13?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-                date: "2023-06-28",
-                location: "Sound Stage 3"
+                title: "Studio Lighting Setup",
+                description: "Creating the perfect lighting atmosphere for a scene.",
+                imageUrl: "sainthood4.jpg",
+                date: "2023-07-28",
+                location: "Studio 2"
             },
             {
                 id: 5,
-                title: "Music Video Frame",
-                description: "Production still from our latest indie music video shoot.",
-                category: "production-stills",
-                imageUrl: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-                date: "2023-06-15",
-                location: "Warehouse Venue"
+                title: "Team Collaboration",
+                description: "Production team discussing the next shot sequence.",
+                imageUrl: "sainthood5.jpg",
+                date: "2023-07-22",
+                location: "On Set"
             },
             {
                 id: 6,
-                title: "Mountain Documentary Location",
-                description: "Breathtaking location scouting for our nature documentary.",
-                category: "locations",
-                imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-                date: "2023-05-20",
-                location: "Sierra Nevada Mountains"
-            },
-            {
-                id: 7,
-                title: "Director Monitoring Scene",
-                description: "Creative director reviewing footage on set during a commercial shoot.",
-                category: "behind-scenes",
-                imageUrl: "https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=1160&q=80",
-                date: "2023-05-05",
-                location: "Studio B"
-            },
-            {
-                id: 8,
-                title: "Lens Collection",
-                description: "Our selection of premium cinema lenses for different shooting styles.",
-                category: "equipment",
-                imageUrl: "https://images.unsplash.com/photo-1554048612-b6a482bc67e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-                date: "2023-04-18",
-                location: "Equipment Room"
-            },
-            {
-                id: 9,
-                title: "Corporate Video Interview",
-                description: "Setting up for a CEO interview in a corporate office environment.",
-                category: "production-stills",
-                imageUrl: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-                date: "2023-04-10",
-                location: "Corporate Headquarters"
-            },
-            {
-                id: 10,
-                title: "Sound Recording Session",
-                description: "Audio engineer capturing clean dialogue on location.",
-                category: "behind-scenes",
-                imageUrl: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1049&q=80",
-                date: "2023-03-28",
+                title: "Cinema Camera Operation",
+                description: "Cinematographer operating camera for a tracking shot.",
+                imageUrl: "sainthood6.jpg",
+                date: "2023-07-15",
                 location: "Film Set"
             },
             {
+                id: 7,
+                title: "Monitor Review Session",
+                description: "Director and DP reviewing footage on set.",
+                imageUrl: "sainthood7.jpg",
+                date: "2023-07-10",
+                location: "Production Tent"
+            },
+            {
+                id: 8,
+                title: "Professional Audio Recording",
+                description: "Sound engineer capturing clean audio on location.",
+                imageUrl: "sainthood8.jpg",
+                date: "2023-06-28",
+                location: "Sound Stage"
+            },
+            {
+                id: 9,
+                title: "Equipment Setup",
+                description: "Preparing camera and lighting equipment for a shoot.",
+                imageUrl: "sainthood9.jpg",
+                date: "2023-06-22",
+                location: "Studio Backlot"
+            },
+            {
+                id: 10,
+                title: "Creative Direction",
+                description: "Director guiding actors through a scene.",
+                imageUrl: "sainthood10.jpg",
+                date: "2023-06-15",
+                location: "Set Location"
+            },
+            {
                 id: 11,
-                title: "Color Grading Suite",
-                description: "Our post-production team working on color grading in DaVinci Resolve.",
-                category: "team",
-                imageUrl: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-                date: "2023-03-15",
-                location: "Editing Suite"
+                title: "Cinematic Composition",
+                description: "Setting up the perfect frame for a dramatic scene.",
+                imageUrl: "sainthood11.jpg",
+                date: "2023-06-08",
+                location: "Indoor Set"
             },
             {
                 id: 12,
-                title: "Cityscape Night Shoot",
-                description: "Setting up for a nighttime cityscape timelapse sequence.",
-                category: "locations",
-                imageUrl: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-                date: "2023-02-22",
-                location: "City Rooftop"
+                title: "Production Team Meeting",
+                description: "Team planning the day's shooting schedule.",
+                imageUrl: "sainthood12.jpg",
+                date: "2023-06-01",
+                location: "Production Office"
             },
             {
                 id: 13,
-                title: "Steadicam Operator in Action",
-                description: "Cinematographer capturing smooth movement with Steadicam rig.",
-                category: "behind-scenes",
-                imageUrl: "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-                date: "2023-02-10",
-                location: "Film Studio"
+                title: "Camera Movement Setup",
+                description: "Setting up equipment for dynamic camera movements.",
+                imageUrl: "sainthood13.jpg",
+                date: "2023-05-25",
+                location: "Studio Floor"
             },
             {
                 id: 14,
-                title: "Drone Aerial Shot Setup",
-                description: "Preparing drone for capturing breathtaking aerial footage.",
-                category: "equipment",
-                imageUrl: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-                date: "2023-01-28",
-                location: "Open Field Location"
+                title: "Lighting Test",
+                description: "Testing different lighting setups for mood creation.",
+                imageUrl: "sainthood14.jpg",
+                date: "2023-05-18",
+                location: "Studio 3"
             },
             {
                 id: 15,
-                title: "Production Meeting",
-                description: "Creative team brainstorming storyboards and shot lists.",
-                category: "team",
-                imageUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-                date: "2023-01-15",
-                location: "Conference Room"
+                title: "On-Set Monitoring",
+                description: "Real-time monitoring of the shot being captured.",
+                imageUrl: "sainthood15.jpg",
+                date: "2023-05-12",
+                location: "Control Room"
+            },
+            {
+                id: 16,
+                title: "Professional Camera Array",
+                description: "Multiple camera setup for coverage of a complex scene.",
+                imageUrl: "sainthood16.jpg",
+                date: "2023-05-05",
+                location: "Multi-camera Studio"
+            },
+            {
+                id: 17,
+                title: "Director-Actor Collaboration",
+                description: "Director working closely with actors on performance.",
+                imageUrl: "sainthood17.jpg",
+                date: "2023-04-28",
+                location: "Rehearsal Space"
+            },
+            {
+                id: 18,
+                title: "Cinematic Lighting Effects",
+                description: "Creating dramatic lighting effects for visual impact.",
+                imageUrl: "sainthood18.jpg",
+                date: "2023-04-21",
+                location: "Effects Stage"
+            },
+            {
+                id: 19,
+                title: "Equipment Preparation",
+                description: "Technical team preparing equipment for the day's shoot.",
+                imageUrl: "sainthood19.jpg",
+                date: "2023-04-15",
+                location: "Equipment Room"
+            },
+            {
+                id: 20,
+                title: "On-Set Communication",
+                description: "Production team coordinating during a complex shot.",
+                imageUrl: "sainthood20.jpg",
+                date: "2023-04-08",
+                location: "Film Set"
+            },
+            {
+                id: 21,
+                title: "Camera Stabilization Setup",
+                description: "Setting up stabilization equipment for smooth shots.",
+                imageUrl: "sainthood21.jpg",
+                date: "2023-04-01",
+                location: "Studio Setup"
+            },
+            {
+                id: 22,
+                title: "Scene Composition",
+                description: "Framing and composing the perfect cinematic shot.",
+                imageUrl: "sainthood22.jpg",
+                date: "2023-03-25",
+                location: "Set Location"
+            },
+            {
+                id: 23,
+                title: "Production Team in Action",
+                description: "The full production team working together on set.",
+                imageUrl: "sainthood23.jpg",
+                date: "2023-03-18",
+                location: "Working Set"
+            },
+            {
+                id: 24,
+                title: "Final Shot Review",
+                description: "Reviewing the final shots of the day's production.",
+                imageUrl: "sainthood24.jpg",
+                date: "2023-03-12",
+                location: "Review Room"
             }
         ];
         
         // DOM Elements
         const galleryGrid = document.getElementById('gridView');
-        const filterButtons = document.querySelectorAll('.filter-btn');
         const viewButtons = document.querySelectorAll('.view-btn');
         const lightboxModal = document.getElementById('lightboxModal');
         const closeLightbox = document.getElementById('closeLightbox');
         const lightboxImage = document.getElementById('lightboxImage');
         const lightboxTitle = document.getElementById('lightboxTitle');
         const lightboxDescription = document.getElementById('lightboxDescription');
-        const lightboxCategory = document.getElementById('lightboxCategory');
         const lightboxDate = document.getElementById('lightboxDate');
         const prevImage = document.getElementById('prevImage');
         const nextImage = document.getElementById('nextImage');
@@ -1036,10 +1028,9 @@
         const mainNav = document.getElementById('mainNav');
         
         // Initialize gallery
-        let currentFilter = 'all';
         let currentView = 'grid';
         let currentPage = 1;
-        const itemsPerPage = 9;
+        const itemsPerPage = 12;
         let filteredGalleryData = [...galleryData];
         let currentLightboxIndex = 0;
         
@@ -1066,14 +1057,6 @@
         }
         
         function setupEventListeners() {
-            // Filter buttons
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const filter = button.getAttribute('data-filter');
-                    setActiveFilter(button, filter);
-                });
-            });
-            
             // View buttons
             viewButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -1149,27 +1132,6 @@
             });
         }
         
-        function setActiveFilter(button, filter) {
-            // Update active filter button
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            
-            // Update current filter
-            currentFilter = filter;
-            currentPage = 1;
-            
-            // Filter gallery data
-            if (filter === 'all') {
-                filteredGalleryData = [...galleryData];
-            } else {
-                filteredGalleryData = galleryData.filter(item => item.category === filter);
-            }
-            
-            // Update pagination and render
-            updatePagination();
-            renderGallery();
-        }
-        
         function setActiveView(button, view) {
             // Update active view button
             viewButtons.forEach(btn => btn.classList.remove('active'));
@@ -1203,7 +1165,7 @@
                     <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: #aaa; font-size: 1.1rem;">
                         <i class="fas fa-images" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3;"></i>
                         <h3 style="color: white; margin-bottom: 0.5rem;">No images found</h3>
-                        <p>Try selecting a different category</p>
+                        <p>Please add images to the gallery</p>
                     </div>
                 `;
                 return;
@@ -1230,14 +1192,8 @@
                 day: 'numeric' 
             });
             
-            // Format category name
-            const categoryName = item.category.split('-').map(word => 
-                word.charAt(0).toUpperCase() + word.slice(1)
-            ).join(' ');
-            
             itemElement.innerHTML = `
                 <img src="${item.imageUrl}" alt="${item.title}" loading="lazy">
-                <div class="gallery-category">${categoryName}</div>
                 <button class="gallery-fullscreen-btn">
                     <i class="fas fa-expand"></i>
                 </button>
@@ -1275,12 +1231,6 @@
             lightboxImage.alt = item.title;
             lightboxTitle.textContent = item.title;
             lightboxDescription.textContent = item.description;
-            
-            // Format category name
-            const categoryName = item.category.split('-').map(word => 
-                word.charAt(0).toUpperCase() + word.slice(1)
-            ).join(' ');
-            lightboxCategory.textContent = categoryName;
             
             // Format date
             const dateObj = new Date(item.date);
@@ -1328,20 +1278,19 @@
             prevBtn.disabled = currentPage === 1;
             nextBtn.disabled = currentPage === totalPages;
             
-            // Update pagination buttons display
-            if (totalPages <= 5) {
-                // Show all pages
+            // Update pagination buttons for 24 items (2 pages of 12 items)
+            if (totalPages === 2) {
+                // Show only pages 1 and 2
                 paginationBtns.forEach((btn, index) => {
-                    btn.style.display = 'flex';
-                    if (index < totalPages) {
+                    if (index < 2) {
+                        btn.style.display = 'flex';
                         btn.textContent = index + 1;
                     } else {
                         btn.style.display = 'none';
                     }
                 });
-            } else {
-                // Show limited pages with ellipsis
-                // This is a simplified version - in a real app you'd want more sophisticated logic
+                // Hide ellipsis
+                document.querySelector('.pagination span').style.display = 'none';
             }
         }
         
