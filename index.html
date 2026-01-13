@@ -1582,6 +1582,26 @@
                 height: 250px;
             }
         }
+        @media (max-width: 768px) {
+    /* ... existing mobile styles ... */
+    
+    /* Reduce logo font size for small screens */
+    .logo h1 {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Further reduce logo font size for very small screens */
+    .logo h1 {
+        font-size: 1.2rem;
+    }
+    
+    /* Also adjust logo icon size */
+    .logo i {
+        font-size: 1.6rem;
+    }
+}
     </style>
 </head>
 <body>
