@@ -6,13 +6,7 @@
     <title>SAINTHOOD FILM PRODUCTION | Professional Video Studio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         :root {
             --primary-color: #ff3b30;
             --secondary-color: #1a1a1a;
@@ -20,1826 +14,374 @@
             --light-color: #f9f9f9;
             --dark-color: #121212;
             --gray-color: #888;
-            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
             --gradient: linear-gradient(135deg, #121212 0%, #2a2a2a 100%);
         }
-        
-        body {
-            background-color: #0f0f0f;
-            color: #f0f0f0;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        /* Header & Navigation */
-        header {
-            background-color: rgba(18, 18, 18, 0.95);
-            color: white;
-            padding: 0.6rem 2rem;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(10px);
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        /* LOGO STYLES */
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
+        body { background-color: #0f0f0f; color: #f0f0f0; line-height: 1.6; overflow-x: hidden; }
 
-        .logo-img {
-            height: 56px;
-            width: auto;
-            object-fit: contain;
-            display: block;
-            /* Slight glow to make it pop on dark bg */
-            filter: drop-shadow(0 0 6px rgba(255, 59, 48, 0.35));
-            transition: filter 0.3s ease, transform 0.3s ease;
-        }
+        /* Header */
+        header { background-color: rgba(18,18,18,0.95); color: white; padding: 0.6rem 2rem; position: fixed; top: 0; width: 100%; z-index: 1000; box-shadow: var(--shadow); backdrop-filter: blur(10px); }
+        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: pointer; }
+        .logo-img { height: 56px; width: auto; object-fit: contain; display: block; filter: drop-shadow(0 0 6px rgba(255,59,48,0.35)); transition: filter 0.3s ease, transform 0.3s ease; }
+        .logo:hover .logo-img { filter: drop-shadow(0 0 10px rgba(255,59,48,0.6)); transform: scale(1.04); }
+        .logo-text { display: flex; flex-direction: column; line-height: 1.15; }
+        .logo-text .brand-main { font-size: 1.25rem; font-weight: 800; letter-spacing: 2px; color: #fff; text-transform: uppercase; }
+        .logo-text .brand-sub { font-size: 0.72rem; font-weight: 500; letter-spacing: 3px; color: var(--primary-color); text-transform: uppercase; }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; padding: 0.5rem 0; position: relative; font-size: 1rem; cursor: pointer; }
+        nav a:hover { color: var(--primary-color); }
+        nav a.active { color: var(--primary-color); }
+        nav a.active::after { content: ''; position: absolute; width: 100%; height: 3px; background-color: var(--primary-color); bottom: -5px; left: 0; }
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
 
-        .logo:hover .logo-img {
-            filter: drop-shadow(0 0 10px rgba(255, 59, 48, 0.6));
-            transform: scale(1.04);
-        }
+        /* Pages */
+        .page { display: none; animation: fadeIn 0.5s ease-in-out; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.15;
-        }
+        /* Hero */
+        .hero-section { height: 100vh; background: var(--gradient); display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 80px; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('sainthood4.jpg'); background-size: cover; background-position: center; }
+        .hero-content { max-width: 1400px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 2; width: 100%; }
+        .hero-text { max-width: 800px; }
+        .hero-subtitle { color: var(--primary-color); font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; letter-spacing: 2px; text-transform: uppercase; }
+        .hero-title { font-size: 4rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.5rem; background: linear-gradient(45deg, #fff 30%, var(--primary-color) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-description { font-size: 1.3rem; margin-bottom: 2rem; color: #ccc; max-width: 600px; }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn { padding: 1rem 2rem; border-radius: 5px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s ease; font-size: 1rem; cursor: pointer; border: none; }
+        .btn-primary { background-color: var(--primary-color); color: white; }
+        .btn-primary:hover { background-color: #e0352b; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255,59,48,0.2); }
+        .btn-secondary { background-color: transparent; color: white; border: 2px solid white; }
+        .btn-secondary:hover { background-color: white; color: var(--dark-color); transform: translateY(-3px); }
 
-        .logo-text .brand-main {
-            font-size: 1.25rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: #ffffff;
-            text-transform: uppercase;
-        }
+        /* Stats */
+        .stats-section { background-color: var(--dark-color); padding: 5rem 2rem; }
+        .stats-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; }
+        .stat-item { text-align: center; padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 10px; transition: transform 0.3s; }
+        .stat-item:hover { transform: translateY(-10px); background: rgba(255,59,48,0.1); }
+        .stat-number { font-size: 3.5rem; font-weight: 800; color: var(--primary-color); margin-bottom: 0.5rem; }
+        .stat-label { font-size: 1.2rem; color: #ccc; text-transform: uppercase; letter-spacing: 1px; }
 
-        .logo-text .brand-sub {
-            font-size: 0.72rem;
-            font-weight: 500;
-            letter-spacing: 3px;
-            color: var(--primary-color);
-            text-transform: uppercase;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            padding: 0.5rem 0;
-            position: relative;
-            font-size: 1rem;
-        }
-        
-        nav a:hover {
-            color: var(--primary-color);
-        }
-        
-        nav a.active {
-            color: var(--primary-color);
-        }
-        
-        nav a.active::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 3px;
-            background-color: var(--primary-color);
-            bottom: -5px;
-            left: 0;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        /* Hero Section */
-        .hero-section {
-            height: 100vh;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            margin-top: 80px;
-        }
-        
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('sainthood4.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 1;
-        }
-        
-        .hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 2;
-            width: 100%;
-        }
-        
-        .hero-text {
-            max-width: 800px;
-        }
-        
-        .hero-subtitle {
-            color: var(--primary-color);
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(45deg, #fff 30%, var(--primary-color) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-description {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            color: #ccc;
-            max-width: 600px;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 5px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-        
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background-color: #e0352b;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 59, 48, 0.2);
-        }
-        
-        .btn-secondary {
-            background-color: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-        
-        .btn-secondary:hover {
-            background-color: white;
-            color: var(--dark-color);
-            transform: translateY(-3px);
-        }
-        
-        /* Stats Section */
-        .stats-section {
-            background-color: var(--dark-color);
-            padding: 5rem 2rem;
-        }
-        
-        .stats-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-        }
-        
-        .stat-item {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-        
-        .stat-item:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 59, 48, 0.1);
-        }
-        
-        .stat-number {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-label {
-            font-size: 1.2rem;
-            color: #ccc;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        /* Services Section */
-        .services-section {
-            padding: 6rem 2rem;
-            background-color: #0f0f0f;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .section-subtitle {
-            color: var(--primary-color);
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        
-        .section-title {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(45deg, #fff 30%, var(--primary-color) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .section-description {
-            font-size: 1.2rem;
-            color: #ccc;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .services-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-        
-        .service-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2.5rem;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 59, 48, 0.1);
-            border-color: var(--primary-color);
-            box-shadow: 0 15px 30px rgba(255, 59, 48, 0.1);
-        }
-        
-        .service-icon {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-        }
-        
-        .service-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-        
-        .service-card p {
-            color: #aaa;
-            line-height: 1.8;
-        }
-        
-        /* SHORTS SECTION */
-        .shorts-section {
-            padding: 6rem 2rem;
-            background: linear-gradient(180deg, #0f0f0f 0%, #181818 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .shorts-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 50%, rgba(255, 59, 48, 0.05) 0%, transparent 50%);
-            z-index: 0;
-        }
-        
-        .shorts-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 3rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .shorts-header .section-title {
-            margin-bottom: 0;
-        }
-        
-        .shorts-controls {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .shorts-control-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .shorts-control-btn:hover {
-            background: var(--primary-color);
-            transform: scale(1.1);
-        }
-        
-        .shorts-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .short-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            position: relative;
-            cursor: pointer;
-        }
-        
-        .short-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            background: rgba(255, 59, 48, 0.1);
-            border-color: var(--primary-color);
-            box-shadow: 0 20px 40px rgba(255, 59, 48, 0.15);
-        }
-        
-        .short-thumbnail {
-            position: relative;
-            height: 350px;
-            overflow: hidden;
-        }
-        
-        .short-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s;
-        }
-        
-        .short-card:hover .short-thumbnail img {
-            transform: scale(1.1);
-        }
-        
-        .short-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: var(--primary-color);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .short-play-btn {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(255, 59, 48, 0.9);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-            opacity: 0;
-            z-index: 2;
-        }
-        
-        .short-card:hover .short-play-btn {
-            opacity: 1;
-        }
-        
-        .short-play-btn:hover {
-            background: var(--primary-color);
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-        
-        .short-info {
-            padding: 1.5rem;
-        }
-        
-        .short-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            color: white;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        
-        .short-description {
-            color: #aaa;
-            font-size: 0.95rem;
-            margin-bottom: 1.2rem;
-            line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        
-        .short-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: var(--gray-color);
-            font-size: 0.85rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .short-meta span {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .short-meta i {
-            color: var(--primary-color);
-        }
-        
-        .short-views {
-            font-weight: 600;
-        }
-        
-        .shorts-view-all {
-            text-align: center;
-            margin-top: 3rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Main Content */
-        main {
-            max-width: 1400px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-            min-height: 70vh;
-        }
-        
-        .page {
-            display: none;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        
-        .page.active {
-            display: block;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .page-header {
-            margin-bottom: 3rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 2px solid var(--primary-color);
-        }
-        
-        .page-header h2 {
-            font-size: 2.5rem;
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-        
-        .page-header p {
-            color: var(--gray-color);
-            font-size: 1.1rem;
-        }
-        
+        /* Services */
+        .services-section { padding: 6rem 2rem; background-color: #0f0f0f; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-subtitle { color: var(--primary-color); font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; letter-spacing: 2px; text-transform: uppercase; }
+        .section-title { font-size: 3rem; font-weight: 800; margin-bottom: 1.5rem; background: linear-gradient(45deg, #fff 30%, var(--primary-color) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .section-description { font-size: 1.2rem; color: #ccc; max-width: 700px; margin: 0 auto; }
+        .services-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .service-card { background: rgba(255,255,255,0.05); padding: 2.5rem; border-radius: 15px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1); }
+        .service-card:hover { transform: translateY(-10px); background: rgba(255,59,48,0.1); border-color: var(--primary-color); box-shadow: 0 15px 30px rgba(255,59,48,0.1); }
+        .service-icon { font-size: 3rem; color: var(--primary-color); margin-bottom: 1.5rem; }
+        .service-card h3 { font-size: 1.8rem; margin-bottom: 1rem; color: white; }
+        .service-card p { color: #aaa; line-height: 1.8; }
+
+        /* Shorts Section on Home */
+        .shorts-home-section { padding: 6rem 2rem; background: linear-gradient(180deg, #0f0f0f 0%, #181818 100%); position: relative; overflow: hidden; }
+        .shorts-home-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 20% 50%, rgba(255,59,48,0.05) 0%, transparent 50%); z-index: 0; }
+        .shorts-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 3rem; position: relative; z-index: 1; flex-wrap: wrap; gap: 1.5rem; }
+        .shorts-controls { display: flex; gap: 1rem; align-items: center; }
+        .shorts-control-btn { width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.1); border: none; color: white; font-size: 1.2rem; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; }
+        .shorts-control-btn:hover:not(:disabled) { background: var(--primary-color); transform: scale(1.1); }
+        .shorts-control-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        /* Shorts carousel wrapper */
+        .shorts-carousel-wrapper { overflow: hidden; position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; }
+        .shorts-grid-track { display: flex; gap: 1.5rem; transition: transform 0.5s ease; }
+        .shorts-grid-track .short-card { flex: 0 0 280px; }
+
+        /* Full shorts grid (Shorts page) */
+        .shorts-full-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+
+        /* Short Card */
+        .short-card { background: rgba(255,255,255,0.05); border-radius: 16px; overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 1px solid rgba(255,255,255,0.08); position: relative; cursor: pointer; }
+        .short-card:hover { transform: translateY(-12px) scale(1.02); background: rgba(255,59,48,0.1); border-color: var(--primary-color); box-shadow: 0 20px 40px rgba(255,59,48,0.15); }
+        .short-thumbnail { position: relative; height: 350px; overflow: hidden; }
+        .short-thumbnail img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+        .short-card:hover .short-thumbnail img { transform: scale(1.1); }
+        .short-badge { position: absolute; top: 15px; left: 15px; background: var(--primary-color); color: white; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; z-index: 2; display: flex; align-items: center; gap: 5px; }
+        .short-play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255,59,48,0.9); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; cursor: pointer; transition: all 0.3s; border: none; opacity: 0; z-index: 2; }
+        .short-card:hover .short-play-btn { opacity: 1; }
+        .short-play-btn:hover { background: var(--primary-color); transform: translate(-50%, -50%) scale(1.1); }
+        .short-info { padding: 1.5rem; }
+        .short-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.8rem; color: white; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .short-description { color: #aaa; font-size: 0.95rem; margin-bottom: 1.2rem; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .short-meta { display: flex; justify-content: space-between; align-items: center; color: var(--gray-color); font-size: 0.85rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .short-meta span { display: flex; align-items: center; gap: 5px; }
+        .short-meta i { color: var(--primary-color); }
+        .shorts-view-all { text-align: center; margin-top: 3rem; position: relative; z-index: 1; }
+
         /* Video Grid */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .video-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .video-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(255, 59, 48, 0.2);
-            border-color: var(--primary-color);
-        }
-        
-        .video-thumbnail {
-            position: relative;
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .video-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .video-card:hover .video-thumbnail img {
-            transform: scale(1.1);
-        }
-        
-        .video-play-btn {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(255, 59, 48, 0.9);
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-        }
-        
-        .video-play-btn:hover {
-            background-color: var(--primary-color);
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-        
-        .video-info {
-            padding: 1.5rem;
-        }
-        
-        .video-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: white;
-        }
-        
-        .video-info p {
-            color: #aaa;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-        
-        .video-meta {
-            display: flex;
-            justify-content: space-between;
-            color: var(--gray-color);
-            font-size: 0.85rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .video-meta i {
-            margin-right: 5px;
-            color: var(--primary-color);
-        }
-        
-        /* Video Player Modal */
-        .video-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-        }
-        
-        .video-modal.active {
-            display: flex;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-        
-        .modal-content {
-            width: 90%;
-            max-width: 1200px;
-            background-color: var(--dark-color);
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-            border: 2px solid var(--primary-color);
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 2001;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-        
-        .close-modal:hover {
-            background: var(--primary-color);
-            transform: rotate(90deg);
-        }
-        
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-        }
-        
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        /* About Page */
-        .about-container {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-        }
-        
-        .about-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .about-header {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--primary-color);
-            box-shadow: 0 10px 30px rgba(255, 59, 48, 0.3);
-        }
-        
-        .about-header-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: white;
-        }
-        
-        .about-header-text p {
-            color: var(--primary-color);
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .about-content p {
-            color: #aaa;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-        
-        .values-section {
-            margin: 2rem 0;
-        }
-        
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        
-        .value-card {
-            background: rgba(255, 59, 48, 0.1);
-            padding: 2rem;
-            border-radius: 10px;
-            border-left: 4px solid var(--primary-color);
-        }
-        
-        .value-card h4 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .value-card p {
-            color: #aaa;
-            font-size: 1rem;
-        }
-        
-        .mission-vision-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .mission-card, .vision-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2.5rem;
-            border-radius: 15px;
-            border-top: 5px solid var(--primary-color);
-        }
-        
-        .mission-card h3, .vision-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .objectives-list {
-            margin: 2rem 0;
-        }
-        
-        .objectives-list ul {
-            list-style: none;
-            margin-top: 1rem;
-        }
-        
-        .objectives-list li {
-            color: #aaa;
-            margin-bottom: 1rem;
-            padding-left: 2rem;
-            position: relative;
-            line-height: 1.7;
-        }
-        
-        .objectives-list li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-            font-weight: bold;
-        }
-        
-        .director-statement {
-            background: rgba(255, 59, 48, 0.08);
-            padding: 2.5rem;
-            border-radius: 15px;
-            border-left: 5px solid var(--primary-color);
-            margin: 2rem 0;
-        }
-        
-        .director-statement h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        /* Contact Form */
-        .contact-form {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .form-group {
-            margin-bottom: 2rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            color: white;
-            font-size: 1.1rem;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem 1.2rem;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            font-size: 1rem;
-            color: white;
-            transition: all 0.3s;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            background: rgba(255, 59, 48, 0.05);
-            box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.1);
-        }
-        
-        .form-group textarea {
-            min-height: 180px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 1rem 3rem;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .submit-btn:hover {
-            background-color: #e0352b;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 59, 48, 0.2);
-        }
-        
-        /* Gallery Section */
-        .gallery-section {
-            padding: 6rem 2rem;
-            background: linear-gradient(180deg, #181818 0%, #0f0f0f 100%);
-        }
-        
-        .gallery-controls {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-        }
-        
-        .view-options {
-            display: flex;
-            gap: 0.5rem;
-        }
-        
-        .view-btn {
-            width: 42px;
-            height: 42px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #ccc;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-        }
-        
-        .view-btn:hover {
-            background: rgba(255, 59, 48, 0.2);
-            border-color: var(--primary-color);
-            color: white;
-        }
-        
-        .view-btn.active {
-            background: var(--primary-color);
-            border-color: var(--primary-color);
-            color: white;
-        }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-        
-        .gallery-grid.masonry {
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        }
-        
-        .gallery-grid.masonry .gallery-item {
-            height: auto;
-        }
-        
-        .gallery-grid.masonry .gallery-item:nth-child(3n+1) {
-            grid-row: span 2;
-        }
-        
-        .gallery-grid.masonry .gallery-item:nth-child(5n+2) {
-            grid-column: span 2;
-        }
-        
-        .gallery-item {
-            position: relative;
-            height: 280px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.4s ease;
-            cursor: pointer;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .gallery-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(255, 59, 48, 0.2);
-            border-color: var(--primary-color);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-        
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
-            padding: 1.5rem;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-        
-        .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
-        }
-        
-        .gallery-title {
-            color: white;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .gallery-description {
-            color: #ccc;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 1rem;
-        }
-        
-        .gallery-meta {
-            display: flex;
-            justify-content: space-between;
-            color: #aaa;
-            font-size: 0.85rem;
-        }
-        
-        .gallery-meta i {
-            margin-right: 5px;
-            color: var(--primary-color);
-        }
-        
-        .gallery-fullscreen-btn {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            width: 40px;
-            height: 40px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            opacity: 0;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-        }
-        
-        .gallery-item:hover .gallery-fullscreen-btn {
-            opacity: 1;
-        }
-        
-        .gallery-fullscreen-btn:hover {
-            background: var(--primary-color);
-            transform: scale(1.1);
-        }
-        
-        /* Lightbox Modal */
-        .lightbox-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.97);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-        }
-        
-        .lightbox-modal.active {
-            display: flex;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-        
-        .lightbox-content {
-            width: 90%;
-            max-width: 1200px;
-            position: relative;
-        }
-        
-        .lightbox-img-container {
-            width: 100%;
-            max-height: 80vh;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-        }
-        
-        .lightbox-img-container img {
-            width: 100%;
-            height: auto;
-            max-height: 80vh;
-            object-fit: contain;
-        }
-        
-        .lightbox-info {
-            background: rgba(18, 18, 18, 0.9);
-            padding: 1.5rem;
-            border-radius: 0 0 12px 12px;
-            border-top: 2px solid var(--primary-color);
-        }
-        
-        .lightbox-info h3 {
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .lightbox-info p {
-            color: #ccc;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-        
-        .lightbox-meta {
-            display: flex;
-            justify-content: space-between;
-            color: #aaa;
-            font-size: 0.9rem;
-        }
-        
-        .close-lightbox {
-            position: absolute;
-            top: -45px;
-            right: 0;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 2001;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-        
-        .close-lightbox:hover {
-            background: var(--primary-color);
-            transform: rotate(90deg);
-        }
-        
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            z-index: 2001;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-        
-        .lightbox-nav:hover {
-            background: var(--primary-color);
-        }
-        
-        .lightbox-prev { left: 20px; }
-        .lightbox-next { right: 20px; }
-        
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .video-card { background: rgba(255,255,255,0.05); border-radius: 15px; overflow: hidden; box-shadow: var(--shadow); transition: transform 0.3s, box-shadow 0.3s; border: 1px solid rgba(255,255,255,0.1); }
+        .video-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(255,59,48,0.2); border-color: var(--primary-color); }
+        .video-thumbnail { position: relative; height: 200px; overflow: hidden; }
+        .video-thumbnail img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .video-card:hover .video-thumbnail img { transform: scale(1.1); }
+        .video-play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255,59,48,0.9); width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.8rem; cursor: pointer; transition: all 0.3s; border: none; }
+        .video-play-btn:hover { background-color: var(--primary-color); transform: translate(-50%, -50%) scale(1.1); }
+        .video-info { padding: 1.5rem; }
+        .video-info h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: white; }
+        .video-info p { color: #aaa; font-size: 0.95rem; margin-bottom: 1rem; line-height: 1.6; }
+        .video-meta { display: flex; justify-content: space-between; color: var(--gray-color); font-size: 0.85rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; gap: 0.5rem; }
+        .video-meta i { margin-right: 5px; color: var(--primary-color); }
+
+        /* Main content wrapper for inner pages */
+        .page-inner { max-width: 1400px; margin: 2rem auto; padding: 2rem; min-height: 70vh; }
+        .page-header { margin-bottom: 3rem; padding-bottom: 1.5rem; border-bottom: 2px solid var(--primary-color); }
+        .page-header h2 { font-size: 2.5rem; color: white; margin-bottom: 0.5rem; }
+        .page-header p { color: var(--gray-color); font-size: 1.1rem; }
+
+        /* Video Modal */
+        .video-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; padding: 2rem; }
+        .video-modal.active { display: flex; animation: fadeIn 0.3s ease-in-out; }
+        .modal-content { width: 90%; max-width: 1200px; background-color: var(--dark-color); border-radius: 15px; overflow: hidden; position: relative; border: 2px solid var(--primary-color); }
+        .close-modal { position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.8); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; font-size: 1.5rem; cursor: pointer; z-index: 2001; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+        .close-modal:hover { background: var(--primary-color); transform: rotate(90deg); }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* About */
+        .about-container { display: flex; flex-direction: column; gap: 3rem; }
+        .about-card { background: rgba(255,255,255,0.05); padding: 3rem; border-radius: 15px; box-shadow: var(--shadow); border: 1px solid rgba(255,255,255,0.1); }
+        .about-header { display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem; }
+        .profile-img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 5px solid var(--primary-color); box-shadow: 0 10px 30px rgba(255,59,48,0.3); }
+        .about-header-text h2 { font-size: 2.5rem; margin-bottom: 0.5rem; color: white; }
+        .about-header-text p { color: var(--primary-color); font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; }
+        .about-content p { color: #aaa; line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .about-card h3 { font-size: 1.8rem; color: white; margin-bottom: 1.5rem; }
+        .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+        .value-card { background: rgba(255,59,48,0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid var(--primary-color); }
+        .value-card h4 { font-size: 1.3rem; margin-bottom: 0.8rem; color: white; display: flex; align-items: center; gap: 10px; }
+        .value-card p { color: #aaa; font-size: 1rem; }
+        .mission-vision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .mission-card, .vision-card { background: rgba(255,255,255,0.05); padding: 2.5rem; border-radius: 15px; border-top: 5px solid var(--primary-color); }
+        .mission-card h3, .vision-card h3 { font-size: 1.8rem; margin-bottom: 1.5rem; color: white; display: flex; align-items: center; gap: 10px; }
+        .mission-card p, .vision-card p { color: #aaa; line-height: 1.8; }
+        .director-statement { background: rgba(255,59,48,0.08); padding: 2.5rem; border-radius: 15px; border-left: 5px solid var(--primary-color); }
+        .director-statement h3 { font-size: 1.8rem; margin-bottom: 1.5rem; color: white; display: flex; align-items: center; gap: 10px; }
+        .director-statement p { color: #aaa; line-height: 1.8; margin-bottom: 1rem; }
+        .objectives-list ul { list-style: none; margin-top: 1rem; }
+        .objectives-list li { color: #aaa; margin-bottom: 1rem; padding-left: 2rem; position: relative; line-height: 1.7; }
+        .objectives-list li:before { content: '✓'; position: absolute; left: 0; color: var(--primary-color); font-weight: bold; }
+        .social-links { display: flex; gap: 1rem; margin-top: 1.5rem; }
+        .social-links a { display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background-color: rgba(255,255,255,0.08); border-radius: 50%; transition: all 0.3s; font-size: 1.2rem; color: white; text-decoration: none; }
+        .social-links a:hover { background-color: var(--primary-color); transform: translateY(-5px); }
+
+        /* Contact */
+        .contact-form { background: rgba(255,255,255,0.05); padding: 3rem; border-radius: 15px; box-shadow: var(--shadow); border: 1px solid rgba(255,255,255,0.1); }
+        .form-group { margin-bottom: 2rem; }
+        .form-group label { display: block; margin-bottom: 0.8rem; font-weight: 600; color: white; font-size: 1.1rem; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 1rem 1.2rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; font-size: 1rem; color: white; transition: all 0.3s; }
+        .form-group select option { background: #1a1a1a; color: white; }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--primary-color); background: rgba(255,59,48,0.05); box-shadow: 0 0 0 3px rgba(255,59,48,0.1); }
+        .form-group textarea { min-height: 180px; resize: vertical; }
+        .submit-btn { background-color: var(--primary-color); color: white; border: none; padding: 1rem 3rem; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 10px; }
+        .submit-btn:hover { background-color: #e0352b; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255,59,48,0.2); }
+
+        /* Gallery */
+        .gallery-controls { display: flex; justify-content: flex-end; align-items: center; margin-bottom: 2.5rem; gap: 1.5rem; }
+        .view-options { display: flex; gap: 0.5rem; }
+        .view-btn { width: 42px; height: 42px; border-radius: 8px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); color: #ccc; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+        .view-btn:hover { background: rgba(255,59,48,0.2); border-color: var(--primary-color); color: white; }
+        .view-btn.active { background: var(--primary-color); border-color: var(--primary-color); color: white; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+        .gallery-grid.masonry { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+        .gallery-grid.masonry .gallery-item:nth-child(3n+1) { grid-row: span 2; }
+        .gallery-item { position: relative; height: 280px; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); transition: all 0.4s ease; cursor: pointer; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); }
+        .gallery-item:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(255,59,48,0.2); border-color: var(--primary-color); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: 1.5rem; transform: translateY(100%); transition: transform 0.3s ease; }
+        .gallery-item:hover .gallery-overlay { transform: translateY(0); }
+        .gallery-title { color: white; font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .gallery-description { color: #ccc; font-size: 0.9rem; line-height: 1.5; margin-bottom: 1rem; }
+        .gallery-meta { display: flex; justify-content: space-between; color: #aaa; font-size: 0.85rem; }
+        .gallery-meta i { margin-right: 5px; color: var(--primary-color); }
+        .gallery-fullscreen-btn { position: absolute; top: 15px; left: 15px; width: 40px; height: 40px; background: rgba(0,0,0,0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; opacity: 0; transition: all 0.3s ease; cursor: pointer; border: none; }
+        .gallery-item:hover .gallery-fullscreen-btn { opacity: 1; }
+        .gallery-fullscreen-btn:hover { background: var(--primary-color); transform: scale(1.1); }
+
+        /* Lightbox */
+        .lightbox-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.97); z-index: 2000; justify-content: center; align-items: center; padding: 2rem; }
+        .lightbox-modal.active { display: flex; animation: fadeIn 0.3s ease-in-out; }
+        .lightbox-content { width: 90%; max-width: 1200px; position: relative; }
+        .lightbox-img-container { width: 100%; max-height: 80vh; overflow: hidden; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .lightbox-img-container img { width: 100%; height: auto; max-height: 80vh; object-fit: contain; }
+        .lightbox-info { background: rgba(18,18,18,0.9); padding: 1.5rem; border-radius: 0 0 12px 12px; border-top: 2px solid var(--primary-color); }
+        .lightbox-info h3 { color: white; font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .lightbox-info p { color: #ccc; margin-bottom: 1rem; line-height: 1.6; }
+        .lightbox-meta { display: flex; justify-content: space-between; color: #aaa; font-size: 0.9rem; }
+        .close-lightbox { position: absolute; top: -45px; right: 0; background: rgba(0,0,0,0.8); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; font-size: 1.5rem; cursor: pointer; z-index: 2001; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+        .close-lightbox:hover { background: var(--primary-color); transform: rotate(90deg); }
+        .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.7); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; z-index: 2001; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+        .lightbox-nav:hover { background: var(--primary-color); }
+        .lightbox-prev { left: -60px; }
+        .lightbox-next { right: -60px; }
+
         /* Pagination */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.8rem;
-            margin-top: 3rem;
-            margin-bottom: 2rem;
-        }
-        
-        .pagination-btn {
-            width: 42px;
-            height: 42px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #ccc;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-        }
-        
-        .pagination-btn:hover:not(:disabled) {
-            background: rgba(255, 59, 48, 0.2);
-            border-color: var(--primary-color);
-            color: white;
-        }
-        
-        .pagination-btn.active {
-            background: var(--primary-color);
-            border-color: var(--primary-color);
-            color: white;
-        }
-        
-        .pagination-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
+        .pagination { display: flex; justify-content: center; align-items: center; gap: 0.8rem; margin-top: 3rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .pagination-btn { width: 42px; height: 42px; border-radius: 8px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); color: #ccc; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+        .pagination-btn:hover:not(:disabled) { background: rgba(255,59,48,0.2); border-color: var(--primary-color); color: white; }
+        .pagination-btn.active { background: var(--primary-color); border-color: var(--primary-color); color: white; }
+        .pagination-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
         /* Footer */
-        footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 4rem 2rem 2rem;
-            margin-top: 5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-        }
-        
-        .footer-col h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-        
-        .footer-col ul {
-            list-style: none;
-        }
-        
-        .footer-col ul li {
-            margin-bottom: 1rem;
-        }
-        
-        .footer-col a {
-            color: #ccc;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .footer-col a:hover {
-            color: var(--primary-color);
-            transform: translateX(5px);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background-color: rgba(255, 255, 255, 0.08);
-            border-radius: 50%;
-            transition: all 0.3s;
-            font-size: 1.2rem;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-5px);
-        }
-        
-        .copyright {
-            text-align: center;
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            font-size: 0.95rem;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .hero-title { font-size: 3.5rem; }
-            .section-title { font-size: 2.5rem; }
-            .shorts-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
-        }
-        
+        footer { background-color: var(--dark-color); color: white; padding: 4rem 2rem 2rem; margin-top: 5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; }
+        .footer-col h3 { font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--primary-color); font-weight: 700; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 1rem; }
+        .footer-col a { color: #ccc; text-decoration: none; transition: all 0.3s; display: flex; align-items: center; gap: 10px; cursor: pointer; }
+        .footer-col a:hover { color: var(--primary-color); transform: translateX(5px); }
+        .footer-social { display: flex; gap: 1rem; margin-top: 1.5rem; }
+        .footer-social a { display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background-color: rgba(255,255,255,0.08); border-radius: 50%; transition: all 0.3s; font-size: 1.2rem; color: white; text-decoration: none; }
+        .footer-social a:hover { background-color: var(--primary-color); transform: translateY(-5px); }
+        .copyright { text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: #aaa; font-size: 0.95rem; }
+
+        /* Responsive */
         @media (max-width: 992px) {
             .hero-title { font-size: 3rem; }
-            .video-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-            .services-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
             .about-header { flex-direction: column; text-align: center; }
-            .shorts-grid { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
-            .shorts-header { flex-direction: column; gap: 1.5rem; text-align: center; }
-            .shorts-controls { justify-content: center; }
             .mission-vision-grid { grid-template-columns: 1fr; }
-            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-            .gallery-grid.masonry { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+            .lightbox-prev { left: 0; top: -55px; transform: none; }
+            .lightbox-next { right: 0; top: -55px; transform: none; }
         }
-        
         @media (max-width: 768px) {
             header { padding: 0.6rem 1rem; }
-            
             .logo-img { height: 44px; }
             .logo-text .brand-main { font-size: 1rem; }
             .logo-text .brand-sub { font-size: 0.65rem; }
-
-            .header-container { flex-direction: column; gap: 1rem; padding: 0.5rem 0; }
-            nav ul { gap: 1rem; flex-wrap: wrap; justify-content: center; }
-            .mobile-menu-btn { display: block; position: absolute; top: 1.5rem; right: 2rem; }
-            .mobile-nav { display: none; width: 100%; margin-top: 1rem; }
-            .mobile-nav.active { display: block; }
-            .mobile-nav ul { flex-direction: column; gap: 0.5rem; }
-            .hero-section { margin-top: 120px; height: auto; padding: 4rem 0; }
+            .header-container { flex-wrap: wrap; gap: 0.5rem; }
+            .mobile-menu-btn { display: block; margin-left: auto; }
+            nav { display: none; width: 100%; }
+            nav.open { display: block; }
+            nav ul { flex-direction: column; gap: 0.5rem; padding: 0.5rem 0; }
+            .hero-section { padding-top: 120px; height: auto; min-height: 100vh; }
             .hero-title { font-size: 2.5rem; }
             .hero-description { font-size: 1.1rem; }
             .hero-buttons { flex-direction: column; }
             .section-title { font-size: 2.2rem; }
-            .shorts-section { padding: 4rem 1rem; }
-            .shorts-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
-            .about-card, .mission-card, .vision-card, .director-statement { padding: 2rem; }
-            .gallery-section { padding: 4rem 1rem; }
-            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+            .shorts-grid-track .short-card { flex: 0 0 240px; }
         }
-        
         @media (max-width: 576px) {
-            main { padding: 0 1rem; }
-            .hero-content { padding: 0 1rem; }
             .hero-title { font-size: 2rem; }
             .video-grid { grid-template-columns: 1fr; }
             .page-header h2 { font-size: 2rem; }
-            .modal-content { width: 95%; padding: 0; }
             .services-grid { grid-template-columns: 1fr; }
-            .service-card { padding: 2rem; }
-            .about-card, .contact-form { padding: 2rem; }
-            .shorts-grid { grid-template-columns: 1fr; }
-            .short-thumbnail { height: 280px; }
-            .values-grid { grid-template-columns: 1fr; }
+            .about-card, .contact-form { padding: 1.5rem; }
+            .shorts-full-grid { grid-template-columns: 1fr; }
             .gallery-grid { grid-template-columns: 1fr; }
-            .gallery-grid.masonry { grid-template-columns: 1fr; }
-            .gallery-item { height: 250px; }
             .logo-img { height: 38px; }
-            .logo-text .brand-main { font-size: 0.9rem; }
             .logo-text .brand-sub { display: none; }
+            .shorts-grid-track .short-card { flex: 0 0 85vw; }
         }
     </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header>
-        <div class="header-container">
-            <!-- LOGO -->
-            <a href="#home" class="logo nav-link" data-page="home">
-                <img src="logo.png" alt="Sainthood Film Production Logo" class="logo-img">
-                <div class="logo-text">
-                    <span class="brand-main">Sainthood</span>
-                    <span class="brand-sub">Film Production</span>
-                </div>
-            </a>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <nav class="mobile-nav" id="mainNav">
-                <ul>
-                    <li><a href="#home" class="nav-link active" data-page="home"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="#videos" class="nav-link" data-page="videos"><i class="fas fa-play-circle"></i> Portfolio</a></li>
-                    <li><a href="#favorites" class="nav-link" data-page="favorites"><i class="fas fa-star"></i> Favourites</a></li>
-                    <li><a href="#shorts" class="nav-link" data-page="shorts"><i class="fas fa-clapperboard"></i> Shorts</a></li>
-                    <li><a href="#gallery" class="nav-link" data-page="gallery"><i class="fas fa-images"></i> Gallery</a></li>
-                    <li><a href="#about" class="nav-link" data-page="about"><i class="fas fa-user"></i> About</a></li>
-                    <li><a href="#contact" class="nav-link" data-page="contact"><i class="fas fa-envelope"></i> Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    
-    <!-- Hero Section -->
-    <section id="home" class="page active">
-        <div class="hero-section">
-            <div class="hero-bg"></div>
-            <div class="hero-content">
-                <div class="hero-text">
-                    <div class="hero-subtitle">PROFESSIONAL VIDEO PRODUCTION</div>
-                    <h1 class="hero-title">Crafting Visual Stories That Captivate</h1>
-                    <p class="hero-description">SAINTHOOD FILM PRODUCTION is an independent film production company based in Kasese, Uganda, dedicated to telling authentic African stories with purpose and impact. Founded with a vision to inspire change, the company focuses on producing films and documentaries that explore social realities, environmental sustainability, culture, faith, and human resilience.</p>
-                    <div class="hero-buttons">
-                        <a href="#videos" class="btn btn-primary nav-link" data-page="videos">
-                            <i class="fas fa-play-circle"></i> View Our Work
-                        </a>
-                        <a href="#contact" class="btn btn-secondary nav-link" data-page="contact">
-                            <i class="fas fa-envelope"></i> Get In Touch
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Stats Section -->
-        <div class="stats-section">
-            <div class="stats-container">
-                <div class="stat-item">
-                    <div class="stat-number" data-target="1000">0</div>
-                    <div class="stat-label">Souls impacted</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-target="10">0</div>
-                    <div class="stat-label">Videos</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-target="4">0</div>
-                    <div class="stat-label">Years Experience</div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Services Section -->
-        <div class="services-section">
-            <div class="section-header">
-                <div class="section-subtitle">OUR SERVICES</div>
-                <h2 class="section-title">What We Do Best</h2>
-                <p class="section-description">From concept to delivery, we provide comprehensive video production services tailored to your specific needs and goals.</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-film"></i></div>
-                    <h3>Cinematic Storytelling</h3>
-                    <p>Narrative-driven films with emotional depth and visual artistry that resonates with audiences and leaves lasting impressions.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-briefcase"></i></div>
-                    <h3>Corporate Videos</h3>
-                    <p>Professional corporate videos for presentations, training, testimonials, and company profiles that communicate your message effectively.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-music"></i></div>
-                    <h3>Music Videos</h3>
-                    <p>Creative and visually stunning music videos that amplify the artist's vision and connect with fans on a deeper level.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-edit"></i></div>
-                    <h3>Post-Production</h3>
-                    <p>Expert editing, color grading, visual effects, sound design, and motion graphics to polish your content to perfection.</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- SHORTS SECTION -->
-        <div class="shorts-section">
-            <div class="shorts-header">
-                <div>
-                    <div class="section-subtitle">BITE-SIZED CONTENT</div>
-                    <h2 class="section-title">Trending Shorts</h2>
-                    <p class="section-description" style="text-align: left; margin: 1rem 0 0 0;">Quick, engaging, and visually stunning short-form content</p>
-                </div>
-                <div class="shorts-controls">
-                    <button class="shorts-control-btn prev-short"><i class="fas fa-chevron-left"></i></button>
-                    <button class="shorts-control-btn next-short"><i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
-            
-            <div class="shorts-grid" id="shortsGrid"></div>
-            
-            <div class="shorts-view-all">
-                <a href="#shorts" class="btn btn-primary nav-link" data-page="shorts">
-                    <i class="fas fa-play-circle"></i> View All Shorts
-                </a>
-            </div>
-        </div>
-        
-        <!-- Featured Videos Section -->
-        <div class="services-section" style="padding-top: 0;">
-            <div class="section-header">
-                <div class="section-subtitle">FEATURED WORK</div>
-                <h2 class="section-title">Our Latest Projects</h2>
-                <p class="section-description">A selection of our most recent and noteworthy video productions that showcase our style and expertise.</p>
-            </div>
-            <div class="video-grid"></div>
-        </div>
-    </section>
-    <br><br>
 
-    <!-- All Videos Page -->
-    <section id="videos" class="page">
-        <main>
-            <div class="page-header">
-                <h2>Our Portfolio</h2>
-                <p>Browse our complete collection of video productions across various genres and formats</p>
+<header id="siteHeader">
+    <div class="header-container">
+        <a class="logo nav-link" data-page="home">
+            <img src="logo.png" alt="Sainthood Film Production Logo" class="logo-img" onerror="this.style.display='none'">
+            <div class="logo-text">
+                <span class="brand-main">Sainthood</span>
+                <span class="brand-sub">Film Production</span>
             </div>
-            <div class="video-grid"></div>
-        </main>
-    </section>
-    <br><br>
-
-    <!-- Favorites Page -->
-    <section id="favorites" class="page">
-        <main>
-            <div class="page-header">
-                <h2>Showreel Highlights</h2>
-                <p>Our best and most representative work that showcases the range and quality of our productions</p>
-            </div>
-            <div class="video-grid"></div>
-        </main>
-    </section>
-    
-    <!-- SHORTS PAGE -->
-    <section id="shorts" class="page">
-        <main>
-            <div class="page-header">
-                <h2>Video Shorts</h2>
-                <p>Bite-sized content that delivers maximum impact in minimum time. Perfect for social media and digital platforms.</p>
-            </div>
-            <div class="shorts-grid" id="allShortsGrid"></div>
-        </main>
-    </section>
-    
-    <!-- GALLERY PAGE -->
-    <section id="gallery" class="page">
-        <main>
-            <div class="page-header">
-                <h2>Production Gallery</h2>
-                <p>Behind the scenes, production stills, and visual moments from our filmmaking journey</p>
-            </div>
-            <div class="gallery-controls">
-                <div class="view-options">
-                    <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button>
-                    <button class="view-btn" data-view="masonry"><i class="fas fa-th-large"></i></button>
-                </div>
-            </div>
-            <div class="gallery-grid active" id="gridView"></div>
-            <div class="pagination">
-                <button class="pagination-btn" id="prevPage" disabled><i class="fas fa-chevron-left"></i></button>
-                <button class="pagination-btn active">1</button>
-                <button class="pagination-btn">2</button>
-                <span style="color: #aaa; padding: 0 0.5rem;">...</span>
-                <button class="pagination-btn">5</button>
-                <button class="pagination-btn" id="nextPage"><i class="fas fa-chevron-right"></i></button>
-            </div>
-        </main>
-    </section>
-    
-    <!-- About Page -->
-    <section id="about" class="page">
-        <main>
-            <div class="page-header">
-                <h2>About SAINTHOOD FILM PRODUCTION</h2>
-                <p>Authentic African Stories with Purpose and Impact</p>
-            </div>
-            
-            <div class="about-container">
-                <div class="about-card">
-                    <div class="about-content">
-                        <h3>Our Story</h3>
-                        <p>SAINTHOOD FILM PRODUCTION is an independent film production company based in Kasese, Uganda, dedicated to telling authentic African stories with purpose and impact. Founded with a vision to inspire change, the company focuses on producing films and documentaries that explore social realities, environmental sustainability, culture, faith, and human resilience.</p>
-                        <p>Rooted in community storytelling, SAINTHOOD FILM PRODUCTION works closely with local voices—especially children and youth—to highlight untold stories and lived experiences often overlooked. Our productions aim to educate, empower, and spark dialogue both locally and globally.</p>
-                        <p>Through creative excellence and social responsibility, SAINTHOOD FILM PRODUCTION continues to use film as a tool for awareness, transformation, and hope.</p>
-                    </div>
-                </div>
-                
-                <div class="mission-vision-grid">
-                    <div class="mission-card">
-                        <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
-                        <p>To create impactful films and documentaries that tell authentic stories rooted in community, faith, and social reality; using cinema as a powerful tool for education, awareness, and positive transformation both locally and globally.</p>
-                    </div>
-                    <div class="vision-card">
-                        <h3><i class="fas fa-eye"></i> Our Vision</h3>
-                        <p>To become a leading African film production company recognized for purpose-driven storytelling that inspires social awareness, preserves authentic community narratives, and creates lasting impact on audiences worldwide.</p>
-                    </div>
-                </div>
-                
-                <div class="director-statement">
-                    <h3><i class="fas fa-quote-left"></i> Director's Statement</h3>
-                    <p><strong>Kasoba Godwin</strong></p>
-                    <p>I believe film is a powerful tool for truth, reflection, and social change. My work is rooted in community, faith, and real-life experiences, focusing on stories that reveal human resilience, moral struggle, and hope.</p>
-                    <p>Through SAINTHOOD FILM PRODUCTION, I aim to create authentic films and documentaries that give voice to the unseen and inspire awareness beyond borders.</p>
-                </div>
-                
-                <div class="about-card">
-                    <h3>Our Core Values</h3>
-                    <div class="values-section">
-                        <div class="values-grid">
-                            <div class="value-card">
-                                <h4><i class="fas fa-user-check"></i> Authenticity</h4>
-                                <p>We tell honest stories rooted in real experiences, cultures, and communities.</p>
-                            </div>
-                            <div class="value-card">
-                                <h4><i class="fas fa-compass"></i> Purpose-Driven Storytelling</h4>
-                                <p>Every film we create carries meaning, aiming to educate, inspire, and create positive change.</p>
-                            </div>
-                            <div class="value-card">
-                                <h4><i class="fas fa-shield-alt"></i> Integrity</h4>
-                                <p>We uphold ethical filmmaking practices, respecting people, stories, and the environments we work in.</p>
-                            </div>
-                            <div class="value-card">
-                                <h4><i class="fas fa-hands-helping"></i> Community Engagement</h4>
-                                <p>We believe in storytelling with communities, not just about them.</p>
-                            </div>
-                            <div class="value-card">
-                                <h4><i class="fas fa-palette"></i> Creativity & Excellence</h4>
-                                <p>We pursue artistic quality and innovation while maintaining high professional standards.</p>
-                            </div>
-                            <div class="value-card">
-                                <h4><i class="fas fa-pray"></i> Faith & Hope</h4>
-                                <p>Our work is guided by values that promote compassion, resilience, and moral reflection.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="about-card">
-                    <h3>Our Objectives</h3>
-                    <div class="objectives-list">
-                        <ul>
-                            <li>To produce high-quality films and documentaries that reflect authentic community stories and social realities.</li>
-                            <li>To use cinema as a tool for education, awareness, and positive social transformation.</li>
-                            <li>To amplify underrepresented voices, especially children and youth, through ethical storytelling.</li>
-                            <li>To promote environmental sustainability, cultural heritage, and moral values through film.</li>
-                            <li>To collaborate with local and international partners to expand the reach and impact of our productions.</li>
-                            <li>To nurture creative talent and strengthen film capacity within local communities.</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="about-card">
-                    <div class="about-header">
-                        <img src="godwin.jpg" alt="Kasoba Godwin" class="profile-img">
-                        <div class="about-header-text">
-                            <h2>Kasoba Godwin</h2>
-                            <p>Founder & Creative Director</p>
-                            <div class="social-links">
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                                <a href="#"><i class="fab fa-imdb"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </section>
-    
-    <!-- Contact Page -->
-    <br><br>
-    <section id="contact" class="page">
-        <main>
-            <div class="page-header">
-                <h2>Get In Touch</h2>
-                <p>Ready to bring your vision to life? Let's discuss your next project!</p>
-            </div>
-            
-            <div class="contact-form">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" placeholder="Enter your name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Your Email</label>
-                        <input type="email" id="email" placeholder="Enter your email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="company">Company/Organization</label>
-                        <input type="text" id="company" placeholder="Your company (optional)">
-                    </div>
-                    <div class="form-group">
-                        <label for="project">Project Type</label>
-                        <select id="project" style="width:100%; padding:1rem 1.2rem; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); border-radius:8px; color:white; font-size:1rem;">
-                            <option value="">Select a project type</option>
-                            <option value="commercial">Commercial/Advertisement</option>
-                            <option value="corporate">Corporate Video</option>
-                            <option value="film">Short Film/Narrative</option>
-                            <option value="music">Music Video</option>
-                            <option value="event">Event Coverage</option>
-                            <option value="short">Video Short</option>
-                            <option value="documentary">Documentary</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Project Details</label>
-                        <textarea id="message" placeholder="Tell us about your project, timeline, budget, and any other relevant details..." required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">
-                        <i class="fas fa-paper-plane"></i> Send Message
-                    </button>
-                </form>
-            </div>
-        </main>
-    </section>
-    
-    <!-- Video Player Modal -->
-    <div class="video-modal" id="videoModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closeModal">&times;</button>
-            <div class="video-container">
-                <iframe id="youtubePlayer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        <nav id="mainNav">
+            <ul>
+                <li><a class="nav-link active" data-page="home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a class="nav-link" data-page="videos"><i class="fas fa-play-circle"></i> Portfolio</a></li>
+                <li><a class="nav-link" data-page="favorites"><i class="fas fa-star"></i> Favourites</a></li>
+                <li><a class="nav-link" data-page="shorts"><i class="fas fa-clapperboard"></i> Shorts</a></li>
+                <li><a class="nav-link" data-page="gallery"><i class="fas fa-images"></i> Gallery</a></li>
+                <li><a class="nav-link" data-page="about"><i class="fas fa-user"></i> About</a></li>
+                <li><a class="nav-link" data-page="contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </nav>
     </div>
-    
-    <!-- Lightbox Modal -->
-    <div class="lightbox-modal" id="lightboxModal">
-        <div class="lightbox-content">
-            <button class="close-lightbox" id="closeLightbox">&times;</button>
-            <button class="lightbox-nav lightbox-prev" id="prevImage"><i class="fas fa-chevron-left"></i></button>
-            <button class="lightbox-nav lightbox-next" id="nextImage"><i class="fas fa-chevron-right"></i></button>
-            <div class="lightbox-img-container">
-                <img id="lightboxImage" src="" alt="">
-            </div>
-            <div class="lightbox-info">
-                <h3 id="lightboxTitle"></h3>
-                <p id="lightboxDescription"></p>
-                <div class="lightbox-meta">
-                    <span><i class="fas fa-camera"></i> Production Gallery</span>
-                    <span><i class="far fa-calendar"></i> <span id="lightboxDate"></span></span>
+</header>
+
+<!-- HOME PAGE -->
+<section id="page-home" class="page active">
+    <div class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-subtitle">PROFESSIONAL VIDEO PRODUCTION</div>
+                <h1 class="hero-title">Crafting Visual Stories That Captivate</h1>
+                <p class="hero-description">SAINTHOOD FILM PRODUCTION is an independent film production company based in Kasese, Uganda, dedicated to telling authentic African stories with purpose and impact.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary nav-link" data-page="videos"><i class="fas fa-play-circle"></i> View Our Work</button>
+                    <button class="btn btn-secondary nav-link" data-page="contact"><i class="fas fa-envelope"></i> Get In Touch</button>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- Footer -->
+
+    <div class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item"><div class="stat-number" data-target="1000">0</div><div class="stat-label">Souls Impacted</div></div>
+            <div class="stat-item"><div class="stat-number" data-target="10">0</div><div class="stat-label">Videos</div></div>
+            <div class="stat-item"><div class="stat-number" data-target="4">0</div><div class="stat-label">Years Experience</div></div>
+        </div>
+    </div>
+
+    <div class="services-section">
+        <div class="section-header">
+            <div class="section-subtitle">OUR SERVICES</div>
+            <h2 class="section-title">What We Do Best</h2>
+            <p class="section-description">From concept to delivery, comprehensive video production services tailored to your needs.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card"><div class="service-icon"><i class="fas fa-film"></i></div><h3>Cinematic Storytelling</h3><p>Narrative-driven films with emotional depth and visual artistry that resonates with audiences and leaves lasting impressions.</p></div>
+            <div class="service-card"><div class="service-icon"><i class="fas fa-briefcase"></i></div><h3>Corporate Videos</h3><p>Professional corporate videos for presentations, training, testimonials, and company profiles that communicate your message effectively.</p></div>
+            <div class="service-card"><div class="service-icon"><i class="fas fa-music"></i></div><h3>Music Videos</h3><p>Creative and visually stunning music videos that amplify the artist's vision and connect with fans on a deeper level.</p></div>
+            <div class="service-card"><div class="service-icon"><i class="fas fa-edit"></i></div><h3>Post-Production</h3><p>Expert editing, color grading, visual effects, sound design, and motion graphics to polish your content to perfection.</p></div>
+        </div>
+    </div>
+
+    <!-- Shorts Carousel on Home -->
+    <div class="shorts-home-section">
+        <div class="shorts-header" style="max-width:1400px;margin:0 auto;">
+            <div>
+                <div class="section-subtitle">BITE-SIZED CONTENT</div>
+                <h2 class="section-title" style="margin-bottom:0;">Trending Shorts</h2>
+                <p class="section-description" style="text-align:left;margin:1rem 0 0 0;">Quick, engaging, and visually stunning short-form content</p>
+            </div>
+            <div class="shorts-controls">
+                <button class="shorts-control-btn" id="prevShortBtn" disabled><i class="fas fa-chevron-left"></i></button>
+                <button class="shorts-control-btn" id="nextShortBtn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        <div style="max-width:1400px;margin:0 auto;">
+            <div class="shorts-carousel-wrapper">
+                <div class="shorts-grid-track" id="shortsTrack"></div>
+            </div>
+        </div>
+        <div class="shorts-view-all">
+            <button class="btn btn-primary nav-link" data-page="shorts"><i class="fas fa-play-circle"></i> View All Shorts</button>
+        </div>
+    </div>
+
+    <!-- Featured Videos on Home -->
+    <div class="services-section" style="padding-top:0;">
+        <div class="section-header">
+            <div class="section-subtitle">FEATURED WORK</div>
+            <h2 class="section-title">Our Latest Projects</h2>
+            <p class="section-description">A selection of our most recent and noteworthy video productions.</p>
+        </div>
+        <div class="video-grid" id="homeVideoGrid"></div>
+    </div>
+
     <footer>
         <div class="footer-container">
             <div class="footer-col">
                 <h3>SAINTHOOD FILM PRODUCTION</h3>
-                <p style="color: #aaa; line-height: 1.8; margin-bottom: 1.5rem;">An independent film production company based in Kasese, Uganda, dedicated to telling authentic African stories with purpose and impact.</p>
-                <div class="social-links">
+                <p style="color:#aaa;line-height:1.8;margin-bottom:1.5rem;">An independent film production company based in Kasese, Uganda, dedicated to telling authentic African stories with purpose and impact.</p>
+                <div class="footer-social">
                     <a href="https://youtube.com/@francisofassisi2622?si=2_SNZ_PucWtx8hS5" target="_blank"><i class="fab fa-youtube"></i></a>
                     <a href="#"><i class="fab fa-vimeo-v"></i></a>
                     <a href="https://www.instagram.com/kisembogodwinfrancisemmanuel?igsh=dzM5cWJscmFwN3ky" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -1849,20 +391,20 @@
             <div class="footer-col">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#home" class="footer-nav-link" data-page="home"><i class="fas fa-chevron-right"></i> Home</a></li>
-                    <li><a href="#videos" class="footer-nav-link" data-page="videos"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
-                    <li><a href="#favorites" class="footer-nav-link" data-page="favorites"><i class="fas fa-chevron-right"></i> Showreel</a></li>
-                    <li><a href="#shorts" class="footer-nav-link" data-page="shorts"><i class="fas fa-chevron-right"></i> Shorts</a></li>
-                    <li><a href="#gallery" class="footer-nav-link" data-page="gallery"><i class="fas fa-chevron-right"></i> Gallery</a></li>
-                    <li><a href="#about" class="footer-nav-link" data-page="about"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                    <li><a href="#contact" class="footer-nav-link" data-page="contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    <li><a class="nav-link" data-page="home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a class="nav-link" data-page="videos"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                    <li><a class="nav-link" data-page="favorites"><i class="fas fa-chevron-right"></i> Showreel</a></li>
+                    <li><a class="nav-link" data-page="shorts"><i class="fas fa-chevron-right"></i> Shorts</a></li>
+                    <li><a class="nav-link" data-page="gallery"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+                    <li><a class="nav-link" data-page="about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a class="nav-link" data-page="contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h3>Our Focus Areas</h3>
                 <ul>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Faith & Hope</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Creativity & Excellence</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Faith &amp; Hope</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Creativity &amp; Excellence</a></li>
                     <li><a href="#"><i class="fas fa-chevron-right"></i> Purpose-Driven Storytelling</a></li>
                     <li><a href="#"><i class="fas fa-chevron-right"></i> Integrity</a></li>
                     <li><a href="#"><i class="fas fa-chevron-right"></i> Community Engagement</a></li>
@@ -1876,336 +418,569 @@
                     <li><a href="tel:+256754140770"><i class="fas fa-phone"></i> +256 754 140 770</a></li>
                     <li><a href="mailto:ofassisif500@gmail.com"><i class="fas fa-envelope"></i> ofassisif500@gmail.com</a></li>
                     <li><a href="mailto:go.kisembo200@gmail.com"><i class="fas fa-envelope"></i> go.kisembo200@gmail.com</a></li>
-                    <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM EAT</a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> Mon–Fri: 9AM–6PM EAT</a></li>
                 </ul>
             </div>
         </div>
-        <div class="copyright">
-            <p>&copy; 2026 SAINTHOOD FILM PRODUCTION. All rights reserved. | Crafted with <i class="fas fa-heart" style="color: var(--primary-color);"></i> for visual storytelling</p>
-        </div>
+        <div class="copyright"><p>&copy; 2026 SAINTHOOD FILM PRODUCTION. All rights reserved. | Crafted with <i class="fas fa-heart" style="color:var(--primary-color);"></i> for visual storytelling</p></div>
     </footer>
-    
-    <script>
-        const videoData = [
-            { id: 1, title: "SAINTHOOD FILM PRODUCTION - Official Showreel", description: "A compilation of our best cinematic moments and storytelling highlights showcasing our production quality.", category: "Showreel", youtubeId: "89R6LLAnsNc", duration: "03:45", views: "10K", date: "2023-11-15", favorite: true, thumbnail: "https://img.youtube.com/vi/89R6LLAnsNc/hqdefault.jpg" },
-            { id: 2, title: "Kasese Cultural Heritage Documentary", description: "Exploring the rich cultural heritage and traditions of the people in Kasese, Uganda.", category: "Documentary", youtubeId: "I5fSQpv3vFU", duration: "28:30", views: "25K", date: "2023-10-22", favorite: true, thumbnail: "https://img.youtube.com/vi/I5fSQpv3vFU/hqdefault.jpg" },
-            { id: 3, title: "Rwenzori Mountains Expedition", description: "A cinematic journey through the majestic Rwenzori Mountains of Uganda.", category: "Cinematic", youtubeId: "Xjyz2FFtEeQ", duration: "15:20", views: "18K", date: "2023-09-15", favorite: true, thumbnail: "https://img.youtube.com/vi/Xjyz2FFtEeQ/hqdefault.jpg" },
-            { id: 4, title: "Women Empowerment in Rural Uganda", description: "Documentary highlighting women's empowerment initiatives in rural communities.", category: "Documentary", youtubeId: "z1Db65HgqCk", duration: "22:45", views: "15K", date: "2023-08-28", favorite: false, thumbnail: "https://img.youtube.com/vi/z1Db65HgqCk/hqdefault.jpg" },
-            { id: 5, title: "Urban Stories: Kampala Life", description: "A visual narrative capturing the vibrant life and stories of Kampala city.", category: "Cinematic", youtubeId: "GP83BSP2GVA", duration: "18:10", views: "12K", date: "2023-07-18", favorite: false, thumbnail: "https://img.youtube.com/vi/GP83BSP2GVA/hqdefault.jpg" },
-            { id: 6, title: "Environmental Conservation Campaign", description: "Awareness campaign video for environmental conservation in Uganda.", category: "Campaign", youtubeId: "6dIEY292NMw", duration: "08:45", views: "9K", date: "2023-06-05", favorite: false, thumbnail: "https://img.youtube.com/vi/6dIEY292NMw/hqdefault.jpg" },
-            { id: 7, title: "Faith and Community Documentary", description: "Exploring the role of faith in building resilient communities in Uganda.", category: "Documentary", youtubeId: "iHQcik7AJ44", duration: "32:15", views: "20K", date: "2023-05-12", favorite: true, thumbnail: "https://img.youtube.com/vi/iHQcik7AJ44/hqdefault.jpg" },
-            { id: 8, title: "Traditional Music and Dance Preservation", description: "Documentary on preserving traditional Ugandan music and dance forms.", category: "Documentary", youtubeId: "QvsuYX7dj2o", duration: "26:40", views: "14K", date: "2023-04-08", favorite: false, thumbnail: "https://img.youtube.com/vi/QvsuYX7dj2o/hqdefault.jpg" },
-            { id: 9, title: "Youth Entrepreneurship in Africa", description: "Inspiring stories of young entrepreneurs making a difference in Uganda.", category: "Documentary", youtubeId: "CNmOgNpU_Mw", duration: "24:25", views: "16K", date: "2023-03-20", favorite: true, thumbnail: "https://img.youtube.com/vi/CNmOgNpU_Mw/hqdefault.jpg" },
-            { id: 10, title: "African Wildlife Conservation", description: "Documentary on wildlife conservation efforts in Uganda's national parks.", category: "Documentary", youtubeId: "cW7nc3ZhJQE", duration: "29:50", views: "22K", date: "2023-02-14", favorite: false, thumbnail: "https://img.youtube.com/vi/cW7nc3ZhJQE/hqdefault.jpg" },
-            { id: 11, title: "Sustainable Farming Practices", description: "Educational video on sustainable agricultural practices in East Africa.", category: "Educational", youtubeId: "QiXfHI73v6g", duration: "19:35", views: "11K", date: "2023-01-30", favorite: false, thumbnail: "https://img.youtube.com/vi/QiXfHI73v6g/hqdefault.jpg" },
-            { id: 12, title: "Community Storytelling Process", description: "A glimpse into how we work with communities to tell their authentic stories.", category: "Behind the Scenes", youtubeId: "ZazyUWsVGPw", duration: "14:20", views: "8K", date: "2022-12-18", favorite: true, thumbnail: "https://img.youtube.com/vi/ZazyUWsVGPw/hqdefault.jpg" },
-            { id: 13, title: "Community Development Projects", description: "Documenting community-led development projects in Western Uganda.", category: "Documentary", youtubeId: "HFRi8U4FRjY", duration: "27:15", views: "13K", date: "2022-11-05", favorite: false, thumbnail: "https://img.youtube.com/vi/HFRi8U4FRjY/hqdefault.jpg" },
-            { id: 14, title: "African Storytelling Traditions", description: "Exploring the rich oral storytelling traditions across different Ugandan cultures.", category: "Documentary", youtubeId: "JNViMDEgAfw", duration: "31:40", views: "17K", date: "2022-10-22", favorite: true, thumbnail: "https://img.youtube.com/vi/JNViMDEgAfw/hqdefault.jpg" }
-        ];
-        const shortsData = [
-            { id: 101, title: "Breathtaking Rwenzori Sunrise", description: "Time-lapse of sunrise over the Rwenzori Mountains.", category: "Cinematic", youtubeId: "aOwC_M3XZGI", duration: "00:45", views: "42K", date: "2023-11-10", thumbnail: "https://img.youtube.com/vi/aOwC_M3XZGI/hqdefault.jpg" },
-            { id: 102, title: "Traditional Dance Moves", description: "Quick showcase of traditional Ugandan dance steps.", category: "Cultural", youtubeId: "DvsxLnmf3G0", duration: "00:52", views: "38K", date: "2023-11-05", thumbnail: "https://img.youtube.com/vi/DvsxLnmf3G0/hqdefault.jpg" },
-            { id: 103, title: "Cinematic Drone Shot", description: "Stunning aerial view of Kasese town from above.", category: "Cinematic", youtubeId: "p7myaGww7GA", duration: "00:48", views: "55K", date: "2023-10-28", thumbnail: "https://img.youtube.com/vi/p7myaGww7GA/hqdefault.jpg" },
-            { id: 104, title: "Wildlife Close-up", description: "Close encounter with Uganda's beautiful wildlife.", category: "Nature", youtubeId: "w928A5yCyjw", duration: "00:51", views: "67K", date: "2023-10-20", thumbnail: "https://img.youtube.com/vi/w928A5yCyjw/hqdefault.jpg" },
-            { id: 105, title: "Artisan Craftsmanship", description: "Local artisan creating traditional Ugandan crafts.", category: "Cultural", youtubeId: "HxrUnRkQuTE", duration: "00:44", views: "29K", date: "2023-10-15", thumbnail: "https://img.youtube.com/vi/HxrUnRkQuTE/hqdefault.jpg" },
-            { id: 106, title: "Rainy Season Beauty", description: "The beauty of Uganda during rainy season.", category: "Cinematic", youtubeId: "miW4c1JZ35g", duration: "00:56", views: "41K", date: "2023-10-10", thumbnail: "https://img.youtube.com/vi/miW4c1JZ35g/hqdefault.jpg" },
-            { id: 107, title: "Market Day Energy", description: "Vibrant energy of local market day in Western Uganda.", category: "Documentary", youtubeId: "PNFNfnm0kZM", duration: "00:49", views: "33K", date: "2023-10-05", thumbnail: "https://img.youtube.com/vi/PNFNfnm0kZM/hqdefault.jpg" },
-            { id: 108, title: "Fishing on Lake George", description: "Traditional fishing methods on one of Uganda's beautiful lakes.", category: "Documentary", youtubeId: "vtzHcYmrN88", duration: "00:53", views: "27K", date: "2023-09-28", thumbnail: "https://img.youtube.com/vi/vtzHcYmrN88/hqdefault.jpg" },
-            { id: 109, title: "Children's Laughter", description: "Pure joy and laughter from children in a rural Ugandan village.", category: "Documentary", youtubeId: "bRipBDG1d8U", duration: "00:47", views: "45K", date: "2023-09-20", thumbnail: "https://img.youtube.com/vi/bRipBDG1d8U/hqdefault.jpg" },
-            { id: 110, title: "Sunset over Kasese", description: "Golden hour time-lapse with stunning colors over the landscape.", category: "Cinematic", youtubeId: "tsHyKEtD6nk", duration: "00:50", views: "52K", date: "2023-09-15", thumbnail: "https://img.youtube.com/vi/tsHyKEtD6nk/hqdefault.jpg" },
-            { id: 111, title: "Traditional Cooking", description: "Quick look at traditional Ugandan cooking methods.", category: "Cultural", youtubeId: "aAuRERQRSQo", duration: "00:46", views: "31K", date: "2023-09-10", thumbnail: "https://img.youtube.com/vi/aAuRERQRSQo/hqdefault.jpg" },
-            { id: 112, title: "Farming Life", description: "A day in the life of a Ugandan farmer.", category: "Documentary", youtubeId: "Q3CFe7pbgJ0", duration: "00:54", views: "28K", date: "2023-09-05", thumbnail: "https://img.youtube.com/vi/Q3CFe7pbgJ0/hqdefault.jpg" },
-            { id: 113, title: "Waterfall Magic", description: "Beautiful waterfall in Western Uganda in slow motion.", category: "Cinematic", youtubeId: "D-AfHYHTTwk", duration: "00:48", views: "63K", date: "2023-08-28", thumbnail: "https://img.youtube.com/vi/D-AfHYHTTwk/hqdefault.jpg" },
-            { id: 114, title: "Community Gathering", description: "Traditional community meeting and decision-making process.", category: "Cultural", youtubeId: "v5c1YtT5EYQ", duration: "00:52", views: "25K", date: "2023-08-20", thumbnail: "https://img.youtube.com/vi/v5c1YtT5EYQ/hqdefault.jpg" },
-            { id: 115, title: "Bird's Eye View", description: "Stunning drone footage of Uganda's diverse landscapes.", category: "Cinematic", youtubeId: "t4TyaPFZ_4I", duration: "00:47", views: "58K", date: "2023-08-15", thumbnail: "https://img.youtube.com/vi/t4TyaPFZ_4I/hqdefault.jpg" },
-            { id: 116, title: "Traditional Music", description: "Quick performance on traditional Ugandan instruments.", category: "Cultural", youtubeId: "uA5lc4Y9NF0", duration: "00:51", views: "36K", date: "2023-08-10", thumbnail: "https://img.youtube.com/vi/uA5lc4Y9NF0/hqdefault.jpg" },
-            { id: 117, title: "Morning in the Village", description: "The peaceful start of a day in a rural Ugandan village.", category: "Documentary", youtubeId: "7W8GmJxll-A", duration: "00:49", views: "34K", date: "2023-08-05", thumbnail: "https://img.youtube.com/vi/7W8GmJxll-A/hqdefault.jpg" },
-            { id: 118, title: "River Life", description: "Daily activities along the rivers of Western Uganda.", category: "Documentary", youtubeId: "6mxDd8O-9no", duration: "00:53", views: "30K", date: "2023-07-28", thumbnail: "https://img.youtube.com/vi/6mxDd8O-9no/hqdefault.jpg" },
-            { id: 119, title: "Cultural Festival Highlights", description: "Best moments from a traditional cultural festival.", category: "Cultural", youtubeId: "-872UygWpUs", duration: "00:55", views: "47K", date: "2023-07-20", thumbnail: "https://img.youtube.com/vi/-872UygWpUs/hqdefault.jpg" },
-            { id: 120, title: "Wildflowers Bloom", description: "Time-lapse of wildflowers blooming in the Ugandan countryside.", category: "Nature", youtubeId: "4AoCIHpVZPk", duration: "00:46", views: "39K", date: "2023-07-15", thumbnail: "https://img.youtube.com/vi/4AoCIHpVZPk/hqdefault.jpg" }
-        ];
+</section>
 
-        
-        
-        const galleryData = [
-            { id: 1, title: "Cinematic Production Setup", description: "Professional camera and lighting setup for a commercial shoot.", imageUrl: "sainthood1.jpg", date: "2023-08-15", location: "Studio 1" },
-            { id: 2, title: "Directing on Location", description: "Director working with talent during an outdoor scene.", imageUrl: "sainthood2.jpg", date: "2023-08-10", location: "Outdoor Location" },
-            { id: 3, title: "Professional Camera Rig", description: "High-end cinema camera setup for stable shots.", imageUrl: "sainthood3.jpg", date: "2023-08-05", location: "Main Studio" },
-            { id: 4, title: "Studio Lighting Setup", description: "Creating the perfect lighting atmosphere for a scene.", imageUrl: "sainthood4.jpg", date: "2023-07-28", location: "Studio 2" },
-            { id: 5, title: "Team Collaboration", description: "Production team discussing the next shot sequence.", imageUrl: "sainthood5.jpg", date: "2023-07-22", location: "On Set" },
-            { id: 6, title: "Cinema Camera Operation", description: "Cinematographer operating camera for a tracking shot.", imageUrl: "sainthood6.jpg", date: "2023-07-15", location: "Film Set" },
-            { id: 7, title: "Monitor Review Session", description: "Director and DP reviewing footage on set.", imageUrl: "sainthood7.jpg", date: "2023-07-10", location: "Production Tent" },
-            { id: 8, title: "Professional Audio Recording", description: "Sound engineer capturing clean audio on location.", imageUrl: "sainthood8.jpg", date: "2023-06-28", location: "Sound Stage" },
-            { id: 9, title: "Equipment Setup", description: "Preparing camera and lighting equipment for a shoot.", imageUrl: "sainthood9.jpg", date: "2023-06-22", location: "Studio Backlot" },
-            { id: 10, title: "Creative Direction", description: "Director guiding actors through a scene.", imageUrl: "sainthood10.jpg", date: "2023-06-15", location: "Set Location" },
-            { id: 11, title: "Cinematic Composition", description: "Setting up the perfect frame for a dramatic scene.", imageUrl: "sainthood11.jpg", date: "2023-06-08", location: "Indoor Set" },
-            { id: 12, title: "Production Team Meeting", description: "Team planning the day's shooting schedule.", imageUrl: "sainthood12.jpg", date: "2023-06-01", location: "Production Office" },
-            { id: 13, title: "Camera Movement Setup", description: "Setting up equipment for dynamic camera movements.", imageUrl: "sainthood13.jpg", date: "2023-05-25", location: "Studio Floor" },
-            { id: 14, title: "Lighting Test", description: "Testing different lighting setups for mood creation.", imageUrl: "sainthood14.jpg", date: "2023-05-18", location: "Studio 3" },
-            { id: 15, title: "On-Set Monitoring", description: "Real-time monitoring of the shot being captured.", imageUrl: "sainthood15.jpg", date: "2023-05-12", location: "Control Room" },
-            { id: 16, title: "Professional Camera Array", description: "Multiple camera setup for coverage of a complex scene.", imageUrl: "sainthood16.jpg", date: "2023-05-05", location: "Multi-camera Studio" },
-            { id: 17, title: "Director-Actor Collaboration", description: "Director working closely with actors on performance.", imageUrl: "sainthood17.jpg", date: "2023-04-28", location: "Rehearsal Space" },
-            { id: 18, title: "Cinematic Lighting Effects", description: "Creating dramatic lighting effects for visual impact.", imageUrl: "sainthood18.jpg", date: "2023-04-21", location: "Effects Stage" },
-            { id: 19, title: "Equipment Preparation", description: "Technical team preparing equipment for the day's shoot.", imageUrl: "sainthood19.jpg", date: "2023-04-15", location: "Equipment Room" },
-            { id: 20, title: "On-Set Communication", description: "Production team coordinating during a complex shot.", imageUrl: "sainthood20.jpg", date: "2023-04-08", location: "Film Set" },
-            { id: 21, title: "Camera Stabilization Setup", description: "Setting up stabilization equipment for smooth shots.", imageUrl: "sainthood21.jpg", date: "2023-04-01", location: "Studio Setup" },
-            { id: 22, title: "Scene Composition", description: "Framing and composing the perfect cinematic shot.", imageUrl: "sainthood22.jpg", date: "2023-03-25", location: "Set Location" },
-            { id: 23, title: "Production Team in Action", description: "The full production team working together on set.", imageUrl: "sainthood23.jpg", date: "2023-03-18", location: "Working Set" },
-            { id: 24, title: "Final Shot Review", description: "Reviewing the final shots of the day's production.", imageUrl: "sainthood24.jpg", date: "2023-03-12", location: "Review Room" }
-        ];
-        
-        const pages = document.querySelectorAll('.page');
-        const navLinks = document.querySelectorAll('.nav-link, .footer-nav-link');
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mainNav = document.getElementById('mainNav');
-        const videoModal = document.getElementById('videoModal');
-        const closeModal = document.getElementById('closeModal');
-        const youtubePlayer = document.getElementById('youtubePlayer');
-        const contactForm = document.getElementById('contactForm');
-        const shortsGrid = document.getElementById('shortsGrid');
-        const allShortsGrid = document.getElementById('allShortsGrid');
-        const prevShortBtn = document.querySelector('.prev-short');
-        const nextShortBtn = document.querySelector('.next-short');
-        const galleryGrid = document.getElementById('gridView');
-        const viewButtons = document.querySelectorAll('.view-btn');
-        const lightboxModal = document.getElementById('lightboxModal');
-        const closeLightbox = document.getElementById('closeLightbox');
-        const lightboxImage = document.getElementById('lightboxImage');
-        const lightboxTitle = document.getElementById('lightboxTitle');
-        const lightboxDescription = document.getElementById('lightboxDescription');
-        const lightboxDate = document.getElementById('lightboxDate');
-        const prevImage = document.getElementById('prevImage');
-        const nextImage = document.getElementById('nextImage');
-        const paginationBtns = document.querySelectorAll('.pagination-btn:not(#prevPage):not(#nextPage)');
-        const prevPageBtn = document.getElementById('prevPage');
-        const nextPageBtn = document.getElementById('nextPage');
-        
-        let currentView = 'grid';
-        let currentPage = 1;
-        const itemsPerPage = 12;
-        let currentLightboxIndex = 0;
-        
-        function init() {
-            loadHomeVideos();
-            loadAllVideos();
-            loadFavoriteVideos();
-            loadShorts();
-            loadAllShorts();
+<!-- PORTFOLIO PAGE -->
+<section id="page-videos" class="page">
+    <div class="page-inner">
+        <div class="page-header"><h2>Our Portfolio</h2><p>Browse our complete collection of video productions across various genres and formats</p></div>
+        <div class="video-grid" id="allVideoGrid"></div>
+    </div>
+</section>
+
+<!-- FAVOURITES PAGE -->
+<section id="page-favorites" class="page">
+    <div class="page-inner">
+        <div class="page-header"><h2>Showreel Highlights</h2><p>Our best and most representative work showcasing the range and quality of our productions</p></div>
+        <div class="video-grid" id="favVideoGrid"></div>
+    </div>
+</section>
+
+<!-- SHORTS PAGE -->
+<section id="page-shorts" class="page">
+    <div class="page-inner">
+        <div class="page-header"><h2>Video Shorts</h2><p>Bite-sized content that delivers maximum impact in minimum time.</p></div>
+        <div class="shorts-full-grid" id="allShortsGrid"></div>
+    </div>
+</section>
+
+<!-- GALLERY PAGE -->
+<section id="page-gallery" class="page">
+    <div class="page-inner">
+        <div class="page-header"><h2>Production Gallery</h2><p>Behind the scenes, production stills, and visual moments from our filmmaking journey</p></div>
+        <div class="gallery-controls">
+            <div class="view-options">
+                <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button>
+                <button class="view-btn" data-view="masonry"><i class="fas fa-th-large"></i></button>
+            </div>
+        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+        <div class="pagination" id="galleryPagination"></div>
+    </div>
+</section>
+
+<!-- ABOUT PAGE -->
+<section id="page-about" class="page">
+    <div class="page-inner">
+        <div class="page-header"><h2>About SAINTHOOD FILM PRODUCTION</h2><p>Authentic African Stories with Purpose and Impact</p></div>
+        <div class="about-container">
+            <div class="about-card">
+                <div class="about-content">
+                    <h3>Our Story</h3>
+                    <p>SAINTHOOD FILM PRODUCTION is an independent film production company based in Kasese, Uganda, dedicated to telling authentic African stories with purpose and impact. Founded with a vision to inspire change, the company focuses on producing films and documentaries that explore social realities, environmental sustainability, culture, faith, and human resilience.</p>
+                    <p>Rooted in community storytelling, SAINTHOOD FILM PRODUCTION works closely with local voices—especially children and youth—to highlight untold stories and lived experiences often overlooked. Our productions aim to educate, empower, and spark dialogue both locally and globally.</p>
+                    <p>Through creative excellence and social responsibility, SAINTHOOD FILM PRODUCTION continues to use film as a tool for awareness, transformation, and hope.</p>
+                </div>
+            </div>
+            <div class="mission-vision-grid">
+                <div class="mission-card"><h3><i class="fas fa-bullseye"></i> Our Mission</h3><p>To create impactful films and documentaries that tell authentic stories rooted in community, faith, and social reality; using cinema as a powerful tool for education, awareness, and positive transformation both locally and globally.</p></div>
+                <div class="vision-card"><h3><i class="fas fa-eye"></i> Our Vision</h3><p>To become a leading African film production company recognized for purpose-driven storytelling that inspires social awareness, preserves authentic community narratives, and creates lasting impact on audiences worldwide.</p></div>
+            </div>
+            <div class="director-statement">
+                <h3><i class="fas fa-quote-left"></i> Director's Statement</h3>
+                <p><strong>Kasoba Godwin</strong></p>
+                <p>I believe film is a powerful tool for truth, reflection, and social change. My work is rooted in community, faith, and real-life experiences, focusing on stories that reveal human resilience, moral struggle, and hope.</p>
+                <p>Through SAINTHOOD FILM PRODUCTION, I aim to create authentic films and documentaries that give voice to the unseen and inspire awareness beyond borders.</p>
+            </div>
+            <div class="about-card">
+                <h3>Our Core Values</h3>
+                <div class="values-grid">
+                    <div class="value-card"><h4><i class="fas fa-user-check"></i> Authenticity</h4><p>We tell honest stories rooted in real experiences, cultures, and communities.</p></div>
+                    <div class="value-card"><h4><i class="fas fa-compass"></i> Purpose-Driven Storytelling</h4><p>Every film we create carries meaning, aiming to educate, inspire, and create positive change.</p></div>
+                    <div class="value-card"><h4><i class="fas fa-shield-alt"></i> Integrity</h4><p>We uphold ethical filmmaking practices, respecting people, stories, and the environments we work in.</p></div>
+                    <div class="value-card"><h4><i class="fas fa-hands-helping"></i> Community Engagement</h4><p>We believe in storytelling with communities, not just about them.</p></div>
+                    <div class="value-card"><h4><i class="fas fa-palette"></i> Creativity &amp; Excellence</h4><p>We pursue artistic quality and innovation while maintaining high professional standards.</p></div>
+                    <div class="value-card"><h4><i class="fas fa-pray"></i> Faith &amp; Hope</h4><p>Our work is guided by values that promote compassion, resilience, and moral reflection.</p></div>
+                </div>
+            </div>
+            <div class="about-card">
+                <h3>Our Objectives</h3>
+                <div class="objectives-list">
+                    <ul>
+                        <li>To produce high-quality films and documentaries that reflect authentic community stories and social realities.</li>
+                        <li>To use cinema as a tool for education, awareness, and positive social transformation.</li>
+                        <li>To amplify underrepresented voices, especially children and youth, through ethical storytelling.</li>
+                        <li>To promote environmental sustainability, cultural heritage, and moral values through film.</li>
+                        <li>To collaborate with local and international partners to expand the reach and impact of our productions.</li>
+                        <li>To nurture creative talent and strengthen film capacity within local communities.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="about-card">
+                <div class="about-header">
+                    <img src="godwin.jpg" alt="Kasoba Godwin" class="profile-img" onerror="this.style.display='none'">
+                    <div class="about-header-text">
+                        <h2>Kasoba Godwin</h2>
+                        <p>Founder &amp; Creative Director</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-imdb"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT PAGE -->
+<section id="page-contact" class="page">
+    <div class="page-inner">
+        <div class="page-header"><h2>Get In Touch</h2><p>Ready to bring your vision to life? Let's discuss your next project!</p></div>
+        <div class="contact-form">
+            <form id="contactForm">
+                <div class="form-group"><label for="name">Your Name</label><input type="text" id="name" placeholder="Enter your name" required></div>
+                <div class="form-group"><label for="email">Your Email</label><input type="email" id="email" placeholder="Enter your email" required></div>
+                <div class="form-group"><label for="company">Company/Organization</label><input type="text" id="company" placeholder="Your company (optional)"></div>
+                <div class="form-group">
+                    <label for="project">Project Type</label>
+                    <select id="project">
+                        <option value="">Select a project type</option>
+                        <option value="commercial">Commercial/Advertisement</option>
+                        <option value="corporate">Corporate Video</option>
+                        <option value="film">Short Film/Narrative</option>
+                        <option value="music">Music Video</option>
+                        <option value="event">Event Coverage</option>
+                        <option value="short">Video Short</option>
+                        <option value="documentary">Documentary</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group"><label for="message">Project Details</label><textarea id="message" placeholder="Tell us about your project, timeline, budget, and any other relevant details..." required></textarea></div>
+                <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Video Modal -->
+<div class="video-modal" id="videoModal">
+    <div class="modal-content">
+        <button class="close-modal" id="closeModal">&times;</button>
+        <div class="video-container">
+            <iframe id="youtubePlayer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox-modal" id="lightboxModal">
+    <div class="lightbox-content">
+        <button class="close-lightbox" id="closeLightbox">&times;</button>
+        <button class="lightbox-nav lightbox-prev" id="prevImage"><i class="fas fa-chevron-left"></i></button>
+        <button class="lightbox-nav lightbox-next" id="nextImage"><i class="fas fa-chevron-right"></i></button>
+        <div class="lightbox-img-container"><img id="lightboxImage" src="" alt=""></div>
+        <div class="lightbox-info">
+            <h3 id="lightboxTitle"></h3>
+            <p id="lightboxDescription"></p>
+            <div class="lightbox-meta">
+                <span><i class="fas fa-camera"></i> Production Gallery</span>
+                <span><i class="far fa-calendar"></i> <span id="lightboxDate"></span></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+const videoData = [
+    { id:1, title:"SAINTHOOD FILM PRODUCTION - Official Showreel", description:"A compilation of our best cinematic moments and storytelling highlights showcasing our production quality.", category:"Showreel", youtubeId:"89R6LLAnsNc", duration:"03:45", views:"10K", date:"2023-11-15", favorite:true, thumbnail:"https://img.youtube.com/vi/89R6LLAnsNc/hqdefault.jpg" },
+    { id:2, title:"Kasese Cultural Heritage Documentary", description:"Exploring the rich cultural heritage and traditions of the people in Kasese, Uganda.", category:"Documentary", youtubeId:"I5fSQpv3vFU", duration:"28:30", views:"25K", date:"2023-10-22", favorite:true, thumbnail:"https://img.youtube.com/vi/I5fSQpv3vFU/hqdefault.jpg" },
+    { id:3, title:"Rwenzori Mountains Expedition", description:"A cinematic journey through the majestic Rwenzori Mountains of Uganda.", category:"Cinematic", youtubeId:"Xjyz2FFtEeQ", duration:"15:20", views:"18K", date:"2023-09-15", favorite:true, thumbnail:"https://img.youtube.com/vi/Xjyz2FFtEeQ/hqdefault.jpg" },
+    { id:4, title:"Women Empowerment in Rural Uganda", description:"Documentary highlighting women's empowerment initiatives in rural communities.", category:"Documentary", youtubeId:"z1Db65HgqCk", duration:"22:45", views:"15K", date:"2023-08-28", favorite:false, thumbnail:"https://img.youtube.com/vi/z1Db65HgqCk/hqdefault.jpg" },
+    { id:5, title:"Urban Stories: Kampala Life", description:"A visual narrative capturing the vibrant life and stories of Kampala city.", category:"Cinematic", youtubeId:"GP83BSP2GVA", duration:"18:10", views:"12K", date:"2023-07-18", favorite:false, thumbnail:"https://img.youtube.com/vi/GP83BSP2GVA/hqdefault.jpg" },
+    { id:6, title:"Environmental Conservation Campaign", description:"Awareness campaign video for environmental conservation in Uganda.", category:"Campaign", youtubeId:"6dIEY292NMw", duration:"08:45", views:"9K", date:"2023-06-05", favorite:false, thumbnail:"https://img.youtube.com/vi/6dIEY292NMw/hqdefault.jpg" },
+    { id:7, title:"Faith and Community Documentary", description:"Exploring the role of faith in building resilient communities in Uganda.", category:"Documentary", youtubeId:"iHQcik7AJ44", duration:"32:15", views:"20K", date:"2023-05-12", favorite:true, thumbnail:"https://img.youtube.com/vi/iHQcik7AJ44/hqdefault.jpg" },
+    { id:8, title:"Traditional Music and Dance Preservation", description:"Documentary on preserving traditional Ugandan music and dance forms.", category:"Documentary", youtubeId:"QvsuYX7dj2o", duration:"26:40", views:"14K", date:"2023-04-08", favorite:false, thumbnail:"https://img.youtube.com/vi/QvsuYX7dj2o/hqdefault.jpg" },
+    { id:9, title:"Youth Entrepreneurship in Africa", description:"Inspiring stories of young entrepreneurs making a difference in Uganda.", category:"Documentary", youtubeId:"CNmOgNpU_Mw", duration:"24:25", views:"16K", date:"2023-03-20", favorite:true, thumbnail:"https://img.youtube.com/vi/CNmOgNpU_Mw/hqdefault.jpg" },
+    { id:10, title:"African Wildlife Conservation", description:"Documentary on wildlife conservation efforts in Uganda's national parks.", category:"Documentary", youtubeId:"cW7nc3ZhJQE", duration:"29:50", views:"22K", date:"2023-02-14", favorite:false, thumbnail:"https://img.youtube.com/vi/cW7nc3ZhJQE/hqdefault.jpg" },
+    { id:11, title:"Sustainable Farming Practices", description:"Educational video on sustainable agricultural practices in East Africa.", category:"Educational", youtubeId:"QiXfHI73v6g", duration:"19:35", views:"11K", date:"2023-01-30", favorite:false, thumbnail:"https://img.youtube.com/vi/QiXfHI73v6g/hqdefault.jpg" },
+    { id:12, title:"Community Storytelling Process", description:"A glimpse into how we work with communities to tell their authentic stories.", category:"Behind the Scenes", youtubeId:"ZazyUWsVGPw", duration:"14:20", views:"8K", date:"2022-12-18", favorite:true, thumbnail:"https://img.youtube.com/vi/ZazyUWsVGPw/hqdefault.jpg" },
+    { id:13, title:"Community Development Projects", description:"Documenting community-led development projects in Western Uganda.", category:"Documentary", youtubeId:"HFRi8U4FRjY", duration:"27:15", views:"13K", date:"2022-11-05", favorite:false, thumbnail:"https://img.youtube.com/vi/HFRi8U4FRjY/hqdefault.jpg" },
+    { id:14, title:"African Storytelling Traditions", description:"Exploring the rich oral storytelling traditions across different Ugandan cultures.", category:"Documentary", youtubeId:"JNViMDEgAfw", duration:"31:40", views:"17K", date:"2022-10-22", favorite:true, thumbnail:"https://img.youtube.com/vi/JNViMDEgAfw/hqdefault.jpg" }
+];
+
+const shortsData = [
+    { id:101, title:"Breathtaking Rwenzori Sunrise", description:"Time-lapse of sunrise over the Rwenzori Mountains.", category:"Cinematic", youtubeId:"aOwC_M3XZGI", duration:"00:45", views:"42K", date:"2023-11-10", thumbnail:"https://img.youtube.com/vi/aOwC_M3XZGI/hqdefault.jpg" },
+    { id:102, title:"Traditional Dance Moves", description:"Quick showcase of traditional Ugandan dance steps.", category:"Cultural", youtubeId:"DvsxLnmf3G0", duration:"00:52", views:"38K", date:"2023-11-05", thumbnail:"https://img.youtube.com/vi/DvsxLnmf3G0/hqdefault.jpg" },
+    { id:103, title:"Cinematic Drone Shot", description:"Stunning aerial view of Kasese town from above.", category:"Cinematic", youtubeId:"p7myaGww7GA", duration:"00:48", views:"55K", date:"2023-10-28", thumbnail:"https://img.youtube.com/vi/p7myaGww7GA/hqdefault.jpg" },
+    { id:104, title:"Wildlife Close-up", description:"Close encounter with Uganda's beautiful wildlife.", category:"Nature", youtubeId:"w928A5yCyjw", duration:"00:51", views:"67K", date:"2023-10-20", thumbnail:"https://img.youtube.com/vi/w928A5yCyjw/hqdefault.jpg" },
+    { id:105, title:"Artisan Craftsmanship", description:"Local artisan creating traditional Ugandan crafts.", category:"Cultural", youtubeId:"HxrUnRkQuTE", duration:"00:44", views:"29K", date:"2023-10-15", thumbnail:"https://img.youtube.com/vi/HxrUnRkQuTE/hqdefault.jpg" },
+    { id:106, title:"Rainy Season Beauty", description:"The beauty of Uganda during rainy season.", category:"Cinematic", youtubeId:"miW4c1JZ35g", duration:"00:56", views:"41K", date:"2023-10-10", thumbnail:"https://img.youtube.com/vi/miW4c1JZ35g/hqdefault.jpg" },
+    { id:107, title:"Market Day Energy", description:"Vibrant energy of local market day in Western Uganda.", category:"Documentary", youtubeId:"PNFNfnm0kZM", duration:"00:49", views:"33K", date:"2023-10-05", thumbnail:"https://img.youtube.com/vi/PNFNfnm0kZM/hqdefault.jpg" },
+    { id:108, title:"Fishing on Lake George", description:"Traditional fishing methods on one of Uganda's beautiful lakes.", category:"Documentary", youtubeId:"vtzHcYmrN88", duration:"00:53", views:"27K", date:"2023-09-28", thumbnail:"https://img.youtube.com/vi/vtzHcYmrN88/hqdefault.jpg" },
+    { id:109, title:"Children's Laughter", description:"Pure joy and laughter from children in a rural Ugandan village.", category:"Documentary", youtubeId:"bRipBDG1d8U", duration:"00:47", views:"45K", date:"2023-09-20", thumbnail:"https://img.youtube.com/vi/bRipBDG1d8U/hqdefault.jpg" },
+    { id:110, title:"Sunset over Kasese", description:"Golden hour time-lapse with stunning colors over the landscape.", category:"Cinematic", youtubeId:"tsHyKEtD6nk", duration:"00:50", views:"52K", date:"2023-09-15", thumbnail:"https://img.youtube.com/vi/tsHyKEtD6nk/hqdefault.jpg" },
+    { id:111, title:"Traditional Cooking", description:"Quick look at traditional Ugandan cooking methods.", category:"Cultural", youtubeId:"aAuRERQRSQo", duration:"00:46", views:"31K", date:"2023-09-10", thumbnail:"https://img.youtube.com/vi/aAuRERQRSQo/hqdefault.jpg" },
+    { id:112, title:"Farming Life", description:"A day in the life of a Ugandan farmer.", category:"Documentary", youtubeId:"Q3CFe7pbgJ0", duration:"00:54", views:"28K", date:"2023-09-05", thumbnail:"https://img.youtube.com/vi/Q3CFe7pbgJ0/hqdefault.jpg" },
+    { id:113, title:"Waterfall Magic", description:"Beautiful waterfall in Western Uganda in slow motion.", category:"Cinematic", youtubeId:"D-AfHYHTTwk", duration:"00:48", views:"63K", date:"2023-08-28", thumbnail:"https://img.youtube.com/vi/D-AfHYHTTwk/hqdefault.jpg" },
+    { id:114, title:"Community Gathering", description:"Traditional community meeting and decision-making process.", category:"Cultural", youtubeId:"v5c1YtT5EYQ", duration:"00:52", views:"25K", date:"2023-08-20", thumbnail:"https://img.youtube.com/vi/v5c1YtT5EYQ/hqdefault.jpg" },
+    { id:115, title:"Bird's Eye View", description:"Stunning drone footage of Uganda's diverse landscapes.", category:"Cinematic", youtubeId:"t4TyaPFZ_4I", duration:"00:47", views:"58K", date:"2023-08-15", thumbnail:"https://img.youtube.com/vi/t4TyaPFZ_4I/hqdefault.jpg" },
+    { id:116, title:"Traditional Music", description:"Quick performance on traditional Ugandan instruments.", category:"Cultural", youtubeId:"uA5lc4Y9NF0", duration:"00:51", views:"36K", date:"2023-08-10", thumbnail:"https://img.youtube.com/vi/uA5lc4Y9NF0/hqdefault.jpg" },
+    { id:117, title:"Morning in the Village", description:"The peaceful start of a day in a rural Ugandan village.", category:"Documentary", youtubeId:"7W8GmJxll-A", duration:"00:49", views:"34K", date:"2023-08-05", thumbnail:"https://img.youtube.com/vi/7W8GmJxll-A/hqdefault.jpg" },
+    { id:118, title:"River Life", description:"Daily activities along the rivers of Western Uganda.", category:"Documentary", youtubeId:"6mxDd8O-9no", duration:"00:53", views:"30K", date:"2023-07-28", thumbnail:"https://img.youtube.com/vi/6mxDd8O-9no/hqdefault.jpg" },
+    { id:119, title:"Cultural Festival Highlights", description:"Best moments from a traditional cultural festival.", category:"Cultural", youtubeId:"-872UygWpUs", duration:"00:55", views:"47K", date:"2023-07-20", thumbnail:"https://img.youtube.com/vi/-872UygWpUs/hqdefault.jpg" },
+    { id:120, title:"Wildflowers Bloom", description:"Time-lapse of wildflowers blooming in the Ugandan countryside.", category:"Nature", youtubeId:"4AoCIHpVZPk", duration:"00:46", views:"39K", date:"2023-07-15", thumbnail:"https://img.youtube.com/vi/4AoCIHpVZPk/hqdefault.jpg" }
+];
+
+const galleryData = [
+    { id:1,  title:"Cinematic Production Setup",      description:"Professional camera and lighting setup for a commercial shoot.", imageUrl:"sainthood1.jpg",  date:"2023-08-15", location:"Studio 1" },
+    { id:2,  title:"Directing on Location",           description:"Director working with talent during an outdoor scene.",          imageUrl:"sainthood2.jpg",  date:"2023-08-10", location:"Outdoor Location" },
+    { id:3,  title:"Professional Camera Rig",         description:"High-end cinema camera setup for stable shots.",                imageUrl:"sainthood3.jpg",  date:"2023-08-05", location:"Main Studio" },
+    { id:4,  title:"Studio Lighting Setup",           description:"Creating the perfect lighting atmosphere for a scene.",         imageUrl:"sainthood4.jpg",  date:"2023-07-28", location:"Studio 2" },
+    { id:5,  title:"Team Collaboration",              description:"Production team discussing the next shot sequence.",            imageUrl:"sainthood5.jpg",  date:"2023-07-22", location:"On Set" },
+    { id:6,  title:"Cinema Camera Operation",         description:"Cinematographer operating camera for a tracking shot.",         imageUrl:"sainthood6.jpg",  date:"2023-07-15", location:"Film Set" },
+    { id:7,  title:"Monitor Review Session",          description:"Director and DP reviewing footage on set.",                    imageUrl:"sainthood7.jpg",  date:"2023-07-10", location:"Production Tent" },
+    { id:8,  title:"Professional Audio Recording",    description:"Sound engineer capturing clean audio on location.",            imageUrl:"sainthood8.jpg",  date:"2023-06-28", location:"Sound Stage" },
+    { id:9,  title:"Equipment Setup",                 description:"Preparing camera and lighting equipment for a shoot.",         imageUrl:"sainthood9.jpg",  date:"2023-06-22", location:"Studio Backlot" },
+    { id:10, title:"Creative Direction",              description:"Director guiding actors through a scene.",                     imageUrl:"sainthood10.jpg", date:"2023-06-15", location:"Set Location" },
+    { id:11, title:"Cinematic Composition",           description:"Setting up the perfect frame for a dramatic scene.",           imageUrl:"sainthood11.jpg", date:"2023-06-08", location:"Indoor Set" },
+    { id:12, title:"Production Team Meeting",         description:"Team planning the day's shooting schedule.",                   imageUrl:"sainthood12.jpg", date:"2023-06-01", location:"Production Office" },
+    { id:13, title:"Camera Movement Setup",           description:"Setting up equipment for dynamic camera movements.",           imageUrl:"sainthood13.jpg", date:"2023-05-25", location:"Studio Floor" },
+    { id:14, title:"Lighting Test",                   description:"Testing different lighting setups for mood creation.",         imageUrl:"sainthood14.jpg", date:"2023-05-18", location:"Studio 3" },
+    { id:15, title:"On-Set Monitoring",               description:"Real-time monitoring of the shot being captured.",             imageUrl:"sainthood15.jpg", date:"2023-05-12", location:"Control Room" },
+    { id:16, title:"Professional Camera Array",       description:"Multiple camera setup for coverage of a complex scene.",       imageUrl:"sainthood16.jpg", date:"2023-05-05", location:"Multi-camera Studio" },
+    { id:17, title:"Director-Actor Collaboration",    description:"Director working closely with actors on performance.",         imageUrl:"sainthood17.jpg", date:"2023-04-28", location:"Rehearsal Space" },
+    { id:18, title:"Cinematic Lighting Effects",      description:"Creating dramatic lighting effects for visual impact.",        imageUrl:"sainthood18.jpg", date:"2023-04-21", location:"Effects Stage" },
+    { id:19, title:"Equipment Preparation",           description:"Technical team preparing equipment for the day's shoot.",     imageUrl:"sainthood19.jpg", date:"2023-04-15", location:"Equipment Room" },
+    { id:20, title:"On-Set Communication",            description:"Production team coordinating during a complex shot.",          imageUrl:"sainthood20.jpg", date:"2023-04-08", location:"Film Set" },
+    { id:21, title:"Camera Stabilization Setup",      description:"Setting up stabilization equipment for smooth shots.",        imageUrl:"sainthood21.jpg", date:"2023-04-01", location:"Studio Setup" },
+    { id:22, title:"Scene Composition",               description:"Framing and composing the perfect cinematic shot.",            imageUrl:"sainthood22.jpg", date:"2023-03-25", location:"Set Location" },
+    { id:23, title:"Production Team in Action",       description:"The full production team working together on set.",           imageUrl:"sainthood23.jpg", date:"2023-03-18", location:"Working Set" },
+    { id:24, title:"Final Shot Review",               description:"Reviewing the final shots of the day's production.",          imageUrl:"sainthood24.jpg", date:"2023-03-12", location:"Review Room" }
+];
+
+// ---- State ----
+let currentPage = 1;
+const ITEMS_PER_PAGE = 12;
+let currentLightboxIndex = 0;
+let carouselPos = 0;
+const CAROUSEL_ITEMS = 8;
+let currentGalleryView = 'grid';
+const fallbackImg = 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+const fallbackShortImg = 'https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+
+// ---- Helpers ----
+function fmtDate(d, opts) { return new Date(d).toLocaleDateString('en-US', opts || { year:'numeric', month:'short', day:'numeric' }); }
+
+function playVideo(youtubeId) {
+    document.getElementById('youtubePlayer').src = 'https://www.youtube.com/embed/' + youtubeId + '?autoplay=1&rel=0';
+    document.getElementById('videoModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeVideo() {
+    document.getElementById('youtubePlayer').src = '';
+    document.getElementById('videoModal').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// ---- Video Card ----
+function createVideoCard(v) {
+    const card = document.createElement('div');
+    card.className = 'video-card';
+    card.innerHTML = `
+        <div class="video-thumbnail">
+            <img src="${v.thumbnail}" alt="${v.title}" onerror="this.onerror=null;this.src='${fallbackImg}'">
+            <button class="video-play-btn"><i class="fas fa-play"></i></button>
+        </div>
+        <div class="video-info">
+            <span style="color:var(--primary-color);font-size:0.9rem;font-weight:600;display:block;margin-bottom:0.5rem;">${v.category}</span>
+            <h3>${v.title}</h3>
+            <p>${v.description}</p>
+            <div class="video-meta">
+                <span><i class="far fa-clock"></i>${v.duration}</span>
+                <span><i class="far fa-eye"></i>${v.views}</span>
+                <span><i class="far fa-calendar"></i>${fmtDate(v.date)}</span>
+            </div>
+        </div>`;
+    card.querySelector('.video-play-btn').addEventListener('click', function(e){ e.stopPropagation(); playVideo(v.youtubeId); });
+    card.addEventListener('click', function(){ playVideo(v.youtubeId); });
+    return card;
+}
+
+// ---- Short Card ----
+function createShortCard(s) {
+    const card = document.createElement('div');
+    card.className = 'short-card';
+    card.innerHTML = `
+        <div class="short-thumbnail">
+            <img src="${s.thumbnail}" alt="${s.title}" onerror="this.onerror=null;this.src='${fallbackShortImg}'">
+            <div class="short-badge"><i class="fas fa-bolt"></i> SHORT</div>
+            <button class="short-play-btn"><i class="fas fa-play"></i></button>
+        </div>
+        <div class="short-info">
+            <h3 class="short-title">${s.title}</h3>
+            <p class="short-description">${s.description}</p>
+            <div class="short-meta">
+                <span><i class="far fa-clock"></i>${s.duration}</span>
+                <span><i class="far fa-eye"></i>${s.views}</span>
+                <span><i class="far fa-calendar"></i>${fmtDate(s.date, {month:'short',day:'numeric'})}</span>
+            </div>
+        </div>`;
+    card.querySelector('.short-play-btn').addEventListener('click', function(e){ e.stopPropagation(); playVideo(s.youtubeId); });
+    card.addEventListener('click', function(){ playVideo(s.youtubeId); });
+    return card;
+}
+
+// ---- Gallery Item ----
+function createGalleryItem(item, globalIndex) {
+    const el = document.createElement('div');
+    el.className = 'gallery-item';
+    el.innerHTML = `
+        <img src="${item.imageUrl}" alt="${item.title}" loading="lazy" onerror="this.onerror=null;this.src='${fallbackImg}'">
+        <button class="gallery-fullscreen-btn"><i class="fas fa-expand"></i></button>
+        <div class="gallery-overlay">
+            <h3 class="gallery-title">${item.title}</h3>
+            <p class="gallery-description">${item.description}</p>
+            <div class="gallery-meta">
+                <span><i class="fas fa-map-marker-alt"></i>${item.location}</span>
+                <span><i class="far fa-calendar"></i>${fmtDate(item.date)}</span>
+            </div>
+        </div>`;
+    el.querySelector('.gallery-fullscreen-btn').addEventListener('click', function(e){ e.stopPropagation(); openLightbox(globalIndex); });
+    el.addEventListener('click', function(){ openLightbox(globalIndex); });
+    return el;
+}
+
+// ---- Populate grids ----
+function populateGrid(containerId, items, creator) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+    el.innerHTML = '';
+    items.forEach(function(item, i){ el.appendChild(creator(item, i)); });
+}
+
+function loadHomeVideos() { populateGrid('homeVideoGrid', videoData.slice(0,4), createVideoCard); }
+function loadAllVideos()  { populateGrid('allVideoGrid',  videoData,            createVideoCard); }
+function loadFavVideos()  {
+    const favs = videoData.filter(function(v){ return v.favorite; });
+    populateGrid('favVideoGrid', favs, createVideoCard);
+}
+function loadAllShorts()  { populateGrid('allShortsGrid', shortsData, createShortCard); }
+
+// ---- Shorts Carousel ----
+function loadCarousel() {
+    const track = document.getElementById('shortsTrack');
+    if (!track) return;
+    track.innerHTML = '';
+    shortsData.slice(0, CAROUSEL_ITEMS).forEach(function(s){ track.appendChild(createShortCard(s)); });
+}
+
+function updateCarousel() {
+    const track = document.getElementById('shortsTrack');
+    if (!track) return;
+    const cardW = track.querySelector('.short-card') ? track.querySelector('.short-card').offsetWidth + 24 : 304;
+    track.style.transform = 'translateX(' + (-carouselPos * cardW) + 'px)';
+    const prev = document.getElementById('prevShortBtn');
+    const next = document.getElementById('nextShortBtn');
+    if (prev) { prev.disabled = carouselPos === 0; }
+    if (next) { next.disabled = carouselPos >= CAROUSEL_ITEMS - 3; }
+}
+
+// ---- Gallery ----
+function loadGallery() {
+    const grid = document.getElementById('galleryGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    grid.className = 'gallery-grid' + (currentGalleryView === 'masonry' ? ' masonry' : '');
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    const items = galleryData.slice(start, start + ITEMS_PER_PAGE);
+    items.forEach(function(item, i){ grid.appendChild(createGalleryItem(item, start + i)); });
+    renderPagination();
+}
+
+function renderPagination() {
+    const pag = document.getElementById('galleryPagination');
+    if (!pag) return;
+    const total = Math.ceil(galleryData.length / ITEMS_PER_PAGE);
+    pag.innerHTML = '';
+
+    const prev = document.createElement('button');
+    prev.className = 'pagination-btn';
+    prev.innerHTML = '<i class="fas fa-chevron-left"></i>';
+    prev.disabled = currentPage === 1;
+    prev.addEventListener('click', function(){ if (currentPage > 1){ currentPage--; loadGallery(); } });
+    pag.appendChild(prev);
+
+    for (var p = 1; p <= total; p++) {
+        (function(pg){
+            const btn = document.createElement('button');
+            btn.className = 'pagination-btn' + (pg === currentPage ? ' active' : '');
+            btn.textContent = pg;
+            btn.addEventListener('click', function(){ currentPage = pg; loadGallery(); });
+            pag.appendChild(btn);
+        })(p);
+    }
+
+    const next = document.createElement('button');
+    next.className = 'pagination-btn';
+    next.innerHTML = '<i class="fas fa-chevron-right"></i>';
+    next.disabled = currentPage === total;
+    next.addEventListener('click', function(){ if (currentPage < total){ currentPage++; loadGallery(); } });
+    pag.appendChild(next);
+}
+
+// ---- Lightbox ----
+function openLightbox(index) {
+    currentLightboxIndex = index;
+    var item = galleryData[index];
+    document.getElementById('lightboxImage').src = item.imageUrl;
+    document.getElementById('lightboxImage').alt = item.title;
+    document.getElementById('lightboxTitle').textContent = item.title;
+    document.getElementById('lightboxDescription').textContent = item.description;
+    document.getElementById('lightboxDate').textContent = fmtDate(item.date, { year:'numeric', month:'long', day:'numeric' });
+    document.getElementById('lightboxModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// ---- Navigation ----
+function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+    var target = document.getElementById('page-' + pageId);
+    if (target) target.classList.add('active');
+
+    document.querySelectorAll('.nav-link').forEach(function(l){ l.classList.remove('active'); });
+    document.querySelectorAll('.nav-link[data-page="' + pageId + '"]').forEach(function(l){ l.classList.add('active'); });
+
+    document.getElementById('mainNav').classList.remove('open');
+
+    if (pageId !== 'home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    if (pageId === 'gallery') { currentPage = 1; loadGallery(); }
+}
+
+// ---- Counter animation ----
+function animateCounter(el, target) {
+    var current = 0;
+    var increment = target / 50;
+    var timer = setInterval(function(){
+        current += increment;
+        if (current >= target) { current = target; clearInterval(timer); }
+        if (target >= 1000) {
+            el.textContent = current >= 1000 ? (current/1000).toFixed(1).replace('.0','') + 'k+' : Math.floor(current) + '+';
+        } else {
+            el.textContent = Math.floor(current) + '+';
+        }
+    }, 30);
+}
+
+function initCounters() {
+    var section = document.querySelector('.stats-section');
+    if (!section) return;
+    var observed = false;
+    var obs = new IntersectionObserver(function(entries){
+        if (entries[0].isIntersecting && !observed) {
+            observed = true;
+            document.querySelectorAll('.stat-number').forEach(function(n){
+                animateCounter(n, parseInt(n.getAttribute('data-target'), 10));
+            });
+        }
+    }, { threshold: 0.4 });
+    obs.observe(section);
+}
+
+// ---- Init ----
+document.addEventListener('DOMContentLoaded', function(){
+    // Load content
+    loadHomeVideos();
+    loadAllVideos();
+    loadFavVideos();
+    loadCarousel();
+    loadAllShorts();
+    loadGallery();
+    initCounters();
+
+    // Nav links
+    document.addEventListener('click', function(e){
+        var link = e.target.closest('[data-page]');
+        if (link) {
+            e.preventDefault();
+            showPage(link.getAttribute('data-page'));
+        }
+    });
+
+    // Mobile menu
+    document.getElementById('mobileMenuBtn').addEventListener('click', function(){
+        document.getElementById('mainNav').classList.toggle('open');
+    });
+
+    // Carousel buttons
+    document.getElementById('prevShortBtn').addEventListener('click', function(){
+        if (carouselPos > 0) { carouselPos--; updateCarousel(); }
+    });
+    document.getElementById('nextShortBtn').addEventListener('click', function(){
+        if (carouselPos < CAROUSEL_ITEMS - 3) { carouselPos++; updateCarousel(); }
+    });
+    window.addEventListener('resize', updateCarousel);
+    setTimeout(updateCarousel, 100);
+
+    // Video modal close
+    document.getElementById('closeModal').addEventListener('click', closeVideo);
+    document.getElementById('videoModal').addEventListener('click', function(e){
+        if (e.target === this) closeVideo();
+    });
+
+    // Gallery view toggle
+    document.querySelectorAll('.view-btn').forEach(function(btn){
+        btn.addEventListener('click', function(){
+            document.querySelectorAll('.view-btn').forEach(function(b){ b.classList.remove('active'); });
+            btn.classList.add('active');
+            currentGalleryView = btn.getAttribute('data-view');
             loadGallery();
-            setupEventListeners();
-            showPage('home');
-            initCounterAnimation();
-            initShortsCarousel();
-            initGallery();
-            window.addEventListener('scroll', function () {
-                const header = document.querySelector('header');
-                if (window.scrollY > 100) {
-                    header.style.backgroundColor = 'rgba(18, 18, 18, 0.98)';
-                    header.style.backdropFilter = 'blur(10px)';
-                    header.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
-                } else {
-                    header.style.backgroundColor = 'rgba(18, 18, 18, 0.95)';
-                    header.style.backdropFilter = 'blur(5px)';
-                    header.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
-                }
-            });
+        });
+    });
+
+    // Lightbox close
+    document.getElementById('closeLightbox').addEventListener('click', function(){
+        document.getElementById('lightboxModal').classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    document.getElementById('lightboxModal').addEventListener('click', function(e){
+        if (e.target === this) { this.classList.remove('active'); document.body.style.overflow = ''; }
+    });
+    document.getElementById('prevImage').addEventListener('click', function(){
+        if (currentLightboxIndex > 0) openLightbox(--currentLightboxIndex);
+    });
+    document.getElementById('nextImage').addEventListener('click', function(){
+        if (currentLightboxIndex < galleryData.length - 1) openLightbox(++currentLightboxIndex);
+    });
+    document.addEventListener('keydown', function(e){
+        if (document.getElementById('lightboxModal').classList.contains('active')) {
+            if (e.key === 'Escape') { document.getElementById('lightboxModal').classList.remove('active'); document.body.style.overflow = ''; }
+            else if (e.key === 'ArrowLeft' && currentLightboxIndex > 0) openLightbox(--currentLightboxIndex);
+            else if (e.key === 'ArrowRight' && currentLightboxIndex < galleryData.length - 1) openLightbox(++currentLightboxIndex);
         }
-        
-        function setupEventListeners() {
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const pageId = link.getAttribute('data-page');
-                    showPage(pageId);
-                    navLinks.forEach(navLink => navLink.classList.remove('active'));
-                    link.classList.add('active');
-                    mainNav.classList.remove('active');
-                    if (link.classList.contains('btn')) {
-                        setTimeout(() => { window.scrollTo({ top: document.getElementById(pageId).offsetTop - 80, behavior: 'smooth' }); }, 100);
-                    }
-                });
-            });
-            mobileMenuBtn.addEventListener('click', () => { mainNav.classList.toggle('active'); });
-            closeModal.addEventListener('click', () => { videoModal.classList.remove('active'); youtubePlayer.src = ''; document.body.style.overflow = 'auto'; });
-            videoModal.addEventListener('click', (e) => { if (e.target === videoModal) { videoModal.classList.remove('active'); youtubePlayer.src = ''; document.body.style.overflow = 'auto'; } });
-            contactForm.addEventListener('submit', (e) => { e.preventDefault(); alert('Thank you for your message! We will get back to you within 24 hours.'); contactForm.reset(); });
+        if (document.getElementById('videoModal').classList.contains('active') && e.key === 'Escape') closeVideo();
+    });
+
+    // Contact form
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        alert('Thank you for your message! We will get back to you within 24 hours.');
+        this.reset();
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', function(){
+        var header = document.getElementById('siteHeader');
+        if (window.scrollY > 100) {
+            header.style.backgroundColor = 'rgba(18,18,18,0.98)';
+            header.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+        } else {
+            header.style.backgroundColor = 'rgba(18,18,18,0.95)';
+            header.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
         }
-        
-        function initGallery() {
-            viewButtons.forEach(button => {
-                button.addEventListener('click', () => { setActiveView(button, button.getAttribute('data-view')); });
-            });
-            closeLightbox.addEventListener('click', () => { lightboxModal.classList.remove('active'); document.body.style.overflow = 'auto'; });
-            lightboxModal.addEventListener('click', (e) => { if (e.target === lightboxModal) { lightboxModal.classList.remove('active'); document.body.style.overflow = 'auto'; } });
-            prevImage.addEventListener('click', showPreviousImage);
-            nextImage.addEventListener('click', showNextImage);
-            document.addEventListener('keydown', (e) => {
-                if (lightboxModal.classList.contains('active')) {
-                    if (e.key === 'Escape') { lightboxModal.classList.remove('active'); document.body.style.overflow = 'auto'; }
-                    else if (e.key === 'ArrowLeft') showPreviousImage();
-                    else if (e.key === 'ArrowRight') showNextImage();
-                }
-            });
-            paginationBtns.forEach(btn => {
-                btn.addEventListener('click', () => { if (!btn.classList.contains('active')) { currentPage = parseInt(btn.textContent); updatePagination(); loadGallery(); } });
-            });
-            prevPageBtn.addEventListener('click', () => { if (currentPage > 1) { currentPage--; updatePagination(); loadGallery(); } });
-            nextPageBtn.addEventListener('click', () => { const totalPages = Math.ceil(galleryData.length / itemsPerPage); if (currentPage < totalPages) { currentPage++; updatePagination(); loadGallery(); } });
-        }
-        
-        function setActiveView(button, view) {
-            viewButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            currentView = view;
-            galleryGrid.className = 'gallery-grid';
-            if (view === 'masonry') galleryGrid.classList.add('masonry');
-            else galleryGrid.classList.add('active');
-            loadGallery();
-        }
-        
-        function loadGallery() {
-            galleryGrid.innerHTML = '';
-            const startIndex = (currentPage - 1) * itemsPerPage;
-            const pageItems = galleryData.slice(startIndex, startIndex + itemsPerPage);
-            if (pageItems.length === 0) { galleryGrid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:3rem;color:#aaa;"><i class="fas fa-images" style="font-size:3rem;opacity:0.3;margin-bottom:1rem;"></i><h3 style="color:white;">No images found</h3></div>'; return; }
-            pageItems.forEach((item, index) => galleryGrid.appendChild(createGalleryItem(item, startIndex + index)));
-            updatePagination();
-        }
-        
-        function createGalleryItem(item, globalIndex) {
-            const el = document.createElement('div');
-            el.className = 'gallery-item';
-            const fmt = new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-            el.innerHTML = `<img src="${item.imageUrl}" alt="${item.title}" loading="lazy"><button class="gallery-fullscreen-btn"><i class="fas fa-expand"></i></button><div class="gallery-overlay"><h3 class="gallery-title">${item.title}</h3><p class="gallery-description">${item.description}</p><div class="gallery-meta"><span><i class="fas fa-map-marker-alt"></i> ${item.location}</span><span><i class="far fa-calendar"></i> ${fmt}</span></div></div>`;
-            el.querySelector('.gallery-fullscreen-btn').addEventListener('click', (e) => { e.stopPropagation(); openLightbox(globalIndex); });
-            el.addEventListener('click', () => openLightbox(globalIndex));
-            return el;
-        }
-        
-        function openLightbox(index) {
-            currentLightboxIndex = index;
-            const item = galleryData[index];
-            lightboxImage.src = item.imageUrl;
-            lightboxImage.alt = item.title;
-            lightboxTitle.textContent = item.title;
-            lightboxDescription.textContent = item.description;
-            lightboxDate.textContent = new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-            lightboxModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function showPreviousImage() { if (currentLightboxIndex > 0) openLightbox(--currentLightboxIndex); }
-        function showNextImage() { if (currentLightboxIndex < galleryData.length - 1) openLightbox(++currentLightboxIndex); }
-        
-        function updatePagination() {
-            const totalPages = Math.ceil(galleryData.length / itemsPerPage);
-            paginationBtns.forEach(btn => { btn.classList.remove('active'); if (parseInt(btn.textContent) === currentPage) btn.classList.add('active'); });
-            prevPageBtn.disabled = currentPage === 1;
-            nextPageBtn.disabled = currentPage === totalPages;
-        }
-        
-        function showPage(pageId) {
-            pages.forEach(page => page.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-            if (pageId !== 'home') window.scrollTo({ top: 0, behavior: 'smooth' });
-            if (pageId === 'gallery') loadGallery();
-        }
-        
-        function loadHomeVideos() {
-            const homeGrid = document.querySelector('#home .video-grid');
-            homeGrid.innerHTML = '';
-            videoData.slice(0, 4).forEach(v => homeGrid.appendChild(createVideoCard(v)));
-        }
-        
-        function loadAllVideos() {
-            const grid = document.querySelector('#videos .video-grid');
-            grid.innerHTML = '';
-            videoData.forEach(v => grid.appendChild(createVideoCard(v)));
-        }
-        
-        function loadFavoriteVideos() {
-            const grid = document.querySelector('#favorites .video-grid');
-            const favs = videoData.filter(v => v.favorite);
-            grid.innerHTML = '';
-            if (!favs.length) { grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:3rem;color:#aaa;">No featured videos yet.</p>'; return; }
-            favs.forEach(v => grid.appendChild(createVideoCard(v)));
-        }
-        
-        function loadShorts() {
-            shortsGrid.innerHTML = '';
-            shortsData.slice(0, 8).forEach(s => shortsGrid.appendChild(createShortCard(s)));
-        }
-        
-        function loadAllShorts() {
-            allShortsGrid.innerHTML = '';
-            shortsData.forEach(s => allShortsGrid.appendChild(createShortCard(s)));
-        }
-        
-        function createVideoCard(video) {
-            const card = document.createElement('div');
-            card.className = 'video-card';
-            const fmt = new Date(video.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-            const fallback = 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
-            card.innerHTML = `<div class="video-thumbnail"><img src="${video.thumbnail}" alt="${video.title}" onerror="this.onerror=null;this.src='${fallback}'"><button class="video-play-btn" data-id="${video.youtubeId}"><i class="fas fa-play"></i></button></div><div class="video-info"><span style="color:var(--primary-color);font-size:0.9rem;font-weight:600;display:block;margin-bottom:0.5rem;">${video.category}</span><h3>${video.title}</h3><p>${video.description}</p><div class="video-meta"><span><i class="far fa-clock"></i> ${video.duration}</span><span><i class="far fa-eye"></i> ${video.views}</span><span><i class="far fa-calendar"></i> ${fmt}</span></div></div>`;
-            card.querySelector('.video-play-btn').addEventListener('click', () => playVideo(video.youtubeId));
-            return card;
-        }
-        
-        function createShortCard(short) {
-            const card = document.createElement('div');
-            card.className = 'short-card';
-            const fmt = new Date(short.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-            const fallback = 'https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
-            card.innerHTML = `<div class="short-thumbnail"><img src="${short.thumbnail}" alt="${short.title}" onerror="this.onerror=null;this.src='${fallback}'"><div class="short-badge"><i class="fas fa-bolt"></i> SHORT</div><button class="short-play-btn"><i class="fas fa-play"></i></button></div><div class="short-info"><h3 class="short-title">${short.title}</h3><p class="short-description">${short.description}</p><div class="short-meta"><span><i class="far fa-clock"></i> ${short.duration}</span><span class="short-views"><i class="far fa-eye"></i> ${short.views}</span><span><i class="far fa-calendar"></i> ${fmt}</span></div></div>`;
-            card.querySelector('.short-play-btn').addEventListener('click', () => playVideo(short.youtubeId));
-            card.addEventListener('click', (e) => { if (!e.target.closest('.short-play-btn')) playVideo(short.youtubeId); });
-            return card;
-        }
-        
-        function playVideo(youtubeId) {
-            youtubePlayer.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`;
-            videoModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function initShortsCarousel() {
-            if (!shortsGrid) return;
-            let pos = 0;
-            const total = shortsData.slice(0, 8).length;
-            function update() {
-                shortsGrid.style.transform = `translateX(${-pos * (280 + 24)}px)`;
-                shortsGrid.style.transition = 'transform 0.5s ease';
-                if (prevShortBtn) { prevShortBtn.disabled = pos === 0; prevShortBtn.style.opacity = pos === 0 ? '0.5' : '1'; }
-                if (nextShortBtn) { nextShortBtn.disabled = pos >= total - 4; nextShortBtn.style.opacity = pos >= total - 4 ? '0.5' : '1'; }
-            }
-            if (nextShortBtn) nextShortBtn.addEventListener('click', () => { if (pos < total - 4) { pos++; update(); } });
-            if (prevShortBtn) prevShortBtn.addEventListener('click', () => { if (pos > 0) { pos--; update(); } });
-            update();
-        }
-        
-        function initCounterAnimation() {
-            const statNumbers = document.querySelectorAll('.stat-number');
-            const statsSection = document.querySelector('.stats-section');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) { statNumbers.forEach(n => animateCounter(n, parseInt(n.getAttribute('data-target')))); observer.unobserve(statsSection); }
-                });
-            }, { threshold: 0.5 });
-            if (statsSection) observer.observe(statsSection);
-        }
-        
-        function animateCounter(element, target) {
-            let current = 0;
-            const increment = target / 50;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) { current = target; clearInterval(timer); }
-                if (target >= 1000) { element.textContent = current >= 1000 ? (current / 1000).toFixed(1).replace('.0', '') + 'k+' : Math.floor(current) + '+'; }
-                else { element.textContent = Math.floor(current) + '+'; }
-            }, 30);
-        }
-        
-        document.addEventListener('DOMContentLoaded', init);
-    </script>
+    });
+});
+</script>
 </body>
 </html>
